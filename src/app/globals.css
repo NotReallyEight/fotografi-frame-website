@@ -3,31 +3,177 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-color: #000000;
+  --background-start-color: #eadfe8;
+  --background-end-color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-color: #ffffff;
+    --background-start-color: #000000;
+    --background-end-color: #000000;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: var(--foreground-color);
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      var(--background-end-color)
     )
-    rgb(var(--background-start-rgb));
+    var(--background-start-color);
+}
+
+/* Keyframes */
+
+@keyframes navbar-dropdown-animation-fade-in {
+  0% {
+    transform: scale(0) translateY(-100px);
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Fonts */
+
+  .font-family-header {
+    font-family: var(--font-mitr);
+  }
+
+  .font-family-secondary {
+    font-family: var(--font-baloo-thambi-2);
+  }
+
+  .font-family-regular {
+    font-family: var(--font-noto-sans);
+  }
+
+  /* Complex component styles */
+
+  .burger-menu {
+    height: 1vmin;
+    width: 7.5vmin;
+    background-color: #000000;
+    transition-duration: 500ms;
+  }
+
+  .burger-menu::before,
+  .burger-menu::after {
+    content: "";
+    display: block;
+    height: 1vmin;
+    width: 7.5vmin;
+    background-color: #000000;
+    position: absolute;
+    transition-duration: 500ms;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .burger-menu,
+    .burger-menu::before,
+    .burger-menu::after {
+      background-color: #ffffff;
+    }
+  }
+
+  .burger-menu::before {
+    transform: translateY(-7.5px);
+  }
+
+  .burger-menu::after {
+    transform: translateY(7.5px);
+  }
+
+  .burger-menu-open .burger-menu {
+    transform: translateX(-64px);
+    background: transparent;
+    transition-duration: 500ms;
+  }
+
+  .burger-menu-open .burger-menu::before {
+    transform: rotate(45deg) translate(45px, -45px);
+  }
+
+  .burger-menu-open .burger-menu::after {
+    transform: rotate(-45deg) translate(45px, 45px);
+  }
+
+  .navbar-dropdown-sections-open {
+    animation: navbar-dropdown-animation-fade-in 500ms ease-out forwards;
+  }
+
+  .glassmorph {
+    background: rgba(86, 86, 86, 0.25);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+  }
+
+  /* Carousel styles */
+
+  .carousel-icon-disabled {
+    fill: #4d4d4d;
+  }
+
+  .carousel-icon-enabled {
+    fill: #000000;
+  }
+
+  .carousel-dot-selected {
+    background-color: #000000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .carousel-icon-disabled {
+      fill: #b3b3b3;
+    }
+
+    .carousel-icon-enabled {
+      fill: #ffffff;
+    }
+
+    .carousel-dot-selected {
+      background-color: #ffffff;
+    }
+  }
+
+  /* Animations */
+
+  .fade-in {
+    animation: fade-in 0.5s forwards;
+  }
+
+  .fade-out {
+    animation: fade-out 0.5s forwards;
   }
 }
