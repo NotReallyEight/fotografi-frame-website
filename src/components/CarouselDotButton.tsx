@@ -1,3 +1,5 @@
+"use client";
+
 import { EmblaCarouselType } from "embla-carousel";
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 

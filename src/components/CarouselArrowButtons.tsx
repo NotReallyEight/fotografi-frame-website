@@ -1,4 +1,5 @@
-import config from "@/config";
+"use client";
+
 import { EmblaCarouselType } from "embla-carousel";
 import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";

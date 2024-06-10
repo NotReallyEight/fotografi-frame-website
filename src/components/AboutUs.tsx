@@ -3,9 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
-import AboutUsImage from "../../public/assets/J55C0467-scaled.jpg";
-import WhiteFrameLogo from "../../public/assets/frame-logo-white.png";
-import BlackFrameLogo from "../../public/assets/frame-logo-black.png";
+import images from "@/utils/images";
 
 interface AboutUsSection {
   title?: string;
@@ -33,15 +31,15 @@ const AboutUs = () => {
   const [currentImageSrc, setCurrentImageSrc] = useState<{
     dark: string;
     light: string;
-  }>({ dark: WhiteFrameLogo.src, light: BlackFrameLogo.src });
+  }>({ dark: images.logo.white.src, light: images.logo.black.src });
   const [objectFit, setObjectFit] = useState<"contain" | "cover">("contain");
 
   // This callback fires when a Step hits the offset threshold.
   const onStepEnter = ({ data }: { data: number }) => {
     if (data === 0 && currentStepIndex === 0) {
       setCurrentImageSrc({
-        dark: WhiteFrameLogo.src,
-        light: BlackFrameLogo.src,
+        dark: images.logo.white.src,
+        light: images.logo.black.src,
       });
       setObjectFit("contain");
       setCurrentStepIndex(data);
@@ -53,8 +51,8 @@ const AboutUs = () => {
     if (data === 0 && currentStepIndex !== 0) {
       setTimeout(() => {
         setCurrentImageSrc({
-          dark: WhiteFrameLogo.src,
-          light: BlackFrameLogo.src,
+          dark: images.logo.white.src,
+          light: images.logo.black.src,
         });
         setObjectFit("contain");
         setAnimationClass("fade-in");
@@ -65,7 +63,10 @@ const AboutUs = () => {
     }
 
     setTimeout(() => {
-      setCurrentImageSrc({ dark: AboutUsImage.src, light: AboutUsImage.src });
+      setCurrentImageSrc({
+        dark: images.aboutUs.src,
+        light: images.aboutUs.src,
+      });
       setObjectFit("cover");
       setAnimationClass("fade-in");
     }, 500);
@@ -117,7 +118,7 @@ const AboutUs = () => {
 
               {(section.description1 !== undefined ||
                 section.description2 !== undefined) && (
-                <div className="font-family-regular flex min-w-[100vw] flex-col items-center justify-evenly text-sm md:flex-row md:text-base">
+                <div className="font-family-regular flex w-full flex-col items-center justify-evenly text-sm md:flex-row md:text-base">
                   {section.description1 !== undefined && (
                     <div className="glassmorph my-4 max-w-[80vw] text-center md:my-auto md:max-w-[25vw]">
                       {section.description1}

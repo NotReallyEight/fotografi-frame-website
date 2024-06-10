@@ -3,7 +3,7 @@
 import config from "@/config";
 import { useState } from "react";
 
-// TODO: Add href for these routes
+// TODO: Add href for these routes and also change <a> tags to <Link> tags
 const sections: { name: string; href?: string }[] = [
   {
     name: "HOME",
@@ -29,7 +29,7 @@ const NavbarSections = () => {
       <div className="hidden flex-row items-center justify-center md:flex">
         {sections.map((section, index) => (
           <a
-            className="font-family-secondary mr-5 py-[1rem] text-[2.5vmin] after:block after:scale-x-0 after:border-b-2 after:border-[#000000] after:duration-200 hover:after:scale-x-100 dark:after:border-[#ffffff]"
+            className="font-family-secondary after:border-textLight dark:after:border-textDark mr-5 py-[1rem] text-[2.5vmin] after:block after:scale-x-0 after:border-b-2 after:duration-200 hover:after:scale-x-100"
             href={section.href}
             key={`section-desktop-${index}`}
           >
@@ -49,7 +49,7 @@ const NavbarSections = () => {
       >
         {sections.map((section, index) => (
           <a
-            className={`font-family-secondary w-[100%] ${index === sections.length - 1 ? "" : "border-b-[0.5px] border-b-[#eadfe8] dark:border-b-[#000000]"} bg-[#b8adb6] p-4 text-center duration-200 hover:text-[#926a8e] dark:bg-[#303030]`}
+            className={`font-family-secondary w-[100%] ${index === sections.length - 1 ? "" : "border-b-primaryLight dark:border-b-primaryDark border-b-[0.5px]"} bg-secondaryLight dark:bg-secondaryDark hover:text-mobileHover p-4 text-center duration-200`}
             href={section.href}
             key={`section-mobile-${index}`}
           >
