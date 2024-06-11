@@ -40,7 +40,9 @@ const NavbarSections = () => {
       {/* Navbar sections - mobile */}
       <div
         className={`mr-5 flex h-[5vmin] cursor-pointer items-center justify-center ${dropdownOpened ? "burger-menu-open" : ""} md:hidden`}
-        onClick={() => setDropdownOpened(!dropdownOpened)}
+        onClick={() => {
+          setDropdownOpened(!dropdownOpened);
+        }}
       >
         <div className="burger-menu" />
       </div>

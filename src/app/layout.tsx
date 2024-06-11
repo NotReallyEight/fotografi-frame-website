@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { balooThambi2, mitr, notoSans } from "./fonts";
 
+// Next.js automatically updates metadata using this export.
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   title: "Home - Frame",
   description:

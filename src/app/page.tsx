@@ -6,6 +6,7 @@ import Link from "next/link";
 import OurServices from "@/components/OurServices";
 import OurEvents from "@/components/OurEvents";
 import images from "@/utils/images";
+import OurTeam from "@/components/OurTeam";
 
 export default function Home() {
   return (
@@ -48,6 +49,7 @@ export default function Home() {
       <AboutUs />
       <OurServices />
       <OurEvents />
+      <OurTeam />
     </main>
   );
 }

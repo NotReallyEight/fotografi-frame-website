@@ -32,6 +32,8 @@ import HeaderImage from "../../public/assets/Fox-179-1-scaled.jpg";
 import SocialProductionImage from "../../public/assets/Anteprima-Osteria-Voria-_3-scaled-e1707843396974-qjraknj7t3qlqcxrxv0rjkti3ex85mh4yypwq6cgtk.jpg";
 import AdvertisingImage from "../../public/assets/J55C4944-scaled-qjral5e5eyf1uy7u1kqocyb9dqh77vg1df44uflzjc.jpg";
 import EventsImage from "../../public/assets/Voice-97-scaled-q49kzr3t2nc2jedny31pxdv1zagqjb8yx2pk7vb424.jpg";
+import LucaImage from "../../public/assets/J55C2738-q5e3rwuutunqh4rfbpv4zk0aavqc3lt25ouiixjd7k.png";
+import DomenicoImage from "../../public/assets/J55C2719-q5e3rhtfsi35bdd9rjd3vnswspsgog5crmequi5nz4.png";
 
 const images = {
   aboutUs: AboutUsImage,
@@ -70,6 +72,10 @@ const images = {
   logo: {
     black: BlackLogo,
     white: WhiteLogo,
+  },
+  members: {
+    luca: LucaImage,
+    domenico: DomenicoImage,
   },
   socialProduction: SocialProductionImage,
 };

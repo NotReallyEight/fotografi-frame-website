@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import images from "@/utils/images";
 
-interface AboutUsSection {
+type AboutUsSection = {
   title?: string;
   subtitle?: string;
-  description1?: string;
-  description2?: string;
-}
+  description1?: string | (string | JSX.Element)[];
+  description2?: string | (string | JSX.Element)[];
+};
 
 const aboutUsSections: AboutUsSection[] = [
   {
@@ -18,10 +18,16 @@ const aboutUsSections: AboutUsSection[] = [
     subtitle: "Un team con voi, per voi",
   },
   {
-    description1:
-      "Siamo un team di ragazzi appassionati di fotografia e video, specializzati nella cattura dei momenti più importanti della vita. Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre.\n\nCi occupiamo di diverse tipologie di eventi, tra cui matrimoni, cerimonie e compleanni, ma anche shooting fotografici per aziende, book fotografici, reportage e tanto altro.",
-    description2:
-      "Il nostro obiettivo è sempre quello di offrire un servizio personalizzato, attento alle esigenze dei nostri clienti e in grado di soddisfare ogni loro richiesta.\n\nOgni progetto è una nuova sfida da affrontare con entusiasmo e professionalità. Siamo sempre alla ricerca di nuove idee e di soluzioni creative per rendere ogni scatto unico ed emozionante.",
+    description1: [
+      "Siamo un team di ragazzi appassionati di fotografia e video, specializzati nella cattura dei momenti più importanti della vita. Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre.",
+      <br key="line-break" />,
+      "Ci occupiamo di diverse tipologie di eventi, tra cui matrimoni, cerimonie e compleanni, ma anche shooting fotografici per aziende, book fotografici, reportage e tanto altro.",
+    ],
+    description2: [
+      "Il nostro obiettivo è sempre quello di offrire un servizio personalizzato, attento alle esigenze dei nostri clienti e in grado di soddisfare ogni loro richiesta.",
+      <br key="line-break" />,
+      "Ogni progetto è una nuova sfida da affrontare con entusiasmo e professionalità. Siamo sempre alla ricerca di nuove idee e di soluzioni creative per rendere ogni scatto unico ed emozionante.",
+    ],
   },
 ];
 
