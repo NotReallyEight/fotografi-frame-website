@@ -1,14 +1,11 @@
-"use client";
-
-import config from "@/config";
 import Carousel from "./Carousel";
 import { StaticImageData } from "next/image";
 import images from "@/utils/images";
-import { useEffect, useState } from "react";
 
-const ourEventsCarouselSlides: { image: StaticImageData }[] = images.event.map(
-  (image) => ({ image })
-);
+const ourEventsCarouselSlides: {
+  image: StaticImageData;
+  imageObjectFit: "contain" | "cover";
+}[] = images.event.map((image) => ({ image, imageObjectFit: "cover" }));
 
 const OurEvents = () => {
   return (
@@ -17,7 +14,7 @@ const OurEvents = () => {
       id="our-events"
     >
       <div
-        className={`font-family-header dark:text-textDark text-textLight mb-8 text-center text-5xl`}
+        className={`font-family-header mb-8 text-center text-5xl text-textLight dark:text-textDark`}
       >
         Our Events
       </div>
@@ -26,10 +23,11 @@ const OurEvents = () => {
           slides={ourEventsCarouselSlides}
           options={{ loop: true }}
           plugins={["autoplay"]}
+          hideDots={{ mobile: true, desktop: false }}
         />
         <a
           href="/lavori"
-          className={`border-secondaryLight dark:border-secondaryDark hover:border-enabledLight hover:dark:border-enabledDark rounded-3xl border-2 p-3 duration-200`}
+          className={`rounded-3xl border-2 border-secondaryLight p-3 duration-200 hover:border-enabledLight dark:border-secondaryDark hover:dark:border-enabledDark`}
         >
           Our Portfolio
         </a>

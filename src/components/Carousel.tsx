@@ -9,10 +9,8 @@ import {
   usePrevNextButtons,
 } from "./CarouselArrowButtons";
 import CarouselDotButton, { useDotButton } from "./CarouselDotButton";
-import config from "@/config";
 import { EmblaPluginType, EmblaOptionsType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
-import Link from "next/link";
 
 type PluginType = "autoplay";
 
@@ -23,8 +21,10 @@ type Props = {
     title?: string;
     description?: string;
     image?: StaticImageData;
+    imageObjectFit?: "cover" | "contain";
     href?: string;
   }[];
+  hideDots?: { desktop?: boolean; mobile?: boolean };
 };
 
 const pluginTypes: Record<PluginType, EmblaPluginType> = {
@@ -58,36 +58,16 @@ const Carousel: React.FC<Props> = (props) => {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="ml-[-1rem] flex touch-pan-y touch-pinch-zoom">
           {props.slides.map((slide, index) => (
-            // <div className="min-w-0 flex-[0_0_100%] pl-[1rem]" key={index}>
-            //   <div className="flex flex-col rounded-3xl p-8 text-center shadow-[inset_0_0_0_0.2rem_rgb(234,234,234)]">
-            //     {slide.image !== undefined && (
-            //       <Image
-            //         src={slide.image}
-            //         alt="Fotografia scattata da FRAME."
-            //         className="mx-auto max-h-[30vh] rounded-3xl object-contain"
-            //       />
-            //     )}
-            //     {slide.title !== undefined && (
-            //       <div className="font-family-secondary text-center text-2xl">
-            //         {slide.title}
-            //       </div>
-            //     )}
-            //     {slide.description !== undefined && (
-            //       <div className="font-family-regular text-sm md:text-base">
-            //         {slide.description}
-            //       </div>
-            //     )}
-            //   </div>
-            // </div>
-
             <div className="min-w-0 flex-[0_0_100%] pl-[1rem]" key={index}>
               <a href={slide.href}>
-                <div className="border-secondaryLight dark:border-secondaryDark flex flex-col rounded-3xl border-2 p-8 text-center">
+                <div
+                  className={`flex flex-col rounded-3xl border-secondaryLight ${(slide.imageObjectFit ?? "contain") === "contain" ? "border-2 p-8" : ""} text-center dark:border-secondaryDark`}
+                >
                   {slide.image !== undefined && (
                     <Image
                       src={slide.image}
                       alt="Fotografia scattata da FRAME."
-                      className="mx-auto max-h-[30vh] rounded-3xl object-contain"
+                      className={`mx-auto max-h-[30vh] rounded-3xl object-${slide.imageObjectFit ?? "contain"}`}
                     />
                   )}
                   {slide.title !== undefined && (
@@ -115,7 +95,9 @@ const Carousel: React.FC<Props> = (props) => {
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
         {/* Carousel dots */}
-        <div className="max-w-[80%] *:mx-1">
+        <div
+          className={`max-w-[80%] *:mx-1 ${props.hideDots?.desktop ? "md:hidden" : "md:block"} ${props.hideDots?.mobile ? "hidden" : "block"}`}
+        >
           {props.slides.map((_section, index) => {
             const backgroundColourClass =
               selectedIndex === index ? "carousel-dot-selected" : "";

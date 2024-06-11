@@ -20,7 +20,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className={`font-family-header dark:text-textDark text-textLight glassmorph text-center text-5xl`}
+            className={`font-family-header glassmorph text-center text-2xl text-textLight md:text-5xl dark:text-textDark`}
           >
             FRAME PRODUCTION
           </span>

@@ -28,16 +28,6 @@ body {
 
 /* Keyframes */
 
-@keyframes navbar-dropdown-animation-fade-in {
-  0% {
-    transform: scale(0) translateY(-100px);
-  }
-
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -128,7 +118,7 @@ body {
   }
 
   .navbar-dropdown-sections-open {
-    animation: navbar-dropdown-animation-fade-in 500ms ease-out forwards;
+    animation: fade-in 500ms ease-out forwards;
   }
 
   .glassmorph {
