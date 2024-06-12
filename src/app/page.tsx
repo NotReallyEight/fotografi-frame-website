@@ -7,17 +7,18 @@ import OurServices from "@/components/OurServices";
 import OurEvents from "@/components/OurEvents";
 import images from "@/utils/images";
 import OurTeam from "@/components/OurTeam";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex h-screen snap-y snap-mandatory snap-always flex-col overflow-y-scroll scroll-smooth">
+    <main className="flex h-[100dvh] snap-y snap-mandatory snap-always flex-col overflow-y-scroll scroll-smooth">
       <Navbar />
-      <div className="relative min-h-[100vh] w-full snap-center" id="frame">
+      <div className="relative min-h-[100dvh] w-full snap-center" id="frame">
         <Image
           alt="Fotografia scattata da FRAME."
           src={images.header.src}
           fill
-          className="h-[100vh] w-full object-cover"
+          className="h-[100dvh] w-full object-cover"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <span
@@ -28,18 +29,18 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="min-h-[100vh] w-full snap-center"
+        className="min-h-[100dvh] w-full snap-center"
         id="salva-i-tuoi-momenti"
       >
         <div className="flex h-full flex-col items-center justify-center">
-          <div className="font-family-header text-center text-5xl">
+          <div className="font-family-header text-center text-2xl md:text-5xl">
             Salva I Tuoi Momenti
           </div>
           <Link
             className="m-4 flex flex-row items-center justify-center"
             href="#about-us-1"
           >
-            <div className="font-family-secondary text-center text-2xl">
+            <div className="font-family-secondary text-center text-lg md:text-2xl">
               Conoscici meglio
             </div>
             <FaArrowDown className="ml-4" />
@@ -50,6 +51,7 @@ export default function Home() {
       <OurServices />
       <OurEvents />
       <OurTeam />
+      <Footer />
     </main>
   );
 }

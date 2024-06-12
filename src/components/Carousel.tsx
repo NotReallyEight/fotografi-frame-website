@@ -51,7 +51,7 @@ const Carousel: React.FC<Props> = (props) => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="max-h-[50vh] max-w-[80vw] md:max-w-[50vw]">
+    <div className="max-h-[50dvh] max-w-[80dvw] md:max-w-[50dvw]">
       {/* Carousel viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="ml-[-1rem] flex touch-pan-y touch-pinch-zoom">
@@ -68,16 +68,16 @@ const Carousel: React.FC<Props> = (props) => {
                       <Image
                         src={slide.image}
                         alt="Fotografia scattata da FRAME."
-                        className={`mx-auto max-h-[30vh] rounded-3xl object-${imageObjectFit}`}
+                        className={`mx-auto max-h-[30dvh] rounded-3xl object-${imageObjectFit}`}
                       />
                     )}
                     {slide.title !== undefined && (
-                      <div className="font-family-secondary text-center text-2xl">
+                      <div className="font-family-secondary text-center text-lg md:text-2xl">
                         {slide.title}
                       </div>
                     )}
                     {slide.description !== undefined && (
-                      <div className="font-family-regular text-sm md:text-base">
+                      <div className="font-family-regular text-xs md:text-base">
                         {slide.description}
                       </div>
                     )}

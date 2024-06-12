@@ -41,11 +41,11 @@ const ourServicesSections: OurServicesSection[] = [
 
 const OurServices = () => (
   <div
-    className="flex min-h-screen snap-center flex-col items-center justify-center md:justify-evenly"
+    className="flex min-h-[100dvh] snap-center flex-col items-center justify-center md:justify-evenly"
     id="our-services"
   >
     <div
-      className={`font-family-header mb-8 text-center text-5xl text-textLight dark:text-textDark`}
+      className={`font-family-header mb-8 text-center text-2xl text-textLight md:text-5xl dark:text-textDark`}
     >
       Our Services
     </div>

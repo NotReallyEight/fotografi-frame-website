@@ -82,7 +82,7 @@ const AboutUs = () => {
   return (
     <div>
       <Scrollama offset={0.5} onStepEnter={onStepEnter}>
-        <div className="sticky top-0 -z-10 min-h-screen opacity-20">
+        <div className="sticky top-0 -z-10 min-h-[100dvh] opacity-20">
           <picture>
             {/* Dynamically import the image depending on the color scheme chosen by the user */}
             <source
@@ -103,19 +103,19 @@ const AboutUs = () => {
             <div
               id={`about-us-${stepIndex + 1}`}
               className={
-                "flex min-h-screen snap-center flex-col items-center justify-center"
+                "flex min-h-[100dvh] snap-center flex-col items-center justify-center"
               }
             >
               {(section.title !== undefined ||
                 section.subtitle !== undefined) && (
                 <div className="glassmorph flex flex-col">
                   {section.title !== undefined && (
-                    <div className="font-family-header text-center text-5xl">
+                    <div className="font-family-header text-center text-2xl md:text-5xl">
                       {section.title}
                     </div>
                   )}
                   {section.subtitle !== undefined && (
-                    <div className="font-family-secondary text-center text-2xl">
+                    <div className="font-family-secondary text-center text-lg md:text-2xl">
                       {section.subtitle}
                     </div>
                   )}
@@ -124,14 +124,14 @@ const AboutUs = () => {
 
               {(section.description1 !== undefined ||
                 section.description2 !== undefined) && (
-                <div className="font-family-regular flex w-full flex-col items-center justify-evenly text-sm md:flex-row md:text-base">
+                <div className="font-family-regular flex w-full flex-col items-center justify-evenly text-xs md:flex-row md:text-base">
                   {section.description1 !== undefined && (
-                    <div className="glassmorph my-4 max-w-[80vw] text-center md:my-auto md:max-w-[25vw]">
+                    <div className="glassmorph my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
                       {section.description1}
                     </div>
                   )}
                   {section.description2 !== undefined && (
-                    <div className="glassmorph my-4 max-w-[80vw] text-center md:my-auto md:max-w-[25vw]">
+                    <div className="glassmorph my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
                       {section.description2}
                     </div>
                   )}

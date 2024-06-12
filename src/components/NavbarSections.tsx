@@ -47,7 +47,7 @@ const NavbarSections = () => {
         <div className="burger-menu" />
       </div>
       <div
-        className={`${dropdownOpened ? "navbar-dropdown-sections-open absolute" : "hidden"} glassmorph right-0 top-[10vh] flex flex-col items-center justify-center ease-out md:hidden`}
+        className={`${dropdownOpened ? "navbar-dropdown-sections-open absolute" : "hidden"} glassmorph right-0 top-[10dvh] flex flex-col items-center justify-center ease-out md:hidden`}
       >
         {sections.map((section, index) => (
           <a
