@@ -108,7 +108,7 @@ const AboutUs = () => {
             >
               {(section.title !== undefined ||
                 section.subtitle !== undefined) && (
-                <div className="glassmorph flex flex-col">
+                <div className="glassmorph glassmorph-padding flex flex-col">
                   {section.title !== undefined && (
                     <div className="font-family-header text-center text-2xl md:text-5xl">
                       {section.title}
@@ -126,12 +126,12 @@ const AboutUs = () => {
                 section.description2 !== undefined) && (
                 <div className="font-family-regular flex w-full flex-col items-center justify-evenly text-xs md:flex-row md:text-base">
                   {section.description1 !== undefined && (
-                    <div className="glassmorph my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
+                    <div className="glassmorph glassmorph-padding my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
                       {section.description1}
                     </div>
                   )}
                   {section.description2 !== undefined && (
-                    <div className="glassmorph my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
+                    <div className="glassmorph glassmorph-padding my-4 max-w-[80dvw] text-center md:my-auto md:max-w-[25dvw]">
                       {section.description2}
                     </div>
                   )}

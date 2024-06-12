@@ -26,7 +26,7 @@ const members: { image: StaticImageData; alt: string; href: string }[] = [
 
 const OurTeam = () => (
   <div className="mx-auto flex min-h-[100dvh] max-w-[80dvw] snap-center flex-col items-center justify-evenly md:flex-row md:justify-center">
-    <div className="glassmorph flex max-h-[30%] flex-1 flex-col items-center justify-center md:max-h-[100dvh]">
+    <div className="glassmorph glassmorph-padding flex max-h-[30%] flex-1 flex-col items-center justify-center md:max-h-[100dvh]">
       <div className="font-family-header mb-4 text-2xl md:text-5xl">
         {ourTeamSection.title}
       </div>
