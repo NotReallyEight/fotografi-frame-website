@@ -34,26 +34,38 @@ const Footer = () => (
       {/* Social network icons */}
       <div className="flex w-full flex-row items-center justify-center">
         <a
+          title="Canale YouTube"
           href="https://www.youtube.com/@fotografiframe"
           className="mx-2 duration-200 hover:scale-125"
+          target="_blank"
+          rel="noopener"
         >
           <FaYoutube size="1.5rem" />
         </a>
         <a
+          title="Chat WhatsApp"
           href="https://wa.me/+393505664114"
           className="mx-2 duration-200 hover:scale-125"
+          target="_blank"
+          rel="noopener"
         >
           <FaWhatsapp size="1.5rem" />
         </a>
         <a
+          title="Account Instagram"
           href="https://www.instagram.com/__.frame.__"
           className="mx-2 duration-200 hover:scale-125"
+          target="_blank"
+          rel="noopener"
         >
           <FaInstagram size="1.5rem" />
         </a>
         <a
+          title="Canale Telegram"
           href="https://t.me/FRAMEeventi"
           className="mx-2 duration-200 hover:scale-125"
+          target="_blank"
+          rel="noopener"
         >
           <FaTelegram size="1.5rem" />
         </a>
