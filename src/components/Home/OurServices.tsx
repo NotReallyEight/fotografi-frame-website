@@ -2,7 +2,7 @@
 
 import type { StaticImageData } from "next/image";
 import React from "react";
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 import images from "@/utils/images";
 
 type OurServicesSection = {
@@ -19,7 +19,7 @@ const ourServicesSections: OurServicesSection[] = [
     description:
       "Offriamo servizi di gestione dei social e creazione di post, reels, spot e web serie, aiutando i nostri clienti a raggiungere il loro pubblico target e a distinguersi sulla piattaforma.",
     image: images.socialProduction,
-    href: "/lavori",
+    href: "/works",
     imageObjectFit: "contain",
   },
   {
@@ -27,7 +27,7 @@ const ourServicesSections: OurServicesSection[] = [
     description:
       "Studiamo soluzioni personalizzate per promuovere i prodotti e i servizi dei nostri clienti, utilizzando una combinazione di creatività e strategia per massimizzare l'impatto delle loro campagne pubblicitarie.",
     image: images.advertising,
-    href: "/lavori",
+    href: "/works",
     imageObjectFit: "contain",
   },
   {

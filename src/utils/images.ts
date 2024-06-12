@@ -34,6 +34,31 @@ import AdvertisingImage from "../../public/assets/J55C4944-scaled-qjral5e5eyf1uy
 import EventsImage from "../../public/assets/Voice-97-scaled-q49kzr3t2nc2jedny31pxdv1zagqjb8yx2pk7vb424.jpg";
 import LucaImage from "../../public/assets/J55C2738-q5e3rwuutunqh4rfbpv4zk0aavqc3lt25ouiixjd7k.png";
 import DomenicoImage from "../../public/assets/J55C2719-q5e3rhtfsi35bdd9rjd3vnswspsgog5crmequi5nz4.png";
+import WorksGrid1 from "../../public/assets/Anteprima-Osteria-Voria-_1-scaled.jpg";
+import WorksGrid2 from "../../public/assets/Voria-9-scaled.jpg";
+import WorksGrid3 from "../../public/assets/Anteprima-Osteria-Voria-_5-scaled.jpg";
+import WorksGrid4 from "../../public/assets/Voria-41-scaled.jpg";
+import WorksGrid5 from "../../public/assets/Voria-67-scaled.jpg";
+import WorksGrid6 from "../../public/assets/Voria-29-scaled.jpg";
+import WorksGrid7 from "../../public/assets/Voria-25-scaled.jpg";
+import WorksGrid8 from "../../public/assets/Anteprima-Osteria-Voria-_4-scaled.jpg";
+import WorksGrid9 from "../../public/assets/Voria-27-scaled.jpg";
+import WorksGrid10 from "../../public/assets/Voria-43-scaled.jpg";
+import WorksGrid11 from "../../public/assets/Voria-24-scaled.jpg";
+import WorksGrid12 from "../../public/assets/Voria-23-scaled.jpg";
+import WorksGrid13 from "../../public/assets/Voria-8-scaled.jpg";
+import WorksGrid14 from "../../public/assets/Anteprima-Osteria-Voria-_2-scaled.jpg";
+import WorksGrid15 from "../../public/assets/Anteprima-Osteria-Voria-_6-scaled.jpg";
+import WorksGrid16 from "../../public/assets/Anteprima-Osteria-Voria-_12-scaled.jpg";
+import WorksBrand1 from "../../public/assets/Logo_Sylarus_06-05-2022.png";
+import WorksBrand2 from "../../public/assets/Logo_Sylarus_06-05-2022-5.png";
+import WorksBrand3 from "../../public/assets/Logo_Sylarus_06-05-2022-6.png";
+import WorksBrand4 from "../../public/assets/Logo-Casa_Sanremo_Tavola-disegno-1-copia-8-768x768.webp";
+import WorksBrand5 from "../../public/assets/Logo_Sylarus_06-05-2022-12.png";
+import WorksBrand6 from "../../public/assets/Logo_Sylarus_06-05-2022-8.png";
+import WorksBrand7 from "../../public/assets/Logo_Sylarus_06-05-2022-9.png";
+import WorksBrand8 from "../../public/assets/Logo_Sylarus_06-05-2022-10.png";
+import WorksBrand9 from "../../public/assets/Logo_Sylarus_06-05-2022-11.png";
 
 const images = {
   aboutUs: AboutUsImage,
@@ -78,6 +103,35 @@ const images = {
     domenico: DomenicoImage,
   },
   socialProduction: SocialProductionImage,
+  worksBrands: [
+    WorksBrand1,
+    WorksBrand2,
+    WorksBrand3,
+    WorksBrand4,
+    WorksBrand5,
+    WorksBrand6,
+    WorksBrand7,
+    WorksBrand8,
+    WorksBrand9,
+  ],
+  worksGrid: [
+    WorksGrid1,
+    WorksGrid2,
+    WorksGrid3,
+    WorksGrid4,
+    WorksGrid5,
+    WorksGrid6,
+    WorksGrid7,
+    WorksGrid8,
+    WorksGrid9,
+    WorksGrid10,
+    WorksGrid11,
+    WorksGrid12,
+    WorksGrid13,
+    WorksGrid14,
+    WorksGrid15,
+    WorksGrid16,
+  ],
 };
 
 export default images;

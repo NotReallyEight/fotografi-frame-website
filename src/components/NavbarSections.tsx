@@ -7,10 +7,11 @@ import { useState } from "react";
 const sections: { name: string; href?: string }[] = [
   {
     name: "HOME",
-    href: config.url,
+    href: "/",
   },
   {
     name: "LAVORI",
+    href: "/works",
   },
   {
     name: "COMPLEANNI",

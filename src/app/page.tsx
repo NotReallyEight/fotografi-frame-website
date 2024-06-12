@@ -1,14 +1,24 @@
 import Navbar from "@/components/Navbar";
-import AboutUs from "@/components/AboutUs";
+import AboutUs from "@/components/Home/AboutUs";
 import Image from "next/image";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
 import Link from "next/link";
-import OurServices from "@/components/OurServices";
-import OurEvents from "@/components/OurEvents";
+import OurServices from "@/components/Home/OurServices";
+import OurEvents from "@/components/Home/OurEvents";
 import images from "@/utils/images";
-import OurTeam from "@/components/OurTeam";
+import OurTeam from "@/components/Home/OurTeam";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import type { Metadata } from "next";
+
+// Next.js automatically updates metadata using this export.
+// eslint-disable-next-line react-refresh/only-export-components
+export const metadata: Metadata = {
+  title: "Home - Frame",
+  description:
+    "Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre.",
+  keywords: ["fotografia", "fotografi frame", "fotografi", "frame"],
+};
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-import Carousel from "./Carousel";
+import Carousel from "../Carousel";
 import type { StaticImageData } from "next/image";
 import images from "@/utils/images";
 
@@ -25,7 +25,7 @@ const OurEvents = () => (
         hideDots={{ mobile: true, desktop: false }}
       />
       <a
-        href="/lavori"
+        href="/works"
         className={`rounded-3xl border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark`}
       >
         Our Portfolio
