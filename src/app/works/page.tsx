@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Works() {
   return (
-    <main className="flex h-[100dvh] flex-col">
+    <main className="flex h-[100dvh] flex-col bg-primaryLight dark:bg-primaryDark">
       <Navbar />
 
       {/* Introduction */}
