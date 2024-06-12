@@ -33,16 +33,28 @@ const Footer = () => (
     <div className="flex flex-1 flex-col items-center justify-evenly">
       {/* Social network icons */}
       <div className="flex w-full flex-row items-center justify-center">
-        <a className="mx-2 duration-200 hover:scale-125">
+        <a
+          href="https://www.youtube.com/@fotografiframe"
+          className="mx-2 duration-200 hover:scale-125"
+        >
           <FaYoutube size="1.5rem" />
         </a>
-        <a className="mx-2 duration-200 hover:scale-125">
+        <a
+          href="https://wa.me/+393505664114"
+          className="mx-2 duration-200 hover:scale-125"
+        >
           <FaWhatsapp size="1.5rem" />
         </a>
-        <a className="mx-2 duration-200 hover:scale-125">
+        <a
+          href="https://www.instagram.com/__.frame.__"
+          className="mx-2 duration-200 hover:scale-125"
+        >
           <FaInstagram size="1.5rem" />
         </a>
-        <a className="mx-2 duration-200 hover:scale-125">
+        <a
+          href="https://t.me/FRAMEeventi"
+          className="mx-2 duration-200 hover:scale-125"
+        >
           <FaTelegram size="1.5rem" />
         </a>
       </div>
