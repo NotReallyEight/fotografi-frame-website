@@ -23,6 +23,7 @@ const OurEvents = () => (
         options={{ loop: true }}
         plugins={["autoplay"]}
         hideDots={{ mobile: true, desktop: false }}
+        slidesPerView={2}
       />
       <a
         href="/works"

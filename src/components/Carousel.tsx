@@ -23,6 +23,7 @@ type Props = {
     href?: string;
   }[];
   hideDots?: { desktop?: boolean; mobile?: boolean };
+  slidesPerView?: 1 | 2 | 3;
 };
 
 const pluginTypes: Record<PluginType, EmblaPluginType> = {
@@ -59,7 +60,10 @@ const Carousel: React.FC<Props> = (props) => {
             const imageObjectFit = slide.imageObjectFit ?? "contain";
 
             return (
-              <div className="min-w-0 flex-[0_0_100%] pl-[1rem]" key={index}>
+              <div
+                className={`flex-0_0_100 ${props.slidesPerView === 2 ? "md:flex-0_0_50" : ""} ${props.slidesPerView === 3 ? "lg:flex-0_0_33" : ""} min-w-0 pl-[1rem]`}
+                key={index}
+              >
                 <a href={slide.href}>
                   <div
                     className={`flex flex-col rounded-3xl border-secondaryLight ${imageObjectFit === "contain" ? "border-2 p-8" : ""} text-center dark:border-secondaryDark`}
