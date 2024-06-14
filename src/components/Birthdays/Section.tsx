@@ -12,7 +12,7 @@ type Props = {
 const Section: React.FC<Props> = (props) => (
   <>
     <div className="md:glassmorph glassmorph-padding mx-auto mt-[10dvh] flex flex-col items-center justify-center md:max-w-[80dvw]">
-      <div className="font-family-header mb-[5dvh] text-2xl md:text-5xl">
+      <div className="font-family-header mb-[5dvh] text-center text-2xl md:text-5xl">
         {props.title}
       </div>
       <div className="font-family-regular text-center text-xs md:text-base">

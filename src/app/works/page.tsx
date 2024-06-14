@@ -5,6 +5,7 @@ import images from "@/utils/images";
 import Image from "next/image";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 // Next.js automatically updates metadata using this export.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -19,6 +20,7 @@ export default function Works() {
   return (
     <main className="flex h-[100dvh] flex-col bg-primaryLight dark:bg-primaryDark">
       <Navbar />
+      <ScrollToTopButton />
 
       {/* Introduction */}
       <OurWorks />

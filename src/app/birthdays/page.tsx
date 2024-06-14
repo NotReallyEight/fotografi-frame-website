@@ -4,10 +4,11 @@ import type { StaticImageData } from "next/image";
 import type { Metadata } from "next";
 import Carousel from "@/components/Carousel";
 import Image from "next/image";
-import Section from "@/components/Birthdays/section";
+import Section from "@/components/Birthdays/Section";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 // Next.js automatically updates metadata using this export.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -75,6 +76,7 @@ export default function Birthdays() {
   return (
     <main className="flex h-[100dvh] flex-col bg-primaryLight dark:bg-primaryDark">
       <Navbar />
+      <ScrollToTopButton />
 
       <div className="mx-auto mt-[10dvh]">
         <Carousel

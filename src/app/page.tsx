@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <main className="flex h-[100dvh] snap-y snap-mandatory snap-always flex-col overflow-y-scroll scroll-smooth">
       <Navbar />
-      <ScrollToTopButton />
+      <ScrollToTopButton isHome />
       <div
         className="relative z-30 min-h-[100dvh] w-full snap-center"
         id="frame"
