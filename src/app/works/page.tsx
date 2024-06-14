@@ -6,6 +6,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Link from "next/link";
 
 // Next.js automatically updates metadata using this export.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -28,7 +29,7 @@ export default function Works() {
       {/* Image grid */}
       <div className="mt-[10dvh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {images.worksGrid.map((image, index) => (
-          <a
+          <Link
             key={index}
             href={image.src}
             target="_blank"
@@ -36,7 +37,7 @@ export default function Works() {
             title="Fotografia scattata da FRAME."
           >
             <Image src={image} alt="Fotografia scattata da FRAME." />
-          </a>
+          </Link>
         ))}
       </div>
 

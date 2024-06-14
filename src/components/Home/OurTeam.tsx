@@ -1,6 +1,7 @@
 import images from "@/utils/images";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
+import Link from "next/link";
 
 const ourTeamSection = {
   title: "Il Nostro Team",
@@ -37,7 +38,7 @@ const OurTeam = () => (
 
     <div className="flex max-h-[30%] flex-2 flex-row items-center justify-between md:max-h-[45%]">
       {members.map((member, index) => (
-        <a
+        <Link
           className="flex flex-1 items-center justify-center"
           href={member.href}
           key={index}
@@ -50,7 +51,7 @@ const OurTeam = () => (
             className="object-contain"
             key={index}
           />
-        </a>
+        </Link>
       ))}
     </div>
   </div>

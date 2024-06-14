@@ -1,8 +1,9 @@
 import Image from "next/image";
 import images from "@/utils/images";
+import Link from "next/link";
 
 const Logo = () => (
-  <a href="/" title="Fotografi Frame">
+  <Link href="/" title="Fotografi Frame">
     <picture>
       {/* Dynamically import the logo depending on the color scheme chosen by the user */}
       <source
@@ -17,7 +18,7 @@ const Logo = () => (
         className="h-[10vmax] w-[10vmax]"
       />
     </picture>
-  </a>
+  </Link>
 );
 
 export default Logo;

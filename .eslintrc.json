@@ -18,7 +18,8 @@
     "react-refresh",
     "jsx-a11y",
     "import",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "unused-imports"
   ],
   "overrides": [
     {
@@ -89,6 +90,7 @@
     "no-unreachable-loop": "warn",
     "no-unsafe-optional-chaining": "warn",
     "no-unused-expressions": "warn",
+    "no-unused-vars": "off",
     "no-useless-backreference": "warn",
     "no-useless-call": "warn",
     "no-useless-computed-key": "warn",
@@ -124,6 +126,16 @@
     "semi-style": "warn",
     "sort-vars": "warn",
     "symbol-description": "warn",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "wrap-iife": ["warn", "inside"],
     "yoda": ["warn", "never", { "exceptRange": true }],
     "@typescript-eslint/array-type": "warn",

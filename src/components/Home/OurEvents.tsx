@@ -1,6 +1,7 @@
 import Carousel from "../Carousel";
 import type { StaticImageData } from "next/image";
 import images from "@/utils/images";
+import Link from "next/link";
 
 const ourEventsCarouselSlides: {
   image: StaticImageData;
@@ -25,12 +26,12 @@ const OurEvents = () => (
         hideDots={{ mobile: true, desktop: false }}
         slidesPerView={2}
       />
-      <a
+      <Link
         href="/works"
         className="rounded-3xl border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark"
       >
         Our Portfolio
-      </a>
+      </Link>
     </div>
   </div>
 );
