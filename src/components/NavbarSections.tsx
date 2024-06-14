@@ -15,6 +15,7 @@ const sections: { name: string; href?: string }[] = [
   },
   {
     name: "COMPLEANNI",
+    href: "/birthdays",
   },
   {
     name: "CONTATTI",

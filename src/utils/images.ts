@@ -59,10 +59,78 @@ import WorksBrand6 from "../../public/assets/Logo_Sylarus_06-05-2022-8.png";
 import WorksBrand7 from "../../public/assets/Logo_Sylarus_06-05-2022-9.png";
 import WorksBrand8 from "../../public/assets/Logo_Sylarus_06-05-2022-10.png";
 import WorksBrand9 from "../../public/assets/Logo_Sylarus_06-05-2022-11.png";
+import BirthdaysHeader1 from "../../public/assets/18-Angela-24-scaled.jpg";
+import BirthdaysHeader2 from "../../public/assets/Anna-1.jpg";
+import BirthdaysHeader3 from "../../public/assets/Anna-3.jpg";
+import BirthdaysHeader4 from "../../public/assets/18-Angela-6-scaled.jpg";
+import BirthdaysHeader5 from "../../public/assets/18-Angela-10-scaled.jpg";
+import BirthdaysIntroductionImage from "../../public/assets/J55C0582-scaled-qk2zd85rdxeswbwy3m77961wnosp1pf5fehjmkazf2.jpg";
+import BirthdaysEighteenthMomentsImage from "../../public/assets/Tavola-da-disegno-1-960x245.png";
+import BirthdaysCarouselsImage1 from "../../public/assets/Anna-156.jpg";
+import BirthdaysCarouselsImage2 from "../../public/assets/Alessandra-53-scaled.jpg";
+import BirthdaysCarouselsImage3 from "../../public/assets/antonio-forgione-jr-100.jpg";
+import BirthdaysCarouselsImage4 from "../../public/assets/Anna-208-scaled.jpg";
+import BirthdaysCarouselsImage5 from "../../public/assets/Anna-249-scaled.jpg";
+import BirthdaysCarouselsImage6 from "../../public/assets/18-Angela-437-scaled.jpg";
+import BirthdaysCarouselsImage7 from "../../public/assets/18-Angela-434-1-scaled.jpg";
+import BirthdaysCarouselsImage8 from "../../public/assets/18-Angela-427-scaled.jpg";
+import BirthdaysCarouselsImage9 from "../../public/assets/18-Angela-423-scaled.jpg";
+import BirthdaysCarouselsImage10 from "../../public/assets/18-Angela-421-scaled.jpg";
+import BirthdaysCarouselsImage11 from "../../public/assets/18-Angela-401-scaled.jpg";
+import BirthdaysCarouselsImage12 from "../../public/assets/18-Angela-380-1-scaled.jpg";
+import BirthdaysCarouselsImage13 from "../../public/assets/18-Angela-235-scaled.jpg";
+import BirthdaysCarouselsImage14 from "../../public/assets/18-Angela-310-scaled.jpg";
+import BirthdaysCarouselsImage15 from "../../public/assets/18-Angela-101-scaled.jpg";
+import BirthdaysCarouselsImage16 from "../../public/assets/18-Angela-376-scaled.jpg";
+import BirthdaysCarouselsImage17 from "../../public/assets/18-Angela-368-scaled.jpg";
+import BirthdaysCarouselsImage18 from "../../public/assets/18-Angela-349-scaled.jpg";
+import BirthdaysCarouselsImage19 from "../../public/assets/18-Angela-343-scaled.jpg";
+import BirthdaysCarouselsImage20 from "../../public/assets/18-Angela-261-scaled.jpg";
+import BirthdaysServicesWeOfferImage from "../../public/assets/Tavola-da-disegno-1-1-960x245.png";
 
 const images = {
   aboutUs: AboutUsImage,
   advertising: AdvertisingImage,
+  birthdays: {
+    carousels: [
+      [
+        BirthdaysCarouselsImage1,
+        BirthdaysCarouselsImage2,
+        BirthdaysCarouselsImage3,
+        BirthdaysCarouselsImage4,
+        BirthdaysCarouselsImage5,
+      ],
+      [
+        BirthdaysCarouselsImage6,
+        BirthdaysCarouselsImage7,
+        BirthdaysCarouselsImage8,
+        BirthdaysCarouselsImage9,
+        BirthdaysCarouselsImage10,
+        BirthdaysCarouselsImage11,
+        BirthdaysCarouselsImage12,
+      ],
+      [
+        BirthdaysCarouselsImage13,
+        BirthdaysCarouselsImage14,
+        BirthdaysCarouselsImage15,
+        BirthdaysCarouselsImage16,
+        BirthdaysCarouselsImage17,
+        BirthdaysCarouselsImage18,
+        BirthdaysCarouselsImage19,
+        BirthdaysCarouselsImage20,
+      ],
+    ],
+    eighteeenthMoments: BirthdaysEighteenthMomentsImage,
+    header: [
+      BirthdaysHeader1,
+      BirthdaysHeader2,
+      BirthdaysHeader3,
+      BirthdaysHeader4,
+      BirthdaysHeader5,
+    ],
+    introduction: BirthdaysIntroductionImage,
+    servicesWeOffer: BirthdaysServicesWeOfferImage,
+  },
   event: [
     EventsCarousel1,
     EventsCarousel2,

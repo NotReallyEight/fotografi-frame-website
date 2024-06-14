@@ -24,6 +24,7 @@ type Props = {
   }[];
   hideDots?: { desktop?: boolean; mobile?: boolean };
   slidesPerView?: 1 | 2 | 3;
+  maxWidth?: Record<"desktop" | "mobile", string | undefined>;
 };
 
 const pluginTypes: Record<PluginType, EmblaPluginType> = {
@@ -52,7 +53,9 @@ const Carousel: React.FC<Props> = (props) => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="max-h-[50dvh] max-w-[80dvw] md:max-w-[50dvw]">
+    <div
+      className={`max-h-[50dvh] max-w-[${props.maxWidth?.mobile !== undefined ? props.maxWidth.mobile : "80dvw"}] md:max-w-[${props.maxWidth?.desktop !== undefined ? props.maxWidth.desktop : "50dvw"}]`}
+    >
       {/* Carousel viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="ml-[-1rem] flex touch-pan-y touch-pinch-zoom">

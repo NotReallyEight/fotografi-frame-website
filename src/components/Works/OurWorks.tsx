@@ -5,7 +5,7 @@ const ourWorksSection = {
 };
 
 const OurWorks = () => (
-  <div className="glassmorph md:glassmorph-padding mx-auto mt-[10dvh] flex min-h-[65dvh] max-w-[90dvw] flex-col items-center justify-evenly p-4 md:mt-[20dvh] md:min-h-[50dvh] md:max-w-[75dvw]">
+  <div className="glassmorph md:glassmorph-padding mx-auto mt-[10dvh] flex max-w-[90dvw] flex-col items-center justify-evenly p-4 md:mt-[20dvh] md:min-h-[65dvh] md:max-w-[75dvw]">
     <div className="font-family-header text-2xl md:text-5xl">
       {ourWorksSection.title}
     </div>

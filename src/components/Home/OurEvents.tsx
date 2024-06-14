@@ -27,7 +27,7 @@ const OurEvents = () => (
       />
       <a
         href="/works"
-        className={`rounded-3xl border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark`}
+        className="rounded-3xl border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark"
       >
         Our Portfolio
       </a>
