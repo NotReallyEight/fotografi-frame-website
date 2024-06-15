@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function Birthdays() {
   return (
-    <main className="flex h-[100dvh] flex-col bg-primaryLight dark:bg-primaryDark">
+    <main className="flex h-[100dvh] flex-col">
       <Navbar />
       <ScrollToTopButton />
 
