@@ -206,7 +206,7 @@ export default function Birthdays() {
 
         <Link
           href="/contacts"
-          className="mb-[10dvh] mt-[5dvh] rounded-3xl border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark"
+          className="mb-[10dvh] mt-[5dvh] border-2 border-secondaryLight p-3 text-xs duration-200 hover:border-enabledLight md:text-base dark:border-secondaryDark hover:dark:border-enabledDark"
         >
           CONTATTACI
         </Link>
