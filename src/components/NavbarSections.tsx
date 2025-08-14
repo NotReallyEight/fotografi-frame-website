@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import VerticalSeparatorLine from "./VerticalSeparatorLine";
 
 type Props = {
   sections: { name: string; href: string }[];
@@ -25,7 +26,7 @@ const NavbarSections = (props: Props) => {
             </Link>
             {/* Vertical Separator Line */}
             {index < props.sections.length - 1 && (
-              <span className="h-8 w-px self-stretch bg-dustyBlue" />
+              <VerticalSeparatorLine color="dustyBlue" />
             )}
           </React.Fragment>
         ))}
