@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 
 type Props = {
   sections: { name: string; href: string }[];
@@ -16,10 +16,9 @@ const NavbarSections = (props: Props) => {
       {/* Navbar sections - desktop */}
       <div className="hidden flex-row items-center justify-center gap-7 md:flex">
         {props.sections.map((section, index) => (
-          <>
+          <React.Fragment key={`section-desktop-${index}`}>
             <Link
               href={section.href}
-              key={`section-desktop-${index}`}
               className="font-family-secondary text-shadow-gold-sm text-center text-white lg:text-xl xl:text-3xl"
             >
               {section.name}
@@ -28,7 +27,7 @@ const NavbarSections = (props: Props) => {
             {index < props.sections.length - 1 && (
               <span className="h-8 w-px self-stretch bg-dustyBlue" />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
       {/* Navbar sections - mobile */}

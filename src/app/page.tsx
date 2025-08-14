@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { FaAnglesDown } from "react-icons/fa6";
+import images from "@/utils/images";
 
 // Next.js automatically updates metadata using this export.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -17,7 +18,7 @@ export default function Home() {
     <main className="relative flex min-h-screen flex-col scroll-smooth">
       {/* Background Image */}
       <Image
-        src="/assets/Fox-179-1-scaled.jpg"
+        src={images.header.src}
         alt="Background"
         fill
         priority
@@ -29,7 +30,7 @@ export default function Home() {
 
       {/* Noise Effect */}
       <Image
-        src="/assets/noise.svg"
+        src={(images.noise as { [key: string]: any; src: string }).src}
         alt="Noise"
         fill
         className="pointer-events-none -z-10 opacity-10"
