@@ -2,22 +2,19 @@ import Image from "next/image";
 import images from "@/utils/images";
 import Link from "next/link";
 
-const Logo = () => (
+type Props = {
+  dark?: boolean;
+};
+
+const Logo = ({ dark = false }: Props) => (
   <Link href="/" title="Fotografi Frame">
-    <picture>
-      {/* Dynamically import the logo depending on the color scheme chosen by the user */}
-      <source
-        srcSet={images.logo.white.src}
-        media="(prefers-color-scheme: dark)"
-      />
-      <Image
-        src={images.logo.black}
-        alt="Frame Logo"
-        width={200}
-        height={200}
-        className="h-[10vmax] w-[10vmax]"
-      />
-    </picture>
+    <Image
+      src={dark ? images.logo.black : images.logo.white}
+      alt="Frame Logo"
+      width={125}
+      height={125}
+      className="max-h-20 max-w-20 lg:max-h-32 lg:max-w-32"
+    />
   </Link>
 );
 

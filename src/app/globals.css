@@ -2,28 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-color: #000000;
-  --background-start-color: #eadfe8;
-  --background-end-color: #eadfe8;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-color: #ffffff;
-    --background-start-color: #000000;
-    --background-end-color: #000000;
-  }
-}
-
 body {
-  color: var(--foreground-color);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--background-end-color)
-    )
-    var(--background-start-color);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* Keyframes */
@@ -35,6 +15,18 @@ body {
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slide-down-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
   }
 }
 
@@ -53,84 +45,50 @@ body {
     text-wrap: balance;
   }
 
+  .center-fixed-div {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   /* Fonts */
 
   .font-family-header {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
+    font-family: var(--font-roboto-slab);
+    @apply font-bold;
   }
 
   .font-family-secondary {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
+    font-family: var(--font-montserrat);
+    @apply font-semibold;
   }
 
   .font-family-regular {
-    font-family: var(--font-noto-sans);
+    font-family: var(--font-manrope);
+    @apply font-normal;
   }
 
-  /* Complex component styles */
-
-  .burger-menu {
-    height: 1vmin;
-    width: 7.5vmin;
-    background-color: #000000;
-    transition-duration: 500ms;
-  }
-
-  .burger-menu::before,
-  .burger-menu::after {
-    content: "";
-    display: block;
-    height: 1vmin;
-    width: 7.5vmin;
-    background-color: #000000;
-    position: absolute;
-    transition-duration: 500ms;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .burger-menu,
-    .burger-menu::before,
-    .burger-menu::after {
-      background-color: #ffffff;
-    }
-  }
-
-  .burger-menu::before {
-    transform: translateY(-7.5px);
-  }
-
-  .burger-menu::after {
-    transform: translateY(7.5px);
-  }
-
-  .burger-menu-open .burger-menu {
-    transform: translateX(-64px);
-    background: transparent;
-    transition-duration: 500ms;
-  }
-
-  .burger-menu-open .burger-menu::before {
-    transform: rotate(45deg) translate(45px, -45px);
-  }
-
-  .burger-menu-open .burger-menu::after {
-    transform: rotate(-45deg) translate(45px, 45px);
-  }
-
-  .navbar-dropdown-sections-open {
-    animation: fade-in 500ms ease-out forwards;
+  .font-family-italic {
+    font-family: var(--font-playfair-display);
+    @apply font-normal italic;
   }
 
   .glassmorph {
     background: rgba(86, 86, 86, 0.25);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
   }
 
   .glassmorph-padding {
     padding: 2rem;
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0px 4px 15px theme("colors.gold");
+  }
+
+  .text-shadow-gold-sm {
+    text-shadow: 0px 4px 15px rgba(178, 139, 74, 0.25);
   }
 
   /* Carousel styles */
@@ -167,7 +125,52 @@ body {
     animation: fade-in 0.5s forwards;
   }
 
+  .slide-down-fade-in {
+    animation: slide-down-fade-in 0.5s forwards;
+  }
+
   .fade-out {
     animation: fade-out 0.5s forwards;
+  }
+}
+
+@layer components {
+  .burger-menu {
+    @apply block h-1 w-8 bg-white duration-500;
+  }
+
+  .burger-menu::before,
+  .burger-menu::after {
+    @apply absolute block h-1 w-8 bg-white duration-500 content-[''];
+    /* content: ""; */
+  }
+
+  .burger-menu::before {
+    @apply -translate-y-2;
+  }
+
+  .burger-menu::after {
+    @apply translate-y-2;
+  }
+
+  .burger-menu-open .burger-menu {
+    @apply -translate-x-16 bg-opacity-0 duration-500;
+  }
+
+  .burger-menu-open .burger-menu::before,
+  .burger-menu-open .burger-menu::after {
+    @apply translate-x-16 duration-500;
+  }
+
+  .burger-menu-open .burger-menu::before {
+    @apply translate-y-0 rotate-45;
+  }
+
+  .burger-menu-open .burger-menu::after {
+    @apply translate-y-0 -rotate-45;
+  }
+
+  .navbar-dropdown-sections-open {
+    animation: slide-down-fade-in 500ms ease-out forwards;
   }
 }

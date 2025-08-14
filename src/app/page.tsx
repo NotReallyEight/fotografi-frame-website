@@ -1,15 +1,7 @@
 import Navbar from "@/components/Navbar";
-import AboutUs from "@/components/Home/AboutUs";
 import Image from "next/image";
-import { FaArrowDown } from "react-icons/fa";
-import Link from "next/link";
-import OurServices from "@/components/Home/OurServices";
-import OurEvents from "@/components/Home/OurEvents";
-import images from "@/utils/images";
-import OurTeam from "@/components/Home/OurTeam";
-import Footer from "@/components/Footer";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import type { Metadata } from "next";
+import { FaAnglesDown } from "react-icons/fa6";
 
 // Next.js automatically updates metadata using this export.
 // eslint-disable-next-line react-refresh/only-export-components
@@ -22,51 +14,54 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex h-[100dvh] snap-y snap-mandatory snap-always flex-col overflow-y-scroll scroll-smooth">
+    <main className="relative flex min-h-screen flex-col scroll-smooth">
+      {/* Background Image */}
+      <Image
+        src="/assets/Fox-179-1-scaled.jpg"
+        alt="Background"
+        fill
+        priority
+        className="-z-10 object-cover"
+        style={{ objectPosition: "center" }}
+      />
+      {/* Overlay for darkening */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-black bg-opacity-75" />
+
+      {/* Noise Effect */}
+      <Image
+        src="/assets/noise.svg"
+        alt="Noise"
+        fill
+        className="pointer-events-none -z-10 opacity-10"
+        style={{ objectFit: "cover" }}
+      />
+
+      {/* Navbar */}
       <Navbar />
-      <ScrollToTopButton isHome />
-      <div
-        className="relative z-30 min-h-[100dvh] w-full snap-center"
-        id="frame"
-      >
-        <Image
-          alt="Fotografia scattata da FRAME."
-          src={images.header.src}
-          fill
-          className="h-[100dvh] w-full object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className={`font-family-header glassmorph glassmorph-padding text-center text-2xl text-textLight md:text-5xl dark:text-textDark`}
-          >
+
+      {/* Animated f stop */}
+      <div className="fixed bottom-8 right-8 font-['var(--font-roboto-condensed)'] text-base text-white lg:text-2xl">
+        f/1.8
+      </div>
+
+      {/* Header */}
+      <div className="relative m-auto flex flex-col space-y-7">
+        <div className="flex flex-col text-center text-white">
+          <div className="font-family-header text-3xl lg:text-6xl">
             FRAME PRODUCTION
-          </span>
-        </div>
-      </div>
-      <div
-        className="min-h-[100dvh] w-full snap-center"
-        id="salva-i-tuoi-momenti"
-      >
-        <div className="flex h-full flex-col items-center justify-center">
-          <div className="font-family-header text-center text-2xl md:text-5xl">
-            Salva I Tuoi Momenti
           </div>
-          <Link
-            className="m-4 flex flex-row items-center justify-center"
-            href="#about-us-1"
-          >
-            <div className="font-family-secondary text-center text-lg md:text-2xl">
-              Conoscici meglio
-            </div>
-            <FaArrowDown className="ml-4" />
-          </Link>
+          <div className="font-family-secondary text-2xl lg:text-3xl">
+            Salva i tuoi <span className="font-family-italic">momenti</span>.
+          </div>
+        </div>
+
+        <div className="flex animate-bounce flex-row items-center justify-center space-x-3">
+          <div className="font-family-italic text-shadow-gold text-base text-white lg:text-2xl">
+            Conoscici meglio
+          </div>
+          <FaAnglesDown className="h-4 w-4 text-white lg:h-8 lg:w-8" />
         </div>
       </div>
-      <AboutUs />
-      <OurServices />
-      <OurEvents />
-      <OurTeam />
-      <Footer />
     </main>
   );
 }
