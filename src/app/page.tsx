@@ -72,7 +72,7 @@ export default function Home() {
 
         {/* Noise Effect */}
         <Image
-          src={(images.noise as { [key: string]: any; src: string }).src}
+          src={images.noise.src}
           alt="Noise"
           fill
           className="pointer-events-none -z-10 opacity-10"

@@ -171,7 +171,7 @@ const images = {
     luca: LucaImage,
     domenico: DomenicoImage,
   },
-  noise: NoiseImage,
+  noise: NoiseImage as { src: string },
   socialProduction: SocialProductionImage,
   worksBrands: [
     WorksBrand1,
