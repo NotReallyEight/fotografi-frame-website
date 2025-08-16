@@ -44,7 +44,11 @@ const Navbar = () => {
         className={`font-family-secondary *:bg-grey ${isBurgerMenuOpen ? "navbar-dropdown-sections-open flex" : "hidden"} flex-col items-center justify-center space-y-4 rounded-xl bg-lighterBlack p-4 text-center text-base text-white *:self-stretch *:rounded-xl *:p-4 lg:hidden`}
       >
         {sections.map((section, index) => (
-          <Link href={section.href} key={`navbar-dropdown-section-${index}`}>
+          <Link
+            href={section.href}
+            key={`navbar-dropdown-section-${index}`}
+            className="duration-200 hover:bg-lighterBlack"
+          >
             {section.name}
           </Link>
         ))}
