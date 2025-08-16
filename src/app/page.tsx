@@ -176,7 +176,8 @@ export default function Home() {
 
             {/* Noise Effect */}
             <Image
-              src={(images.noise as { [key: string]: any; src: string }).src}
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              src={images.noise.src}
               alt="Noise"
               fill
               className="pointer-events-none -z-10 opacity-10"
