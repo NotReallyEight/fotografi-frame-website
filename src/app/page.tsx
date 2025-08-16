@@ -72,6 +72,8 @@ export default function Home() {
 
         {/* Noise Effect */}
         <Image
+          // Next.js automatically casts to `any` even though the src property is present. Creating a personalised type cast is just overkill in this scenario.
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
           src={images.noise.src}
           alt="Noise"
           fill
@@ -83,7 +85,7 @@ export default function Home() {
         <Navbar />
 
         {/* Animated f stop */}
-        <div className="fixed bottom-8 right-8 z-10 font-['var(--font-roboto-condensed)'] text-base text-white lg:text-2xl">
+        <div className="font-family-condensed fixed bottom-8 right-8 z-10 text-base text-white lg:text-2xl">
           f/1.8
         </div>
 

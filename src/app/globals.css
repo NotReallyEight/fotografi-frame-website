@@ -72,6 +72,11 @@ body {
     @apply font-normal italic;
   }
 
+  .font-family-condensed {
+    font-family: var(--font-roboto-condensed);
+    @apply font-normal;
+  }
+
   .glassmorph {
     background: rgba(86, 86, 86, 0.25);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -142,7 +147,6 @@ body {
   .burger-menu::before,
   .burger-menu::after {
     @apply absolute block h-1 w-8 bg-white duration-500 content-[''];
-    /* content: ""; */
   }
 
   .burger-menu::before {
