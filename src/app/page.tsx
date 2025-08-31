@@ -275,7 +275,7 @@ export default function Home() {
             />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
-              {/* Title and description */}
+              {/* Title */}
               <div className="flex flex-col items-center justify-center lg:space-y-4">
                 <div className="font-family-secondary text-2xl lg:text-5xl">
                   Our Services
@@ -333,7 +333,7 @@ export default function Home() {
             />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
-              {/* Title and description */}
+              {/* Title */}
               <div className="flex flex-col items-center justify-center lg:space-y-4">
                 <div className="font-family-secondary text-2xl lg:text-5xl">
                   Our Events
@@ -368,6 +368,71 @@ export default function Home() {
               >
                 Our portfolio
               </Link>
+            </div>
+          </section>
+
+          {/* Our Team Section */}
+          <section className="relative bg-black py-20">
+            {/* Noise Effect */}
+            <Image
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              src={images.noise.src}
+              alt="Noise"
+              fill
+              className="pointer-events-none z-0 opacity-30"
+              style={{ objectFit: "cover" }}
+            />
+
+            <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
+              {/* Title and description */}
+              <div className="flex flex-col items-center justify-center space-y-8 lg:space-y-28">
+                {/* Members images */}
+                <div className="w-[100dvw] items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
+                  <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
+                    OUR
+                  </div>
+                  <div className="flex flex-row">
+                    <Image
+                      alt="Luca"
+                      src={images.members.luca}
+                      width={300}
+                      height={400}
+                    />
+                    <Image
+                      alt="Domenico"
+                      src={images.members.domenico}
+                      width={300}
+                      height={400}
+                    />
+                  </div>
+                  <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
+                    TEAM
+                  </div>
+                </div>
+
+                {/* Slogan */}
+                <div className="mt- mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]">
+                  {/* Title */}
+                  <div className="font-family-secondary self-center text-2xl lg:text-3xl">
+                    La qualità che cercate, con l&apos;energia che vi{" "}
+                    <span className="font-family-italic">rappresenta</span>.
+                  </div>
+
+                  {/* Separator */}
+                  <div className="flex items-center justify-center px-8">
+                    <VerticalSeparatorLine color="gold" />
+                  </div>
+                  <span className="h-px w-full bg-gold lg:hidden" />
+
+                  {/* Description */}
+                  <div className="font-family-regular self-center text-base font-light lg:text-xl">
+                    Ragazzi appassionati di fotografia e video, pronti a
+                    catturare ogni momento con la massima qualità e creatività.
+                    Siamo qui per rendere indimenticabili i vostri momenti più
+                    importanti.
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </main>
