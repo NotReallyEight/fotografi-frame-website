@@ -90,8 +90,11 @@ export default function Home() {
         content: "#smooth-content",
         smooth: 1,
         effects: true,
-        smoothTouch: 0.1,
+        smoothTouch: 0.05,
       });
+
+      let latestFStop = fStop;
+      let ticking = false;
 
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -99,27 +102,32 @@ export default function Home() {
         end: "bottom bottom",
         scrub: 1,
         onUpdate: (self) => {
-          setFStop(
+          latestFStop =
             apertureValues[
               Math.round(self.progress * (apertureValues.length - 1))
-            ]
-          );
+            ];
+
+          if (!ticking)
+            requestAnimationFrame(() => {
+              setFStop(latestFStop);
+              ticking = false;
+            });
+
+          ticking = true;
         },
       });
 
+      const galleryWidth =
+        horizontalGalleryContainerRef.current?.scrollWidth ?? 0;
+
       gsap.to(horizontalGalleryContainerRef.current, {
-        x: () =>
-          -(
-            (horizontalGalleryContainerRef.current?.scrollWidth ?? 0) -
-            window.innerWidth
-          ),
+        x: () => -(galleryWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
           trigger: "#horizontal-gallery-wrapper",
           scrub: 1,
           start: "center center",
-          end: () =>
-            `+=${(horizontalGalleryContainerRef.current?.scrollWidth ?? 0) - window.innerHeight}`,
+          end: () => `+=${galleryWidth - window.innerHeight}`,
         },
       });
     },
@@ -168,17 +176,6 @@ export default function Home() {
             {/* Overlay for darkening */}
             <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
 
-            {/* Noise Effect */}
-            <Image
-              // Next.js automatically casts to `any` even though the src property is present. Creating a personalised type cast is just overkill in this scenario.
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              src={images.noise.src}
-              alt="Noise"
-              fill
-              className="pointer-events-none -z-10 opacity-10"
-              style={{ objectFit: "cover" }}
-            />
-
             {/* Header */}
             <div className="relative flex h-full flex-col items-center justify-center space-y-7">
               <div className="flex flex-col text-center text-white">
@@ -207,22 +204,12 @@ export default function Home() {
               src={images.aboutUs.src}
               alt="Background"
               fill
-              priority
               className="-z-10 object-cover"
               style={{ objectPosition: "center" }}
+              loading="lazy"
             />
             {/* Overlay for darkening */}
             <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
-
-            {/* Noise Effect */}
-            <Image
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              src={images.noise.src}
-              alt="Noise"
-              fill
-              className="pointer-events-none -z-10 opacity-10"
-              style={{ objectFit: "cover" }}
-            />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
               {/* Title and description */}
@@ -271,8 +258,9 @@ export default function Home() {
               src={images.noise.src}
               alt="Noise"
               fill
-              className="pointer-events-none z-0 opacity-30"
+              className="pointer-events-none z-0 hidden opacity-30 lg:block"
               style={{ objectFit: "cover" }}
+              loading="lazy"
             />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
@@ -300,6 +288,7 @@ export default function Home() {
                         width={944}
                         height={622}
                         className="h-auto w-full"
+                        loading="lazy"
                       />
                       <div className="font-family-secondary text-center text-2xl text-white lg:text-3xl">
                         {paragraph.title}
@@ -329,8 +318,9 @@ export default function Home() {
               src={images.noise.src}
               alt="Noise"
               fill
-              className="pointer-events-none z-0 opacity-30"
+              className="pointer-events-none z-0 hidden opacity-30 lg:block"
               style={{ objectFit: "cover" }}
+              loading="lazy"
             />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
@@ -344,7 +334,7 @@ export default function Home() {
               {/* Horizontal gallery scroll */}
               <div
                 id="horizontal-gallery-wrapper"
-                className="h-[30dvh] w-[100dvw] flex-row overflow-hidden lg:h-[50dvh]"
+                className="h-[30vh] w-screen flex-row overflow-hidden lg:h-[50vh]"
               >
                 <div
                   ref={horizontalGalleryContainerRef}
@@ -358,6 +348,8 @@ export default function Home() {
                       src={eventImage}
                       alt={`Event image ${index + 1}`}
                       className="h-full w-auto flex-shrink-0 object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 944px"
                     />
                   ))}
                 </div>
@@ -380,15 +372,16 @@ export default function Home() {
               src={images.noise.src}
               alt="Noise"
               fill
-              className="pointer-events-none z-0 opacity-30"
+              className="pointer-events-none z-0 hidden opacity-30 lg:block"
               style={{ objectFit: "cover" }}
+              loading="lazy"
             />
 
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
               {/* Title and description */}
               <div className="flex flex-col items-center justify-center space-y-8 lg:space-y-28">
                 {/* Members images */}
-                <div className="w-[100dvw] items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
+                <div className="w-[100vw] items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
                   <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
                     OUR
                   </div>
@@ -398,12 +391,16 @@ export default function Home() {
                       src={images.members.luca}
                       width={300}
                       height={400}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 150px, 300px"
                     />
                     <Image
                       alt="Domenico"
                       src={images.members.domenico}
                       width={300}
                       height={400}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 150px, 300px"
                     />
                   </div>
                   <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
