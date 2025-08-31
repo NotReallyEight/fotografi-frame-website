@@ -3,8 +3,8 @@ import { FaInstagram, FaTelegram, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 const Footer = () => (
   <div className="flex min-h-[55dvh] snap-start flex-col" id="footer">
-    <div className="flex flex-2 flex-col items-center justify-evenly bg-secondaryLight *:flex *:w-full *:flex-col *:items-center *:justify-center *:p-4 md:flex-row dark:bg-secondaryDark">
-      <div className="border-r-primaryLight md:border-r-2 dark:border-r-primaryDark">
+    <div className="bg-secondaryLight dark:bg-secondaryDark flex flex-2 flex-col items-center justify-evenly *:flex *:w-full *:flex-col *:items-center *:justify-center *:p-4 md:flex-row">
+      <div className="border-r-primaryLight dark:border-r-primaryDark md:border-r-2">
         <div className="font-family-secondary text-center text-lg md:text-2xl">
           TELEFONO
         </div>
@@ -22,7 +22,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-l-primaryLight md:border-l-2 dark:border-l-primaryDark">
+      <div className="border-l-primaryLight dark:border-l-primaryDark md:border-l-2">
         <div className="font-family-secondary text-center text-lg md:text-2xl">
           TELEFONO
         </div>

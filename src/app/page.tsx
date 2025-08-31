@@ -50,6 +50,27 @@ const aboutUsParagraphs = [
   },
 ];
 
+const ourServicesParagraphs = [
+  {
+    title: "Produzione social",
+    description:
+      "Offriamo servizi di gestione dei social e creazione di post, reels, spot e web serie, aiutando i nostri clienti a raggiungere il loro pubblico target e a distinguersi sulla piattaforma.",
+    image: images.socialProduction.src,
+  },
+  {
+    title: "Pubblicità",
+    description:
+      "Studiamo soluzioni personalizzate per promuovere i prodotti e i servizi dei nostri clienti, utilizzando una combinazione di creatività e strategia per massimizzare l'impatto delle loro campagne pubblicitarie.",
+    image: images.advertising.src,
+  },
+  {
+    title: "Eventi",
+    description:
+      "Che si tratti di un compleanno, un concerto o una cerimonia, siamo specializzati nella cattura dei momenti più belli e divertenti della festa, con servizi personalizzati e attrezzatura all'avanguardia.",
+    image: images.events.src,
+  },
+];
+
 const apertureValues: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
@@ -220,6 +241,64 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* Our Services Section */}
+          <section className="relative bg-black py-20">
+            {/* Noise Effect */}
+            <Image
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              src={images.noise.src}
+              alt="Noise"
+              fill
+              className="pointer-events-none -z-10 opacity-10"
+              style={{ objectFit: "cover" }}
+            />
+
+            <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
+              {/* Title and description */}
+              <div className="flex flex-col items-center justify-center lg:space-y-4">
+                <div className="font-family-secondary text-2xl lg:text-5xl">
+                  Our Services
+                </div>
+              </div>
+
+              {/* Horizontal Separator */}
+              <span className="h-px w-full bg-gold lg:hidden" />
+
+              {/* Services paragraphs */}
+              <div className="flex w-4/5 flex-col gap-14 lg:flex-row">
+                {ourServicesParagraphs.map((paragraph, index) => (
+                  <>
+                    <div
+                      key={paragraph.title}
+                      className="flex flex-1 flex-col items-center justify-center gap-2"
+                    >
+                      <Image
+                        src={paragraph.image}
+                        alt={paragraph.title}
+                        width={944}
+                        height={622}
+                        className="h-auto w-full"
+                      />
+                      <div className="font-family-secondary text-center text-2xl text-white lg:text-3xl">
+                        {paragraph.title}
+                      </div>
+                      <div className="font-family-regular text-base font-light text-white lg:text-xl">
+                        {paragraph.description}
+                      </div>
+                    </div>
+                    {/* Separator line */}
+                    {index !== ourServicesParagraphs.length - 1 && (
+                      <>
+                        <span className="h-px w-full bg-gold lg:hidden" />
+                        <VerticalSeparatorLine color="gold" />
+                      </>
+                    )}
+                  </>
+                ))}
+              </div>
             </div>
           </section>
         </main>
