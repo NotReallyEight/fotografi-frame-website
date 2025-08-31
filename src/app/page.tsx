@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const aboutUsParagraphs = [
   {
@@ -434,6 +435,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Footer */}
+          <section>
+            <Footer />
           </section>
         </main>
       </div>
