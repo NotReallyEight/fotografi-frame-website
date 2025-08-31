@@ -10,6 +10,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
 
 const aboutUsParagraphs = [
   {
@@ -79,6 +80,7 @@ export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
   const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
   const [fStop, setFStop] = useState<number>(apertureValues[0]);
+  const horizontalGalleryContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -101,6 +103,22 @@ export default function Home() {
               Math.round(self.progress * (apertureValues.length - 1))
             ]
           );
+        },
+      });
+
+      gsap.to(horizontalGalleryContainerRef.current, {
+        x: () =>
+          -(
+            (horizontalGalleryContainerRef.current?.scrollWidth ?? 0) -
+            window.innerWidth
+          ),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#horizontal-gallery-wrapper",
+          scrub: 1,
+          start: "center center",
+          end: () =>
+            `+=${(horizontalGalleryContainerRef.current?.scrollWidth ?? 0) - window.innerHeight}`,
         },
       });
     },
@@ -252,7 +270,7 @@ export default function Home() {
               src={images.noise.src}
               alt="Noise"
               fill
-              className="pointer-events-none -z-10 opacity-10"
+              className="pointer-events-none z-0 opacity-30"
               style={{ objectFit: "cover" }}
             />
 
@@ -299,6 +317,57 @@ export default function Home() {
                   </>
                 ))}
               </div>
+            </div>
+          </section>
+
+          {/* Our Events Section */}
+          <section className="relative bg-black py-20">
+            {/* Noise Effect */}
+            <Image
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+              src={images.noise.src}
+              alt="Noise"
+              fill
+              className="pointer-events-none z-0 opacity-30"
+              style={{ objectFit: "cover" }}
+            />
+
+            <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
+              {/* Title and description */}
+              <div className="flex flex-col items-center justify-center lg:space-y-4">
+                <div className="font-family-secondary text-2xl lg:text-5xl">
+                  Our Events
+                </div>
+              </div>
+
+              {/* Horizontal gallery scroll */}
+              <div
+                id="horizontal-gallery-wrapper"
+                className="h-[30dvh] w-[100dvw] flex-row overflow-hidden lg:h-[50dvh]"
+              >
+                <div
+                  ref={horizontalGalleryContainerRef}
+                  className="flex h-full"
+                >
+                  {images.event.map((eventImage, index) => (
+                    <Image
+                      key={`event-image-${index}`}
+                      width={944}
+                      height={622}
+                      src={eventImage}
+                      alt={`Event image ${index + 1}`}
+                      className="h-full w-auto flex-shrink-0 object-cover"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <Link
+                href={"/works"}
+                className="font-family-regular p-4 text-center text-base font-light text-white outline outline-1 outline-dustyBlue duration-200 hover:outline-white lg:text-xl"
+              >
+                Our portfolio
+              </Link>
             </div>
           </section>
         </main>
