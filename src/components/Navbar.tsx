@@ -11,12 +11,8 @@ const sections: { name: string; href: string }[] = [
     href: "/",
   },
   {
-    name: "Lavori",
-    href: "/works",
-  },
-  {
-    name: "Compleanni",
-    href: "/birthdays",
+    name: "Produzioni",
+    href: "/productions",
   },
   {
     name: "Contatti",
