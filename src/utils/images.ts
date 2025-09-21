@@ -65,7 +65,6 @@ import BirthdaysCarouselsImage18 from "../../public/assets/18-Angela-349-scaled.
 import BirthdaysCarouselsImage19 from "../../public/assets/18-Angela-343-scaled.jpg";
 import BirthdaysCarouselsImage20 from "../../public/assets/18-Angela-261-scaled.jpg";
 import BirthdaysServicesWeOfferImage from "../../public/assets/Tavola-da-disegno-1-1-960x245.png";
-import NoiseImage from "../../public/assets/noise.svg";
 
 const images = {
   aboutUs: AboutUsImage,
@@ -127,7 +126,6 @@ const images = {
     luca: LucaImage,
     domenico: DomenicoImage,
   },
-  noise: NoiseImage,
   socialProduction: SocialProductionImage,
   worksBrands: [
     WorksBrand1,

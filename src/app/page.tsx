@@ -252,17 +252,6 @@ export default function Home() {
 
           {/* Our Services Section */}
           <section className="relative bg-black py-20">
-            {/* Noise Effect */}
-            <Image
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              src={images.noise.src}
-              alt="Noise"
-              fill
-              className="pointer-events-none z-0 hidden opacity-30 lg:block"
-              style={{ objectFit: "cover" }}
-              loading="lazy"
-            />
-
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
               {/* Title */}
               <div className="flex flex-col items-center justify-center lg:space-y-4">
@@ -312,17 +301,6 @@ export default function Home() {
 
           {/* Our Events Section */}
           <section className="relative bg-black py-20">
-            {/* Noise Effect */}
-            <Image
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              src={images.noise.src}
-              alt="Noise"
-              fill
-              className="pointer-events-none z-0 hidden opacity-30 lg:block"
-              style={{ objectFit: "cover" }}
-              loading="lazy"
-            />
-
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
               {/* Title */}
               <div className="flex flex-col items-center justify-center lg:space-y-4">
@@ -366,17 +344,6 @@ export default function Home() {
 
           {/* Our Team Section */}
           <section className="relative bg-black py-20">
-            {/* Noise Effect */}
-            <Image
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              src={images.noise.src}
-              alt="Noise"
-              fill
-              className="pointer-events-none z-0 hidden opacity-30 lg:block"
-              style={{ objectFit: "cover" }}
-              loading="lazy"
-            />
-
             <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
               {/* Title and description */}
               <div className="flex flex-col items-center justify-center space-y-8 lg:space-y-28">
