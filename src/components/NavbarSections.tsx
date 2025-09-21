@@ -20,7 +20,7 @@ const NavbarSections = (props: Props) => {
           <React.Fragment key={`section-desktop-${index}`}>
             <Link
               href={section.href}
-              className="font-family-secondary text-shadow-gold-sm link-hover-scale text-center text-white lg:text-xl xl:text-3xl"
+              className="font-family-secondary text-shadow-gold-sm link-hover-scale text-center text-white lg:text-xl"
             >
               {section.name}
             </Link>

@@ -13,7 +13,7 @@ const Logo = ({ dark = false }: Props) => (
       alt="Frame Logo"
       width={125}
       height={125}
-      className="max-h-20 max-w-20 lg:max-h-32 lg:max-w-32"
+      className="max-h-20 max-w-20 xl:max-h-24 xl:max-w-24"
     />
   </Link>
 );
