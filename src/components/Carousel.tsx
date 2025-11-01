@@ -69,7 +69,7 @@ const Carousel: React.FC<Props> = (props) => {
               >
                 <a href={slide.href}>
                   <div
-                    className={`flex flex-col border-secondaryLight ${imageObjectFit === "contain" ? "border-2 p-8" : ""} text-center dark:border-secondaryDark`}
+                    className={`border-secondaryLight flex flex-col ${imageObjectFit === "contain" ? "border-2 p-8" : ""} dark:border-secondaryDark text-center`}
                   >
                     {slide.image !== undefined && (
                       <Image

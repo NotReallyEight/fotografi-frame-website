@@ -1,22 +1,42 @@
-import { Baloo_Thambi_2, Mitr, Noto_Sans } from "next/font/google";
+import {
+  Manrope,
+  Montserrat,
+  Playfair_Display,
+  Roboto_Condensed,
+  Roboto_Slab,
+} from "next/font/google";
 
-export const balooThambi2 = Baloo_Thambi_2({
+export const manrope = Manrope({
   subsets: ["latin"],
-  display: "auto",
-  weight: "500",
-  variable: "--font-baloo-thambi-2",
+  display: "swap",
+  weight: ["300", "400"],
+  variable: "--font-manrope",
 });
 
-export const mitr = Mitr({
+export const montserrat = Montserrat({
   subsets: ["latin"],
-  display: "auto",
-  weight: "700",
-  variable: "--font-mitr",
+  display: "swap",
+  weight: "600",
+  variable: "--font-montserrat",
 });
 
-export const notoSans = Noto_Sans({
+export const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
-  display: "auto",
+  display: "swap",
   weight: "400",
-  variable: "--font-noto-sans",
+  variable: "--font-playfair-display",
+});
+
+export const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+  variable: "--font-roboto-condensed",
+});
+
+export const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "700",
+  variable: "--font-roboto-slab",
 });
