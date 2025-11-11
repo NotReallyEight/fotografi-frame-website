@@ -166,7 +166,7 @@ export default function Works() {
                   src={images.demoProductionThumbnail}
                   height={720}
                   width={1280}
-                  sizes="(min-height: 768px) 80vh, 100vh"
+                  sizes="(min-width: 768px) 80vh, 100vh"
                   className="m-auto duration-200 group-hover:opacity-25"
                 />
 
