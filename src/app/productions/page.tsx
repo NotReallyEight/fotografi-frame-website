@@ -98,7 +98,7 @@ export default function Works() {
   return (
     <>
       {/* Meta tags */}
-      <title>Home - Frame</title>
+      <title>Lavori - Frame</title>
       <meta
         name="description"
         content="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
