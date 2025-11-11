@@ -5,6 +5,6 @@ type Props = {
 };
 
 const ConditionalWrapper = ({ children, condition, wrapper }: Props) =>
-  condition ? wrapper(children) : children;
+  condition ? wrapper(children) : <>{children}</>;
 
 export default ConditionalWrapper;
