@@ -72,7 +72,9 @@ export default function Works() {
       // Brands images marquee infinite scroll
       const marquee = document.querySelector(
         ".marquee"
-      ) as unknown as HTMLElement;
+      ) as unknown as HTMLElement | null;
+
+      if (!marquee) return;
 
       const clonesNeeded =
         Math.ceil(window.innerWidth / marquee.scrollWidth) + 1;
