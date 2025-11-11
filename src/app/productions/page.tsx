@@ -155,7 +155,12 @@ export default function Works() {
               key={`production-video-${video.id}`}
               className="flex h-[100dvh] w-full bg-black"
             >
-              <div className="group relative m-auto inline-block cursor-pointer">
+              <a
+                href={`https://youtu.be/${video.id}`}
+                target="_blank"
+                rel="noopener"
+                className="group relative m-auto inline-block cursor-pointer"
+              >
                 <Image
                   alt={`Production video thumbnail - ${video.title}`}
                   src={images.demoProductionThumbnail}
@@ -168,7 +173,7 @@ export default function Works() {
                 <div className="font-family-secondary absolute bottom-8 left-8 text-3xl text-white opacity-0 duration-200 group-hover:opacity-100">
                   {video.title}
                 </div>
-              </div>
+              </a>
             </div>
           ))}
 
