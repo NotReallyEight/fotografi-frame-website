@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaInstagram, FaTelegram, FaWhatsapp, FaYoutube } from "react-icons/fa";
-
 import Logo from "./Logo";
+import HorizontalSeparatorLine from "./HorizontalSeparatorLine";
 
 const Footer = () => (
   <div className="flex flex-col space-y-8 bg-lighterBlack px-8 pb-24 pt-8">
@@ -21,7 +21,7 @@ const Footer = () => (
     </div>
 
     {/* Horizontal Separator */}
-    <span className="h-px w-full bg-white" />
+    <HorizontalSeparatorLine color="white" hideOnDesktop={false} />
 
     <div className="flex flex-col items-center justify-between gap-4 lg:flex-row lg:gap-0">
       <div className="font-family-regular text-xl font-light text-white">
