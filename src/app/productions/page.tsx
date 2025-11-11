@@ -1,75 +1,198 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
-import OurWorks from "@/components/Works/OurWorks";
-import YouTubeEmbed from "@/components/YouTubeEmbed";
+import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
+import gsap from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 import images from "@/utils/images";
 import Image from "next/image";
-import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
-import Link from "next/link";
 
-// Next.js automatically updates metadata using this export.
-// eslint-disable-next-line react-refresh/only-export-components
-export const metadata: Metadata = {
-  title: "Lavori - Frame",
-  description:
-    "Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre.",
-  keywords: ["fotografia", "fotografi frame", "fotografi", "frame"],
-};
+const productionVideos: {
+  title: string;
+  id: string;
+}[] = [
+  {
+    title: "Silarus - La Moda che Scorre",
+    id: "aW9yPWg4ryA",
+  },
+  {
+    title: "Spot Morra De Sanctis - CASA Sanremo",
+    id: "upkRLaQNOFc",
+  },
+  {
+    title: "10 Anni InfoIrpinia",
+    id: "FwNtA1SdZSQ",
+  },
+];
+
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function Works() {
+  const containerRef = useRef<HTMLElement>(null);
+  const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      // Horizontal scrolling gallery
+      const panels = gsap.utils.toArray(".horizontal-gallery-panel");
+      const mainEl = document.querySelector("main");
+
+      if (mainEl === null) return;
+
+      const panelsOffsetWidth = (
+        document.querySelector(
+          ".horizontal-gallery-container"
+        ) as unknown as HTMLElement
+      ).offsetWidth;
+
+      ScrollSmoother.create({
+        content: "#smooth-content",
+        wrapper: "#smooth-wrapper",
+        smooth: 1,
+        effects: true,
+        smoothTouch: 0.5,
+      });
+
+      gsap.to(panels, {
+        x: -panelsOffsetWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".horizontal-gallery-container",
+          pin: true,
+          pinSpacing: true,
+          scrub: 1,
+          end: `+=${panelsOffsetWidth}`,
+        },
+      });
+
+      // Brands images marquee infinite scroll
+      const marquee = document.querySelector(
+        ".marquee"
+      ) as unknown as HTMLElement;
+
+      const clonesNeeded =
+        Math.ceil(window.innerWidth / marquee.scrollWidth) + 1;
+
+      for (let i = 0; i < clonesNeeded; i++)
+        marquee.innerHTML += marquee.innerHTML;
+
+      const totalWidth = marquee.scrollWidth / 2;
+      let x = 0;
+      const speed = 1;
+
+      gsap.ticker.add(() => {
+        x -= speed;
+        if (x <= -totalWidth) x = 0;
+        gsap.set(marquee, { x });
+      });
+    },
+    {
+      scope: scrollSmootherWrapper,
+    }
+  );
+
   return (
-    <main className="flex h-[100dvh] flex-col">
-      <Navbar />
-      <ScrollToTopButton />
-
-      {/* Introduction */}
-      <OurWorks />
-
-      {/* Image grid */}
-      <div className="mt-[10dvh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {images.worksGrid.map((image, index) => (
-          <Link
-            key={index}
-            href={image.src}
-            target="_blank"
-            rel="noopener"
-            title="Fotografia scattata da FRAME."
-          >
-            <Image src={image} alt="Fotografia scattata da FRAME." />
-          </Link>
-        ))}
-      </div>
-
-      {/* YouTube Videos */}
-      <YouTubeEmbed
-        title="Silarus - La Moda che Scorre"
-        videoId="aW9yPWg4ryA"
-        className="mx-auto mt-[10dvh]"
+    <>
+      {/* Meta tags */}
+      <title>Home - Frame</title>
+      <meta
+        name="description"
+        content="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
       />
-      <YouTubeEmbed
-        title="Spot Morra De Sanctis - CASA Sanremo"
-        videoId="upkRLaQNOFc"
-        className="mx-auto mt-[10dvh]"
+      <meta
+        name="keywords"
+        content="fotografia, fotografi frame, fotografi, frame"
       />
-      <YouTubeEmbed
-        title="10 Anni InfoIrpinia"
-        videoId="FwNtA1SdZSQ"
-        className="mx-auto mt-[10dvh]"
-      />
+      <div id="smooth-wrapper" ref={scrollSmootherWrapper}>
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Brands grid */}
-      <div className="font-family-secondary mt-[10dvh] text-center text-lg md:text-2xl">
-        BRAND CON CUI ABBIAMO COLLABORATO
-      </div>
-      <div className="mx-auto mb-[10dvh] mt-[5dvh] grid grid-cols-1 md:w-[90dvw] md:grid-cols-2 lg:grid-cols-3">
-        {images.worksBrands.map((image, index) => (
-          <Image src={image} alt="Logo Brand" key={index} />
-        ))}
-      </div>
+        <main
+          className="flex flex-col bg-black"
+          id="smooth-content"
+          ref={containerRef}
+        >
+          <div className="m-auto flex h-[100dvh] flex-col items-center justify-center gap-7 p-4 text-center text-white lg:w-1/2">
+            <div className="font-family-header text-3xl lg:text-6xl">
+              I Nostri Lavori
+            </div>
+            <HorizontalSeparatorLine color="gold" hideOnDesktop={false} />
+            <div className="font-family-regular text-base font-light lg:text-xl">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
+              faucibus ex sapien vitae pellentesque sem placerat. In id cursus
+              mi pretium tellus duis convallis. Tempus leo eu aenean sed diam
+              urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
+              egestas. Iaculis massa nisl malesuada lacinia integer nunc
+              posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad
+              litora torquent per conubia nostra inceptos himenaeos.
+            </div>
+          </div>
 
-      {/* Footer */}
-      <Footer />
-    </main>
+          {/* Horizontal scrolling section */}
+          <div className="horizontal-gallery-container flex h-[100dvh] w-full flex-nowrap">
+            {images.worksGrid.map((image, index) => (
+              <Image
+                key={`horizontal-gallery-image-${index}`}
+                width={600}
+                height={900}
+                src={image}
+                alt={`Production image${index + 1}`}
+                className="image horizontal-gallery-panel flex h-full w-auto shrink-0 object-cover"
+                loading="lazy"
+              />
+            ))}
+          </div>
+
+          {/* Production video cards */}
+          {productionVideos.map((video) => (
+            <div
+              key={`production-video-${video.id}`}
+              className="flex h-[100dvh] w-full bg-black"
+            >
+              <div className="group relative m-auto inline-block cursor-pointer">
+                <Image
+                  alt={`Production video thumbnail - ${video.title}`}
+                  src={images.demoProductionThumbnail}
+                  height={720}
+                  width={1280}
+                  sizes="(min-height: 768px) 80vh, 100vh"
+                  className="m-auto duration-200 group-hover:opacity-25"
+                />
+
+                <div className="font-family-secondary absolute bottom-8 left-8 text-3xl text-white opacity-0 duration-200 group-hover:opacity-100">
+                  {video.title}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Brands grid */}
+          <div className="mx-auto mb-16 flex flex-col gap-16">
+            <div className="font-family-secondary mx-auto text-3xl text-white">
+              BRAND CON CUI ABBIAMO COLLABORATO
+            </div>
+            <div className="marquee flex flex-row">
+              {images.worksBrands.map((image, index) => (
+                <Image
+                  src={image}
+                  alt="Logo Brand"
+                  key={index}
+                  height={200}
+                  width={200}
+                  className="h-48 w-48"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <Footer />
+        </main>
+      </div>
+    </>
   );
 }
