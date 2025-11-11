@@ -5,13 +5,14 @@ import Image from "next/image";
 import { FaAnglesDown } from "react-icons/fa6";
 import images from "@/utils/images";
 import VerticalSeparatorLine from "@/components/VerticalSeparatorLine";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
 
 const aboutUsParagraphs = [
   {
@@ -179,7 +180,7 @@ export default function Home() {
             {/* Header */}
             <div className="relative flex h-full flex-col items-center justify-center space-y-7">
               <div className="flex flex-col text-center text-white">
-                <div className="font-family-header text-3xl lg:text-6xl">
+                <div className="font-family-secondary text-3xl lg:text-6xl">
                   FRAME PRODUCTION
                 </div>
                 <div className="font-family-secondary text-2xl lg:text-3xl">
@@ -224,7 +225,7 @@ export default function Home() {
               </div>
 
               {/* Horizontal Separator */}
-              <span className="h-px w-full bg-gold lg:hidden" />
+              <HorizontalSeparatorLine color="gold" />
 
               {/* Paragraphs */}
               {aboutUsParagraphs.map((paragraph, index) => (
@@ -261,12 +262,12 @@ export default function Home() {
               </div>
 
               {/* Horizontal Separator */}
-              <span className="h-px w-full bg-gold lg:hidden" />
+              <HorizontalSeparatorLine color="gold" />
 
               {/* Services paragraphs */}
               <div className="flex w-4/5 flex-col gap-14 lg:flex-row">
                 {ourServicesParagraphs.map((paragraph, index) => (
-                  <>
+                  <React.Fragment key={`paragraph-${index}`}>
                     <div
                       key={paragraph.title}
                       className="flex flex-1 flex-col items-center justify-center gap-2"
@@ -289,11 +290,11 @@ export default function Home() {
                     {/* Separator line */}
                     {index !== ourServicesParagraphs.length - 1 && (
                       <>
-                        <span className="h-px w-full bg-gold lg:hidden" />
+                        <HorizontalSeparatorLine color="gold" hideOnDesktop />
                         <VerticalSeparatorLine color="gold" />
                       </>
                     )}
-                  </>
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -376,7 +377,7 @@ export default function Home() {
                 </div>
 
                 {/* Slogan */}
-                <div className="mt- mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]">
+                <div className="mx-4 mt-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]">
                   {/* Title */}
                   <div className="font-family-secondary self-center text-2xl lg:text-3xl">
                     La qualità che cercate, con l&apos;energia che vi{" "}
@@ -387,7 +388,7 @@ export default function Home() {
                   <div className="flex items-center justify-center px-8">
                     <VerticalSeparatorLine color="gold" />
                   </div>
-                  <span className="h-px w-full bg-gold lg:hidden" />
+                  <HorizontalSeparatorLine color="gold" hideOnDesktop />
 
                   {/* Description */}
                   <div className="font-family-regular self-center text-base font-light lg:text-xl">
