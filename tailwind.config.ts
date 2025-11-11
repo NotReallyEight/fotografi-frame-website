@@ -27,6 +27,10 @@ const config: Config = {
         gold: "#b28b4a",
         white: "#ffffff",
       },
+      spacing: {
+        halfWidth: "50dvw",
+        halfHeight: "50dvh",
+      },
     },
   },
   plugins: [],
