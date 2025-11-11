@@ -142,7 +142,7 @@ export default function Works() {
                 width={600}
                 height={900}
                 src={image}
-                alt={`Production image${index + 1}`}
+                alt={`Production image ${index + 1}`}
                 className="image horizontal-gallery-panel flex h-full w-auto shrink-0 object-cover"
                 loading="lazy"
               />
