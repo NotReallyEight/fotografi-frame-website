@@ -268,10 +268,7 @@ export default function Home() {
               <div className="flex w-4/5 flex-col gap-14 lg:flex-row">
                 {ourServicesParagraphs.map((paragraph, index) => (
                   <React.Fragment key={`paragraph-${index}`}>
-                    <div
-                      key={paragraph.title}
-                      className="flex flex-1 flex-col items-center justify-center gap-2"
-                    >
+                    <div className="flex flex-1 flex-col items-center justify-center gap-2">
                       <Image
                         src={paragraph.image}
                         alt={paragraph.title}
