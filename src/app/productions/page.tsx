@@ -76,21 +76,53 @@ export default function Works() {
 
       if (!marquee) return;
 
-      const clonesNeeded =
-        Math.ceil(window.innerWidth / marquee.scrollWidth) + 1;
+      // Get a children out of the children elements from the marquee div
+      const marqueeChildren = Array.from(marquee.children) as HTMLElement[];
 
-      for (let i = 0; i < clonesNeeded; i++)
-        marquee.innerHTML += marquee.innerHTML;
+      // Wait for any images inside the marquee to load so measurements are accurate
+      void (async () => {
+        const marqueeImages = Array.from(marquee.querySelectorAll("img"));
+        await Promise.all(
+          marqueeImages.map((img) =>
+            img.complete
+              ? Promise.resolve()
+              : new Promise((res) => {
+                  img.addEventListener("load", res, { once: true });
+                })
+          )
+        );
 
-      const totalWidth = marquee.scrollWidth / 2;
-      let x = 0;
-      const speed = 1;
+        // One set of a marquee (if there are 8 images it's gonna be the width of 8 images combined)
+        const singleSetWidth = marquee.scrollWidth;
+        // The target width: usually we want pretty much more than the viewport
+        // obviously because otherwise there's gonna be empty spaces
+        const targetWidth = window.innerWidth + singleSetWidth;
 
-      gsap.ticker.add(() => {
-        x -= speed;
-        if (x <= -totalWidth) x = 0;
-        gsap.set(marquee, { x });
-      });
+        while (marquee.scrollWidth < targetWidth) {
+          const fragment = document.createDocumentFragment();
+          // For every child of the marquee children, append it to the document fragment
+          for (const child of marqueeChildren)
+            fragment.appendChild(child.cloneNode(true));
+
+          // As a result, append the document fragment to the marquee
+          marquee.appendChild(fragment);
+        }
+
+        const totalWidth = singleSetWidth;
+        let x = 0;
+        const speed = 1;
+
+        // Once the thing reaches the end then we can "snap" without snapping as it's
+        // smoothly to the initial position (which is going to be 0).
+        const setX = gsap.quickSetter(marquee, "x", "px");
+        const tick = () => {
+          x -= speed;
+          if (x <= -totalWidth) x += totalWidth;
+          setX(x);
+        };
+
+        gsap.ticker.add(tick);
+      })();
     },
     {
       scope: scrollSmootherWrapper,
