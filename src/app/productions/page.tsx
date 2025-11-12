@@ -32,7 +32,6 @@ const productionVideos: {
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function Works() {
-  const containerRef = useRef<HTMLElement>(null);
   const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -76,7 +75,7 @@ export default function Works() {
 
       if (!marquee) return;
 
-      // Get a children out of the children elements from the marquee div
+      // Get the children elements from the marquee div
       const marqueeChildren = Array.from(marquee.children) as HTMLElement[];
 
       // Wait for any images inside the marquee to load so measurements are accurate
@@ -145,11 +144,7 @@ export default function Works() {
         {/* Navbar */}
         <Navbar />
 
-        <main
-          className="flex flex-col bg-black"
-          id="smooth-content"
-          ref={containerRef}
-        >
+        <main className="flex flex-col bg-black" id="smooth-content">
           <div className="m-auto flex h-[100dvh] flex-col items-center justify-center gap-7 p-4 text-center text-white lg:w-1/2">
             <div className="font-family-header text-3xl lg:text-6xl">
               I Nostri Lavori
@@ -190,7 +185,7 @@ export default function Works() {
               <a
                 href={`https://youtu.be/${video.id}`}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className="group relative m-auto inline-block cursor-pointer"
               >
                 <Image
@@ -199,10 +194,10 @@ export default function Works() {
                   height={720}
                   width={1280}
                   sizes="(min-width: 768px) 80vh, 100vh"
-                  className="m-auto duration-200 group-hover:opacity-25"
+                  className="m-auto duration-200 group-hover:opacity-25 group-focus:opacity-25"
                 />
 
-                <div className="font-family-secondary absolute bottom-8 left-8 text-3xl text-white opacity-0 duration-200 group-hover:opacity-100">
+                <div className="font-family-secondary absolute bottom-8 left-8 text-3xl text-white opacity-0 duration-200 group-hover:opacity-100 group-focus:opacity-100">
                   {video.title}
                 </div>
               </a>
