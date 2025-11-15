@@ -4,6 +4,9 @@ import { useState } from "react";
 import Logo from "./Logo";
 import NavbarSections from "./NavbarSections";
 import Link from "next/link";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { slideUpFadeIn } from "@/utils/gsap";
 
 const sections: { name: string; href: string }[] = [
   {
@@ -20,6 +23,8 @@ const sections: { name: string; href: string }[] = [
   },
 ];
 
+gsap.registerPlugin(useGSAP);
+
 const Navbar = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false);
 
@@ -27,8 +32,15 @@ const Navbar = () => {
     setIsBurgerMenuOpen(!isBurgerMenuOpen);
   };
 
+  useGSAP(() => {
+    slideUpFadeIn({ window, target: "#navbar" });
+  });
+
   return (
-    <div className="lg:center-fixed-div fixed left-4 right-4 top-4 z-10 items-center justify-center gap-4 space-y-4 lg:top-7 lg:m-0 lg:w-2/3">
+    <div
+      id="navbar"
+      className="lg:center-fixed-div fixed left-4 right-4 top-4 z-10 items-center justify-center gap-4 space-y-4 lg:top-7 lg:m-0 lg:w-2/3"
+    >
       <div className="flex h-fit flex-row items-center justify-between rounded-xl bg-lighterBlack px-7 py-4">
         <Logo />
         <NavbarSections
