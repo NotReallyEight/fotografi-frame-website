@@ -9,7 +9,7 @@ import {
 export const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400"],
+  weight: ["200", "300", "400"],
   variable: "--font-manrope",
 });
 
