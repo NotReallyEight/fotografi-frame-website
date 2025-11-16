@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: #000000;
 }
 
 /* Keyframes */
@@ -18,18 +18,6 @@ body {
   }
 }
 
-@keyframes slide-down-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-1rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0rem);
-  }
-}
-
 @keyframes fade-out {
   from {
     opacity: 1;
@@ -40,16 +28,19 @@ body {
   }
 }
 
+@keyframes typing-dots {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .center-fixed-div {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   /* Fonts */
 
   .font-family-header {
@@ -65,6 +56,11 @@ body {
   .font-family-regular {
     font-family: var(--font-manrope);
     @apply font-normal;
+  }
+
+  .font-family-regular-extra-light {
+    font-family: var(--font-manrope);
+    @apply font-extralight;
   }
 
   .font-family-italic {
@@ -130,16 +126,33 @@ body {
     animation: fade-in 0.5s forwards;
   }
 
-  .slide-down-fade-in {
-    animation: slide-down-fade-in 0.5s forwards;
-  }
-
   .fade-out {
     animation: fade-out 0.5s forwards;
   }
 
   .link-hover-scale {
     @apply before:relative before:block before:h-px before:w-0 before:border-t-2 before:border-t-gold before:duration-150 after:relative after:ml-auto after:block after:h-px after:w-0 after:border-t-2 after:border-t-gold after:duration-150 hover:before:w-full hover:after:w-full;
+  }
+
+  .dots {
+    /* Change these variables to change the effect's duration or delay */
+    --typing-duration: 1.5s; /* Total loop duration */
+    --typing-steps: 6; /* The number of steps (usually should be kept as 2 times the number of dots */
+    --typing-step-duration: calc(var(--typing-duration) / var(--typing-steps));
+  }
+
+  .dots div {
+    animation: typing-dots var(--typing-duration) steps(1) infinite;
+  }
+
+  .dots div:nth-child(1) {
+    animation-delay: calc(var(--typing-step-duration) * 0);
+  }
+  .dots div:nth-child(2) {
+    animation-delay: calc(var(--typing-step-duration) * 1);
+  }
+  .dots div:nth-child(3) {
+    animation-delay: calc(var(--typing-step-duration) * 2);
   }
 }
 
