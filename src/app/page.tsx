@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
 import { slideUpFadeIn } from "@/utils/gsap";
 
-const aboutUsParagraphs = [
+const ABOUT_US_PARAGRAPHS = [
   {
     title: (
       <>
@@ -54,7 +54,7 @@ const aboutUsParagraphs = [
   },
 ];
 
-const ourServicesParagraphs = [
+const OUR_SERVICES_PARAGRAPHS = [
   {
     title: "Produzione social",
     description:
@@ -75,14 +75,17 @@ const ourServicesParagraphs = [
   },
 ];
 
-const apertureValues: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
+const APERTURE_VALUES: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
+
+const PRELOADER_FIRST_TRANSITION_DELAY = 2_500;
+const PRELOADER_TOTAL_DURATION = 7_500;
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
   const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
-  const [fStop, setFStop] = useState<number>(apertureValues[0]);
+  const [fStop, setFStop] = useState<number>(APERTURE_VALUES[0]);
   const horizontalGalleryContainerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingIndex, setLoadingIndex] = useState<number>(0);
@@ -92,10 +95,10 @@ export default function Home() {
     const firstPreloaderIndexTimeout = setTimeout(() => {
       setLoadingIndex(1);
       void preloaderLogoVideoRef.current?.play();
-    }, 2_500);
+    }, PRELOADER_FIRST_TRANSITION_DELAY);
     const preloaderFinishTimeout = setTimeout(() => {
       setLoading(false);
-    }, 7_500);
+    }, PRELOADER_TOTAL_DURATION);
 
     return () => {
       clearTimeout(firstPreloaderIndexTimeout);
@@ -127,8 +130,8 @@ export default function Home() {
         scrub: 1,
         onUpdate: (self) => {
           latestFStop =
-            apertureValues[
-              Math.round(self.progress * (apertureValues.length - 1))
+            APERTURE_VALUES[
+              Math.round(self.progress * (APERTURE_VALUES.length - 1))
             ];
 
           if (!ticking)
@@ -177,6 +180,9 @@ export default function Home() {
       {loading && (
         <div
           className={`absolute inset-0 h-[100dvh] w-[100dvw] bg-black transition-opacity duration-700 ${loadingIndex === 0 ? "opacity-100" : "opacity-0"}`}
+          role="status"
+          aria-live="polite"
+          aria-label="Loading application"
         >
           <div className="absolute bottom-16 left-0 right-0 mx-auto w-[80dvw] lg:left-16 lg:right-16 lg:mx-0 lg:w-[35dvw]">
             <div className="flex flex-row items-center gap-4">
@@ -201,6 +207,10 @@ export default function Home() {
           <video
             ref={preloaderLogoVideoRef}
             className="h-full w-full scale-50 object-cover object-center sm:object-center lg:scale-100"
+            muted
+            playsInline
+            preload="auto"
+            aria-label="Frame Production logo animation"
           >
             <source src="/assets/preloader-animation/animated-frame-logo-16-9-con-motion-blur.webm" />
           </video>
@@ -287,7 +297,7 @@ export default function Home() {
                 <HorizontalSeparatorLine color="gold" />
 
                 {/* Paragraphs */}
-                {aboutUsParagraphs.map((paragraph, index) => (
+                {ABOUT_US_PARAGRAPHS.map((paragraph, index) => (
                   <div
                     className="mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]"
                     key={`about-us-paragraph-${index}`}
@@ -325,7 +335,7 @@ export default function Home() {
 
                 {/* Services paragraphs */}
                 <div className="flex w-4/5 flex-col gap-14 lg:flex-row">
-                  {ourServicesParagraphs.map((paragraph, index) => (
+                  {OUR_SERVICES_PARAGRAPHS.map((paragraph, index) => (
                     <React.Fragment key={`paragraph-${index}`}>
                       <div className="flex flex-1 flex-col items-center justify-center gap-2">
                         <Image
@@ -344,7 +354,7 @@ export default function Home() {
                         </div>
                       </div>
                       {/* Separator line */}
-                      {index !== ourServicesParagraphs.length - 1 && (
+                      {index !== OUR_SERVICES_PARAGRAPHS.length - 1 && (
                         <>
                           <HorizontalSeparatorLine color="gold" hideOnDesktop />
                           <VerticalSeparatorLine color="gold" />
