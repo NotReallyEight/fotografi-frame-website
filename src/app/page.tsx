@@ -13,7 +13,7 @@ import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
-import Logo from "@/components/Logo";
+import { slideUpFadeIn } from "@/utils/gsap";
 
 const aboutUsParagraphs = [
   {
@@ -86,26 +86,28 @@ export default function Home() {
   const horizontalGalleryContainerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingIndex, setLoadingIndex] = useState<number>(0);
+  const preloaderLogoVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
+    const firstPreloaderIndexTimeout = setTimeout(() => {
       setLoadingIndex(1);
+      void preloaderLogoVideoRef.current?.play();
     }, 2_500);
-    setTimeout(() => {
+    const preloaderFinishTimeout = setTimeout(() => {
       setLoading(false);
-    }, 5_000);
-  }, [loading]);
+    }, 7_500);
+
+    return () => {
+      clearTimeout(firstPreloaderIndexTimeout);
+      clearTimeout(preloaderFinishTimeout);
+    };
+  }, []);
 
   useGSAP(
     () => {
       if (loading) return;
 
-      gsap.from("#smooth-content", {
-        opacity: 0,
-        y: window.innerHeight,
-        duration: 1,
-        ease: "power3.out",
-      });
+      slideUpFadeIn("#smooth-content");
 
       ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
@@ -196,9 +198,12 @@ export default function Home() {
         <div
           className={`absolute inset-0 flex h-[100dvh] w-[100dvw] items-center justify-center bg-black transition-opacity duration-700 ${loadingIndex === 1 ? "opacity-100" : "opacity-0"}`}
         >
-          <div className="animate-pulse">
-            <Logo bigger redirects={false} />
-          </div>
+          <video
+            ref={preloaderLogoVideoRef}
+            className="h-full w-full scale-50 object-cover object-center sm:object-center lg:scale-100"
+          >
+            <source src="/assets/preloader-animation/animated-frame-logo-16-9-con-motion-blur.webm" />
+          </video>
         </div>
       )}
 

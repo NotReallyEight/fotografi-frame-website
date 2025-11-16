@@ -33,13 +33,13 @@ const Navbar = () => {
   };
 
   useGSAP(() => {
-    slideUpFadeIn({ window, target: "#navbar" });
-  });
+    slideUpFadeIn("#navbar");
+  }, []);
 
   return (
     <div
       id="navbar"
-      className="lg:center-fixed-div fixed left-4 right-4 top-4 z-10 items-center justify-center gap-4 space-y-4 lg:top-7 lg:m-0 lg:w-2/3"
+      className="lg:right0 fixed left-4 right-4 top-4 z-10 mx-0 items-center justify-center gap-4 space-y-4 lg:left-0 lg:top-7 lg:m-0 lg:mx-auto lg:w-2/3"
     >
       <div className="flex h-fit flex-row items-center justify-between rounded-xl bg-lighterBlack px-7 py-4">
         <Logo />

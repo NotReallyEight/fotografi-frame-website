@@ -1,12 +1,6 @@
 import gsap from "gsap";
 
-export const slideUpFadeIn = ({
-  window,
-  target,
-}: {
-  window: Window;
-  target: string;
-}) => {
+export const slideUpFadeIn = (target: string) => {
   gsap.from(target, {
     opacity: 0,
     y: window.innerHeight,
