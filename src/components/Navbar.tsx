@@ -4,7 +4,6 @@ import { useState } from "react";
 import Logo from "./Logo";
 import NavbarSections from "./NavbarSections";
 import Link from "next/link";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { slideUpFadeIn } from "@/utils/gsap";
 
@@ -22,8 +21,6 @@ const sections: { name: string; href: string }[] = [
     href: "/contacts",
   },
 ];
-
-gsap.registerPlugin(useGSAP);
 
 const Navbar = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false);
