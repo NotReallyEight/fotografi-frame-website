@@ -14,6 +14,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
 import { slideUpFadeIn } from "@/utils/gsap";
+import TextPlugin from "gsap/TextPlugin";
 
 const ABOUT_US_PARAGRAPHS = [
   {
@@ -77,10 +78,10 @@ const OUR_SERVICES_PARAGRAPHS = [
 
 const APERTURE_VALUES: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
 
-const PRELOADER_FIRST_TRANSITION_DELAY = 2_500;
-const PRELOADER_TOTAL_DURATION = 7_500;
+const PRELOADER_FIRST_TRANSITION_DELAY = 7_500;
+const PRELOADER_TOTAL_DURATION = 11_500;
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, TextPlugin);
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
@@ -90,6 +91,7 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingIndex, setLoadingIndex] = useState<number>(0);
   const preloaderLogoVideoRef = useRef<HTMLVideoElement>(null);
+  const typewriterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const firstPreloaderIndexTimeout = setTimeout(() => {
@@ -108,7 +110,14 @@ export default function Home() {
 
   useGSAP(
     () => {
-      if (loading) return;
+      if (loading) {
+        gsap.to(typewriterRef.current, {
+          text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola.",
+          ease: "none",
+          duration: PRELOADER_FIRST_TRANSITION_DELAY / 1_000,
+        });
+        return;
+      }
 
       slideUpFadeIn("#smooth-content");
 
@@ -186,14 +195,14 @@ export default function Home() {
         >
           <div className="absolute bottom-16 left-0 right-0 mx-auto w-[80dvw] lg:left-16 lg:right-16 lg:mx-0 lg:w-[35dvw]">
             <div className="flex flex-row items-center gap-4">
+              <div
+                ref={typewriterRef}
+                className="font-family-regular-extra-light typewriter inline text-lg text-white after:ml-1 after:border-r-2 after:border-r-white"
+              />
               <div className="dots font-family-regular-extra-light flex flex-row gap-2 text-lg *:inline-block *:text-white *:opacity-0">
                 <div>.</div>
                 <div>.</div>
                 <div>.</div>
-              </div>
-              <div className="font-family-regular-extra-light text-lg text-white">
-                Ogni grande storia nasce da un gruppo di menti che lavorano come
-                una sola.
               </div>
             </div>
           </div>
@@ -206,7 +215,7 @@ export default function Home() {
         >
           <video
             ref={preloaderLogoVideoRef}
-            className="h-full w-full scale-50 object-cover object-center sm:object-center lg:scale-100"
+            className="h-full w-full scale-50 object-cover object-center sm:object-center lg:scale-75"
             muted
             playsInline
             preload="auto"

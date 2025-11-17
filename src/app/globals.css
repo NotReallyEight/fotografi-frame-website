@@ -28,7 +28,7 @@ body {
   }
 }
 
-@keyframes typing-dots {
+@keyframes typing {
   from {
     opacity: 0;
   }
@@ -134,6 +134,10 @@ body {
     @apply before:relative before:block before:h-px before:w-0 before:border-t-2 before:border-t-gold before:duration-150 after:relative after:ml-auto after:block after:h-px after:w-0 after:border-t-2 after:border-t-gold after:duration-150 hover:before:w-full hover:after:w-full;
   }
 
+  .typewriter::after {
+    animation: typing 1s infinite;
+  }
+
   .dots {
     /* Change these variables to change the effect's duration or delay */
     --typing-duration: 1.5s; /* Total loop duration */
@@ -142,7 +146,7 @@ body {
   }
 
   .dots div {
-    animation: typing-dots var(--typing-duration) steps(1) infinite;
+    animation: typing var(--typing-duration) steps(1) infinite;
   }
 
   .dots div:nth-child(1) {
