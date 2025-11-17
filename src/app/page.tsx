@@ -110,13 +110,14 @@ export default function Home() {
 
   useGSAP(
     () => {
-      gsap.to(typewriterRef.current, {
-        text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola",
-        ease: "none",
-        duration: PRELOADER_FIRST_TRANSITION_DELAY / 1_000,
-      });
-
-      if (loading) return;
+      if (loading) {
+        gsap.to(typewriterRef.current, {
+          text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola.",
+          ease: "none",
+          duration: PRELOADER_FIRST_TRANSITION_DELAY / 1_000,
+        });
+        return;
+      }
 
       slideUpFadeIn("#smooth-content");
 
