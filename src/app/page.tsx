@@ -90,6 +90,7 @@ export default function Home() {
   const horizontalGalleryContainerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [loadingIndex, setLoadingIndex] = useState<number>(0);
+  const [threeDotsAnimation, setThreeDotsAnimation] = useState<boolean>(false);
   const preloaderLogoVideoRef = useRef<HTMLVideoElement>(null);
   const typewriterRef = useRef<HTMLDivElement>(null);
 
@@ -114,7 +115,10 @@ export default function Home() {
         gsap.to(typewriterRef.current, {
           text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola.",
           ease: "none",
-          duration: PRELOADER_FIRST_TRANSITION_DELAY / 1_000,
+          duration: (PRELOADER_FIRST_TRANSITION_DELAY - 3_000) / 1_000,
+          onComplete: () => {
+            setThreeDotsAnimation(true);
+          },
         });
         return;
       }
@@ -199,7 +203,9 @@ export default function Home() {
                 ref={typewriterRef}
                 className="font-family-regular-extra-light typewriter inline text-lg text-white after:ml-1 after:border-r-2 after:border-r-white"
               />
-              <div className="dots font-family-regular-extra-light flex flex-row gap-2 text-lg *:inline-block *:text-white *:opacity-0">
+              <div
+                className={`${threeDotsAnimation ? "opacity-100" : "opacity-0"} dots font-family-regular-extra-light flex flex-row gap-2 text-lg duration-0 *:inline-block *:text-white *:opacity-0`}
+              >
                 <div>.</div>
                 <div>.</div>
                 <div>.</div>
