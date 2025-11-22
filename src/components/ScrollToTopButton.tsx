@@ -30,7 +30,7 @@ const ScrollToTopButton: React.FC<Props> = (props) => {
           <FaArrowUp size="1.5rem" />
         </Link>
       ) : (
-        <div
+        <button
           onClick={() => {
             window.scrollTo({
               top: 0,
@@ -38,9 +38,11 @@ const ScrollToTopButton: React.FC<Props> = (props) => {
             });
           }}
           className={`glassmorph ${scrollY === 0 ? "hidden" : "fixed"} right-10 bottom-10 z-20 cursor-pointer p-4`}
+          title="Scroll to top"
+          type="button"
         >
           <FaArrowUp size="1.5rem" />
-        </div>
+        </button>
       )}
     </>
   );

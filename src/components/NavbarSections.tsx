@@ -32,15 +32,17 @@ const NavbarSections = (props: Props) => {
         ))}
       </div>
       {/* Navbar sections - mobile */}
-      <div
+      <button
+        type="button"
         className={`mr-5 flex h-[5vmin] cursor-pointer items-center justify-center ${dropdownOpened ? "burger-menu-open" : ""} md:hidden`}
         onClick={() => {
           setDropdownOpened(!dropdownOpened);
           props.toggleBurgerMenu();
         }}
+        title="Open navigation menu"
       >
         <div className="burger-menu" />
-      </div>
+      </button>
     </>
   );
 };

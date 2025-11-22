@@ -6,7 +6,7 @@ import { FaAnglesDown } from "react-icons/fa6";
 import images from "@/utils/images";
 import VerticalSeparatorLine from "@/components/VerticalSeparatorLine";
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import Gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
@@ -14,7 +14,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
 import { slideUpFadeIn } from "@/utils/gsap";
-import TextPlugin from "gsap/TextPlugin";
+import { TextPlugin } from "gsap/TextPlugin";
 
 const ABOUT_US_PARAGRAPHS = [
   {
@@ -81,7 +81,7 @@ const APERTURE_VALUES: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
 const PRELOADER_FIRST_TRANSITION_DELAY = 7_500;
 const PRELOADER_TOTAL_DURATION = 11_500;
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, TextPlugin);
+Gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, TextPlugin);
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
@@ -112,7 +112,7 @@ export default function Home() {
   useGSAP(
     () => {
       if (loading) {
-        gsap.to(typewriterRef.current, {
+        Gsap.to(typewriterRef.current, {
           text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola.",
           ease: "none",
           duration: (PRELOADER_FIRST_TRANSITION_DELAY - 3_000) / 1_000,
@@ -160,7 +160,7 @@ export default function Home() {
       const galleryWidth =
         horizontalGalleryContainerRef.current?.scrollWidth ?? 0;
 
-      gsap.to(horizontalGalleryContainerRef.current, {
+      Gsap.to(horizontalGalleryContainerRef.current, {
         x: () => -(galleryWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
