@@ -23,7 +23,7 @@ const Logo = ({ dark = false, redirects = true, bigger = false }: Props) => (
       alt="Frame Logo"
       width={540}
       height={540}
-      className={`${bigger ? `max-h-halfWidth max-w-halfWidth lg:max-h-halfHeight lg:max-w-halfHeight` : "max-h-20 max-w-20 xl:max-h-24 xl:max-w-24"}`}
+      className={`${bigger ? `max-h-half-width max-w-half-width lg:max-h-half-height lg:max-w-half-height` : "max-h-20 max-w-20 xl:max-h-24 xl:max-w-24"}`}
     />
   </ConditionalWrapper>
 );

@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  cacheComponents: true,
+  typedRoutes: true,
+};
 
 export default nextConfig;

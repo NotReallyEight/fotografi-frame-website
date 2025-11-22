@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import HorizontalSeparatorLine from "./HorizontalSeparatorLine";
 
 const Footer = () => (
-  <div className="flex flex-col space-y-8 bg-lighterBlack px-8 pb-24 pt-8">
+  <div className="bg-lighter-black flex flex-col space-y-8 px-8 pt-8 pb-24">
     <div className="flex flex-row items-center justify-between">
       <div className="flex flex-col space-y-8 text-white">
         <div className="font-family-secondary text-2xl lg:text-3xl">

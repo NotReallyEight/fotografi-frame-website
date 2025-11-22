@@ -1,201 +1,232 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  background-color: #000000;
+@theme {
+  --flex-2: 2 2 0%;
+  --flex-0_0_100: 0 0 100%;
+  --flex-0_0_50: 0 0 50%;
+  --flex-0_0_33: 0 0 33%;
+
+  --color-black: #000000;
+  --color-lighter-black: #151515;
+  --color-grey: #222222;
+  --color-dusty-blue: #6b7b8c;
+  --color-gold: #b28b4a;
+  --color-white: #ffffff;
+
+  --spacing-half-width: 50dvw;
+  --spacing-half-height: 50dvh;
 }
 
-/* Keyframes */
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes typing {
-  from {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-@layer utilities {
+@utility font-family-header {
   /* Fonts */
+  font-family: var(--font-roboto-slab);
+  @apply font-bold;
+}
 
-  .font-family-header {
-    font-family: var(--font-roboto-slab);
-    @apply font-bold;
-  }
+@utility font-family-secondary {
+  font-family: var(--font-montserrat);
+  @apply font-semibold;
+}
 
-  .font-family-secondary {
-    font-family: var(--font-montserrat);
-    @apply font-semibold;
-  }
+@utility font-family-regular {
+  font-family: var(--font-manrope);
+  @apply font-normal;
+}
 
-  .font-family-regular {
-    font-family: var(--font-manrope);
-    @apply font-normal;
-  }
+@utility font-family-regular-extra-light {
+  font-family: var(--font-manrope);
+  @apply font-extralight;
+}
 
-  .font-family-regular-extra-light {
-    font-family: var(--font-manrope);
-    @apply font-extralight;
-  }
+@utility font-family-italic {
+  font-family: var(--font-playfair-display);
+  @apply font-normal italic;
+}
 
-  .font-family-italic {
-    font-family: var(--font-playfair-display);
-    @apply font-normal italic;
-  }
+@utility font-family-condensed {
+  font-family: var(--font-roboto-condensed);
+  @apply font-normal;
+}
 
-  .font-family-condensed {
-    font-family: var(--font-roboto-condensed);
-    @apply font-normal;
-  }
+@utility glassmorph {
+  background: rgba(86, 86, 86, 0.25);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
 
-  .glassmorph {
-    background: rgba(86, 86, 86, 0.25);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-  }
+@utility glassmorph-padding {
+  padding: 2rem;
+}
 
-  .glassmorph-padding {
-    padding: 2rem;
-  }
+@utility text-shadow-gold {
+  text-shadow: 0px 4px 15px var(--color-gold);
+}
 
-  .text-shadow-gold {
-    text-shadow: 0px 4px 15px theme("colors.gold");
-  }
+@utility text-shadow-gold-sm {
+  text-shadow: 0px 4px 15px rgba(178, 139, 74, 0.25);
+}
 
-  .text-shadow-gold-sm {
-    text-shadow: 0px 4px 15px rgba(178, 139, 74, 0.25);
-  }
-
-  /* Carousel styles */
-
-  .carousel-icon-disabled {
-    fill: #4d4d4d;
-  }
-
-  .carousel-icon-enabled {
-    fill: #000000;
-  }
-
-  .carousel-dot-selected {
-    background-color: #000000;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .carousel-icon-disabled {
-      fill: #b3b3b3;
-    }
-
-    .carousel-icon-enabled {
-      fill: #ffffff;
-    }
-
-    .carousel-dot-selected {
-      background-color: #ffffff;
-    }
-  }
-
+@utility fade-in {
   /* Animations */
+  animation: fade-in 0.5s forwards;
+}
 
-  .fade-in {
-    animation: fade-in 0.5s forwards;
-  }
+@utility fade-out {
+  animation: fade-out 0.5s forwards;
+}
 
-  .fade-out {
-    animation: fade-out 0.5s forwards;
-  }
+@utility link-hover-scale {
+  @apply before:border-t-gold after:border-t-gold before:relative before:block before:h-px before:w-0 before:border-t-2 before:duration-150 after:relative after:ml-auto after:block after:h-px after:w-0 after:border-t-2 after:duration-150 hover:before:w-full hover:after:w-full;
+}
 
-  .link-hover-scale {
-    @apply before:relative before:block before:h-px before:w-0 before:border-t-2 before:border-t-gold before:duration-150 after:relative after:ml-auto after:block after:h-px after:w-0 after:border-t-2 after:border-t-gold after:duration-150 hover:before:w-full hover:after:w-full;
-  }
-
-  .typewriter::after {
+@utility typewriter {
+  &::after {
     animation: typing 1s infinite;
   }
+}
 
-  .dots {
-    /* Change these variables to change the effect's duration or delay */
-    --typing-duration: 1.5s; /* Total loop duration */
-    --typing-steps: 6; /* The number of steps (usually should be kept as 2 times the number of dots */
-    --typing-step-duration: calc(var(--typing-duration) / var(--typing-steps));
-  }
+@utility dots {
+  /* Change these variables to change the effect's duration or delay */
+  --typing-duration: 1.5s; /* Total loop duration */
+  --typing-steps: 6; /* The number of steps (usually should be kept as 2 times the number of dots */
+  --typing-step-duration: calc(var(--typing-duration) / var(--typing-steps));
 
-  .dots div {
+  & div {
     animation: typing var(--typing-duration) steps(1) infinite;
   }
 
-  .dots div:nth-child(1) {
+  & div:nth-child(1) {
     animation-delay: calc(var(--typing-step-duration) * 0);
   }
-  .dots div:nth-child(2) {
+  & div:nth-child(2) {
     animation-delay: calc(var(--typing-step-duration) * 1);
   }
-  .dots div:nth-child(3) {
+  & div:nth-child(3) {
     animation-delay: calc(var(--typing-step-duration) * 2);
   }
 }
 
-@layer components {
-  .burger-menu {
-    @apply block h-1 w-8 bg-white duration-500;
-  }
+@utility burger-menu {
+  @apply block h-1 w-8 bg-white duration-500;
 
-  .burger-menu::before,
-  .burger-menu::after {
+  &::before {
     @apply absolute block h-1 w-8 bg-white duration-500 content-[''];
   }
 
-  .burger-menu::before {
+  &::after {
+    @apply absolute block h-1 w-8 bg-white duration-500 content-[''];
+  }
+
+  &::before {
     @apply -translate-y-2;
   }
 
-  .burger-menu::after {
+  &::after {
     @apply translate-y-2;
   }
 
-  .burger-menu-open .burger-menu {
-    @apply -translate-x-16 bg-opacity-0 duration-500;
+  .burger-menu-open & {
+    @apply -translate-x-16 bg-white/0 duration-500;
   }
 
-  .burger-menu-open .burger-menu::before,
-  .burger-menu-open .burger-menu::after {
+  .burger-menu-open &::before {
     @apply translate-x-16 duration-500;
   }
 
-  .burger-menu-open .burger-menu::before {
+  .burger-menu-open &::after {
+    @apply translate-x-16 duration-500;
+  }
+
+  .burger-menu-open &::before {
     @apply translate-y-0 rotate-45;
   }
 
-  .burger-menu-open .burger-menu::after {
+  .burger-menu-open &::after {
     @apply translate-y-0 -rotate-45;
   }
+}
 
-  .navbar-dropdown-sections-open {
-    animation: slide-down-fade-in 500ms ease-out forwards;
+@utility burger-menu-open {
+  & .burger-menu {
+    @apply -translate-x-16 bg-white/0 duration-500;
+  }
+
+  & .burger-menu::before {
+    @apply translate-x-16 duration-500;
+  }
+
+  & .burger-menu::after {
+    @apply translate-x-16 duration-500;
+  }
+
+  & .burger-menu::before {
+    @apply translate-y-0 rotate-45;
+  }
+
+  & .burger-menu::after {
+    @apply translate-y-0 -rotate-45;
+  }
+}
+
+@utility navbar-dropdown-sections-open {
+  animation: slide-down-fade-in 500ms ease-out forwards;
+}
+
+@layer utilities {
+  body {
+    background-color: #000000;
+  }
+
+  /* Keyframes */
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }

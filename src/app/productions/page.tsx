@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
-import gsap from "gsap";
+import Gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -29,7 +29,7 @@ const productionVideos: {
   },
 ];
 
-gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+Gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function Works() {
   const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ export default function Works() {
   useGSAP(
     () => {
       // Horizontal scrolling gallery
-      const panels = gsap.utils.toArray(".horizontal-gallery-panel");
+      const panels = Gsap.utils.toArray(".horizontal-gallery-panel");
       const mainEl = document.querySelector("main");
 
       if (mainEl === null) return;
@@ -56,7 +56,7 @@ export default function Works() {
         smoothTouch: 0.5,
       });
 
-      gsap.to(panels, {
+      Gsap.to(panels, {
         x: -panelsOffsetWidth,
         ease: "none",
         scrollTrigger: {
@@ -113,14 +113,14 @@ export default function Works() {
 
         // Once the thing reaches the end then we can "snap" without snapping as it's
         // smoothly to the initial position (which is going to be 0).
-        const setX = gsap.quickSetter(marquee, "x", "px");
+        const setX = Gsap.quickSetter(marquee, "x", "px");
         const tick = () => {
           x -= speed;
           if (x <= -totalWidth) x += totalWidth;
           setX(x);
         };
 
-        gsap.ticker.add(tick);
+        Gsap.ticker.add(tick);
       })();
     },
     {
@@ -145,7 +145,7 @@ export default function Works() {
         <Navbar />
 
         <main className="flex flex-col bg-black" id="smooth-content">
-          <div className="m-auto flex h-[100dvh] flex-col items-center justify-center gap-7 p-4 text-center text-white lg:w-1/2">
+          <div className="m-auto flex h-dvh flex-col items-center justify-center gap-7 p-4 text-center text-white lg:w-1/2">
             <div className="font-family-header text-3xl lg:text-6xl">
               I Nostri Lavori
             </div>
@@ -162,7 +162,7 @@ export default function Works() {
           </div>
 
           {/* Horizontal scrolling section */}
-          <div className="horizontal-gallery-container flex h-[100dvh] w-full flex-nowrap">
+          <div className="horizontal-gallery-container flex h-dvh w-full flex-nowrap">
             {images.worksGrid.map((image, index) => (
               <Image
                 key={`horizontal-gallery-image-${index}`}
@@ -180,7 +180,7 @@ export default function Works() {
           {productionVideos.map((video) => (
             <div
               key={`production-video-${video.id}`}
-              className="flex h-[100dvh] w-full bg-black"
+              className="flex h-dvh w-full bg-black"
             >
               <a
                 href={`https://youtu.be/${video.id}`}

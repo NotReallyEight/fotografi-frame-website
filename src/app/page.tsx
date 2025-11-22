@@ -6,7 +6,7 @@ import { FaAnglesDown } from "react-icons/fa6";
 import images from "@/utils/images";
 import VerticalSeparatorLine from "@/components/VerticalSeparatorLine";
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import Gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
@@ -14,7 +14,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
 import { slideUpFadeIn } from "@/utils/gsap";
-import TextPlugin from "gsap/TextPlugin";
+import { TextPlugin } from "gsap/TextPlugin";
 
 const ABOUT_US_PARAGRAPHS = [
   {
@@ -60,19 +60,19 @@ const OUR_SERVICES_PARAGRAPHS = [
     title: "Produzione social",
     description:
       "Offriamo servizi di gestione dei social e creazione di post, reels, spot e web serie, aiutando i nostri clienti a raggiungere il loro pubblico target e a distinguersi sulla piattaforma.",
-    image: images.socialProduction.src,
+    image: images.socialProduction,
   },
   {
     title: "Pubblicità",
     description:
       "Studiamo soluzioni personalizzate per promuovere i prodotti e i servizi dei nostri clienti, utilizzando una combinazione di creatività e strategia per massimizzare l'impatto delle loro campagne pubblicitarie.",
-    image: images.advertising.src,
+    image: images.advertising,
   },
   {
     title: "Eventi",
     description:
       "Che si tratti di un compleanno, un concerto o una cerimonia, siamo specializzati nella cattura dei momenti più belli e divertenti della festa, con servizi personalizzati e attrezzatura all'avanguardia.",
-    image: images.events.src,
+    image: images.events,
   },
 ];
 
@@ -81,7 +81,7 @@ const APERTURE_VALUES: number[] = [1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22];
 const PRELOADER_FIRST_TRANSITION_DELAY = 7_500;
 const PRELOADER_TOTAL_DURATION = 11_500;
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, TextPlugin);
+Gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, TextPlugin);
 
 export default function Home() {
   const containerRef = useRef<HTMLElement>(null);
@@ -112,7 +112,7 @@ export default function Home() {
   useGSAP(
     () => {
       if (loading) {
-        gsap.to(typewriterRef.current, {
+        Gsap.to(typewriterRef.current, {
           text: "Ogni grande storia nasce da un gruppo di menti che lavorano come una sola.",
           ease: "none",
           duration: (PRELOADER_FIRST_TRANSITION_DELAY - 3_000) / 1_000,
@@ -160,7 +160,7 @@ export default function Home() {
       const galleryWidth =
         horizontalGalleryContainerRef.current?.scrollWidth ?? 0;
 
-      gsap.to(horizontalGalleryContainerRef.current, {
+      Gsap.to(horizontalGalleryContainerRef.current, {
         x: () => -(galleryWidth - window.innerWidth),
         ease: "none",
         scrollTrigger: {
@@ -192,12 +192,12 @@ export default function Home() {
 
       {loading && (
         <div
-          className={`absolute inset-0 h-[100dvh] w-[100dvw] bg-black transition-opacity duration-700 ${loadingIndex === 0 ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-dvh w-dvw bg-black transition-opacity duration-700 ${loadingIndex === 0 ? "opacity-100" : "opacity-0"}`}
           role="status"
           aria-live="polite"
           aria-label="Loading application"
         >
-          <div className="absolute bottom-16 left-0 right-0 mx-auto w-[80dvw] lg:left-16 lg:right-16 lg:mx-0 lg:w-[35dvw]">
+          <div className="absolute right-0 bottom-16 left-0 mx-auto w-[80dvw] lg:right-16 lg:left-16 lg:mx-0 lg:w-[35dvw]">
             <div className="flex flex-row items-center gap-4">
               <div
                 ref={typewriterRef}
@@ -217,7 +217,7 @@ export default function Home() {
 
       {loading && (
         <div
-          className={`absolute inset-0 flex h-[100dvh] w-[100dvw] items-center justify-center bg-black transition-opacity duration-700 ${loadingIndex === 1 ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 flex h-dvh w-dvw items-center justify-center bg-black transition-opacity duration-700 ${loadingIndex === 1 ? "opacity-100" : "opacity-0"}`}
         >
           <video
             ref={preloaderLogoVideoRef}
@@ -238,7 +238,7 @@ export default function Home() {
           <Navbar />
 
           {/* Animated f stop */}
-          <div className="font-family-condensed fixed bottom-8 right-8 z-10 text-base text-white lg:text-2xl">
+          <div className="font-family-condensed fixed right-8 bottom-8 z-10 text-base text-white lg:text-2xl">
             f/{fStop.toFixed(1)}
           </div>
           <main
@@ -250,7 +250,7 @@ export default function Home() {
             <section className="relative flex min-h-screen flex-col items-center justify-center">
               {/* Background Image */}
               <Image
-                src={images.header.src}
+                src={images.header}
                 data-speed="0.5"
                 alt="Background"
                 fill
@@ -259,7 +259,7 @@ export default function Home() {
                 style={{ objectPosition: "center" }}
               />
               {/* Overlay for darkening */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-black/75" />
 
               {/* Header */}
               <div className="relative flex h-full flex-col items-center justify-center space-y-7">
@@ -286,7 +286,7 @@ export default function Home() {
             <section className="relative py-20">
               {/* Background Image */}
               <Image
-                src={images.aboutUs.src}
+                src={images.aboutUs}
                 alt="Background"
                 fill
                 className="-z-10 object-cover"
@@ -294,7 +294,7 @@ export default function Home() {
                 loading="lazy"
               />
               {/* Overlay for darkening */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-black/75" />
 
               <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
                 {/* Title and description */}
@@ -314,7 +314,7 @@ export default function Home() {
                 {/* Paragraphs */}
                 {ABOUT_US_PARAGRAPHS.map((paragraph, index) => (
                   <div
-                    className="mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]"
+                    className="mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr_auto_1fr]"
                     key={`about-us-paragraph-${index}`}
                   >
                     <div
@@ -407,7 +407,7 @@ export default function Home() {
                         height={622}
                         src={eventImage}
                         alt={`Event image ${index + 1}`}
-                        className="h-full w-auto flex-shrink-0 object-cover"
+                        className="h-full w-auto shrink-0 object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 944px"
                       />
@@ -416,8 +416,8 @@ export default function Home() {
                 </div>
 
                 <Link
-                  href={"/works"}
-                  className="font-family-regular p-4 text-center text-base font-light text-white outline outline-1 outline-dustyBlue duration-200 hover:outline-white lg:text-xl"
+                  href={"/productions"}
+                  className="font-family-regular outline-dusty-blue p-4 text-center text-base font-light text-white outline-1 duration-200 outline-solid hover:outline-white lg:text-xl"
                 >
                   Our portfolio
                 </Link>
@@ -430,7 +430,7 @@ export default function Home() {
                 {/* Title and description */}
                 <div className="flex flex-col items-center justify-center space-y-8 lg:space-y-28">
                   {/* Members images */}
-                  <div className="w-[100vw] items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
+                  <div className="w-screen items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
                     <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
                       OUR
                     </div>
@@ -458,7 +458,7 @@ export default function Home() {
                   </div>
 
                   {/* Slogan */}
-                  <div className="mx-4 mt-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]">
+                  <div className="mx-4 mt-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr_auto_1fr]">
                     {/* Title */}
                     <div className="font-family-secondary self-center text-2xl lg:text-3xl">
                       La qualità che cercate, con l&apos;energia che vi{" "}
