@@ -4,7 +4,7 @@ import Image from "next/image";
 
 type Props = {
   title: string;
-  description: string | (string | JSX.Element)[];
+  description: string | (string | React.JSX.Element)[];
   image?: StaticImageData;
   alt?: string;
 };

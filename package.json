@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,23 +14,22 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.13.0",
-    "next": "14.2.15",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "15.0.0",
+    "react": "19.0.0-rc-65a56d0e-20241020",
+    "react-dom": "19.0.0-rc-65a56d0e-20241020",
     "react-icons": "^5.5.0",
-    "react-scrollama": "^2.4.2",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@prettier/plugin-oxc": "^0.0.5",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24",
-    "@types/react": "18.3.27",
-    "@types/react-dom": "18.3.7",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.0.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
@@ -43,7 +42,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "@types/react": "18.3.27",
-    "@types/react-dom": "18.3.7"
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }
