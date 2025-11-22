@@ -10,7 +10,7 @@ const ourEventsCarouselSlides: {
 
 const OurEvents = () => (
   <div
-    className="flex min-h-[100dvh] snap-center flex-col items-center justify-center md:justify-around"
+    className="flex min-h-dvh snap-center flex-col items-center justify-center md:justify-around"
     id="our-events"
   >
     <div

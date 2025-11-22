@@ -74,7 +74,7 @@ const birthdaysSection: Record<
 
 export default function Birthdays() {
   return (
-    <main className="flex h-[100dvh] flex-col">
+    <main className="flex h-dvh flex-col">
       <Navbar />
       <ScrollToTopButton />
 
@@ -98,7 +98,7 @@ export default function Birthdays() {
           alt="Fotografia scattata da FRAME."
           className="flex-1 object-contain md:max-h-[65dvh]"
         />
-        <div className="mt-[10dvh] flex h-[100%] flex-1 flex-col items-center justify-evenly p-8 md:mt-0">
+        <div className="mt-[10dvh] flex h-full flex-1 flex-col items-center justify-evenly p-8 md:mt-0">
           <div className="font-family-header mb-[5dvh] text-2xl md:text-5xl">
             {birthdaysSection.introduction.title}
           </div>

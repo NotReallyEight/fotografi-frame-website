@@ -36,9 +36,9 @@ const Navbar = () => {
   return (
     <div
       id="navbar"
-      className="fixed left-4 right-4 top-4 z-10 mx-0 items-center justify-center gap-4 space-y-4 lg:left-0 lg:right-0 lg:top-7 lg:m-0 lg:mx-auto lg:w-2/3"
+      className="fixed top-4 right-4 left-4 z-10 mx-0 items-center justify-center gap-4 space-y-4 lg:top-7 lg:right-0 lg:left-0 lg:m-0 lg:mx-auto lg:w-2/3"
     >
-      <div className="flex h-fit flex-row items-center justify-between rounded-xl bg-lighterBlack px-7 py-4">
+      <div className="bg-lighter-black flex h-fit flex-row items-center justify-between rounded-xl px-7 py-4">
         <Logo />
         <NavbarSections
           sections={sections}
@@ -46,13 +46,13 @@ const Navbar = () => {
         />
       </div>
       <div
-        className={`font-family-secondary *:bg-grey ${isBurgerMenuOpen ? "navbar-dropdown-sections-open flex" : "hidden"} flex-col items-center justify-center space-y-4 rounded-xl bg-lighterBlack p-4 text-center text-base text-white *:self-stretch *:rounded-xl *:p-4 lg:hidden`}
+        className={`font-family-secondary *:bg-grey ${isBurgerMenuOpen ? "navbar-dropdown-sections-open flex" : "hidden"} bg-lighter-black flex-col items-center justify-center space-y-4 rounded-xl p-4 text-center text-base text-white *:self-stretch *:rounded-xl *:p-4 lg:hidden`}
       >
         {sections.map((section, index) => (
           <Link
             href={section.href}
             key={`navbar-dropdown-section-${index}`}
-            className="duration-200 hover:bg-lighterBlack"
+            className="hover:bg-lighter-black duration-200"
           >
             {section.name}
           </Link>

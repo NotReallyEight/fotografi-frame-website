@@ -54,17 +54,17 @@ const Carousel: React.FC<Props> = (props) => {
 
   return (
     <div
-      className={`max-h-[50dvh] max-w-[${props.maxWidth?.mobile !== undefined ? props.maxWidth.mobile : "80dvw"}] md:max-w-[${props.maxWidth?.desktop !== undefined ? props.maxWidth.desktop : "50dvw"}]`}
+      className={`max-h-half-height max-w-[${props.maxWidth?.mobile !== undefined ? props.maxWidth.mobile : "80dvw"}] md:max-w-[${props.maxWidth?.desktop !== undefined ? props.maxWidth.desktop : "50dvw"}]`}
     >
       {/* Carousel viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="ml-[-1rem] flex touch-pan-y touch-pinch-zoom">
+        <div className="-ml-4 flex touch-pan-y touch-pinch-zoom">
           {props.slides.map((slide, index) => {
             const imageObjectFit = slide.imageObjectFit ?? "contain";
 
             return (
               <div
-                className={`flex-0_0_100 ${props.slidesPerView === 2 ? "md:flex-0_0_50" : ""} ${props.slidesPerView === 3 ? "lg:flex-0_0_33" : ""} min-w-0 pl-[1rem]`}
+                className={`flex-0_0_100 ${props.slidesPerView === 2 ? "md:flex-0_0_50" : ""} ${props.slidesPerView === 3 ? "lg:flex-0_0_33" : ""} min-w-0 pl-4`}
                 key={index}
               >
                 <a href={slide.href}>

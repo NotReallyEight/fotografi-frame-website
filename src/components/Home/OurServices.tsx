@@ -41,7 +41,7 @@ const ourServicesSections: OurServicesSection[] = [
 
 const OurServices = () => (
   <div
-    className="flex min-h-[100dvh] snap-center flex-col items-center justify-center md:justify-evenly"
+    className="flex min-h-dvh snap-center flex-col items-center justify-center md:justify-evenly"
     id="our-services"
   >
     <div

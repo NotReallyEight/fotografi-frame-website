@@ -22,6 +22,7 @@
     "sharp": "^0.33.4"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -37,8 +38,8 @@
     "eslint-plugin-unused-imports": "^3.2.0",
     "postcss": "^8",
     "prettier": "^3.3.0",
-    "prettier-plugin-tailwindcss": "^0.6.1",
-    "tailwindcss": "^3.4.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5"
   }
 }

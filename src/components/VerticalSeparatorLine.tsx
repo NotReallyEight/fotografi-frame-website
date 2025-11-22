@@ -1,7 +1,7 @@
 type SeparatorColor = "dustyBlue" | "gold";
 
 const colorClassMap: Record<SeparatorColor, string> = {
-  dustyBlue: "bg-dustyBlue",
+  dustyBlue: "bg-dusty-blue",
   gold: "bg-gold",
 };
 

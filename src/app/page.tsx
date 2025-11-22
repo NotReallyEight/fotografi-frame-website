@@ -192,12 +192,12 @@ export default function Home() {
 
       {loading && (
         <div
-          className={`absolute inset-0 h-[100dvh] w-[100dvw] bg-black transition-opacity duration-700 ${loadingIndex === 0 ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-dvh w-dvw bg-black transition-opacity duration-700 ${loadingIndex === 0 ? "opacity-100" : "opacity-0"}`}
           role="status"
           aria-live="polite"
           aria-label="Loading application"
         >
-          <div className="absolute bottom-16 left-0 right-0 mx-auto w-[80dvw] lg:left-16 lg:right-16 lg:mx-0 lg:w-[35dvw]">
+          <div className="absolute right-0 bottom-16 left-0 mx-auto w-[80dvw] lg:right-16 lg:left-16 lg:mx-0 lg:w-[35dvw]">
             <div className="flex flex-row items-center gap-4">
               <div
                 ref={typewriterRef}
@@ -217,7 +217,7 @@ export default function Home() {
 
       {loading && (
         <div
-          className={`absolute inset-0 flex h-[100dvh] w-[100dvw] items-center justify-center bg-black transition-opacity duration-700 ${loadingIndex === 1 ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 flex h-dvh w-dvw items-center justify-center bg-black transition-opacity duration-700 ${loadingIndex === 1 ? "opacity-100" : "opacity-0"}`}
         >
           <video
             ref={preloaderLogoVideoRef}
@@ -238,7 +238,7 @@ export default function Home() {
           <Navbar />
 
           {/* Animated f stop */}
-          <div className="font-family-condensed fixed bottom-8 right-8 z-10 text-base text-white lg:text-2xl">
+          <div className="font-family-condensed fixed right-8 bottom-8 z-10 text-base text-white lg:text-2xl">
             f/{fStop.toFixed(1)}
           </div>
           <main
@@ -314,7 +314,7 @@ export default function Home() {
                 {/* Paragraphs */}
                 {ABOUT_US_PARAGRAPHS.map((paragraph, index) => (
                   <div
-                    className="mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]"
+                    className="mx-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr_auto_1fr]"
                     key={`about-us-paragraph-${index}`}
                   >
                     <div
@@ -407,7 +407,7 @@ export default function Home() {
                         height={622}
                         src={eventImage}
                         alt={`Event image ${index + 1}`}
-                        className="h-full w-auto flex-shrink-0 object-cover"
+                        className="h-full w-auto shrink-0 object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 944px"
                       />
@@ -417,7 +417,7 @@ export default function Home() {
 
                 <Link
                   href={"/works"}
-                  className="font-family-regular p-4 text-center text-base font-light text-white outline outline-1 outline-dustyBlue duration-200 hover:outline-white lg:text-xl"
+                  className="font-family-regular outline-dusty-blue p-4 text-center text-base font-light text-white outline-1 duration-200 outline-solid hover:outline-white lg:text-xl"
                 >
                   Our portfolio
                 </Link>
@@ -430,7 +430,7 @@ export default function Home() {
                 {/* Title and description */}
                 <div className="flex flex-col items-center justify-center space-y-8 lg:space-y-28">
                   {/* Members images */}
-                  <div className="w-[100vw] items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
+                  <div className="w-screen items-center justify-center gap-14 lg:grid lg:w-auto lg:grid-cols-[1fr_auto_1fr]">
                     <div className="font-family-secondary hidden text-8xl font-extrabold text-white lg:block">
                       OUR
                     </div>
@@ -458,7 +458,7 @@ export default function Home() {
                   </div>
 
                   {/* Slogan */}
-                  <div className="mx-4 mt-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr,auto,1fr]">
+                  <div className="mx-4 mt-4 flex flex-col space-y-4 lg:grid lg:w-2/3 lg:grid-cols-[1fr_auto_1fr]">
                     {/* Title */}
                     <div className="font-family-secondary self-center text-2xl lg:text-3xl">
                       La qualità che cercate, con l&apos;energia che vi{" "}

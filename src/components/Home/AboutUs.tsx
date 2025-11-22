@@ -82,7 +82,7 @@ const AboutUs = () => {
   return (
     <div>
       <Scrollama offset={0.5} onStepEnter={onStepEnter}>
-        <div className="sticky top-0 -z-10 min-h-[100dvh] opacity-20">
+        <div className="sticky top-0 -z-10 min-h-dvh opacity-20">
           <picture>
             {/* Dynamically import the image depending on the color scheme chosen by the user */}
             <source
@@ -103,7 +103,7 @@ const AboutUs = () => {
             <div
               id={`about-us-${stepIndex + 1}`}
               className={
-                "flex min-h-[100dvh] snap-center flex-col items-center justify-center"
+                "flex min-h-dvh snap-center flex-col items-center justify-center"
               }
             >
               {(section.title !== undefined ||
