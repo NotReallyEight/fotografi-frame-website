@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "TIMING=1 eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --cache",
     "prettier": "prettier src/**/*.{ts,tsx,css} --write --cache",
     "prettier-check": "prettier src/**/*.{ts,tsx,css} --check",
     "typecheck": "tsc --noEmit"
@@ -14,7 +14,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.13.0",
-    "next": "15.4.7",
+    "next": "15.5.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-icons": "^5.5.0",
@@ -29,7 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8",
-    "eslint-config-next": "15.4.7",
+    "eslint-config-next": "15.5.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
