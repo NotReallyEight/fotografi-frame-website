@@ -259,7 +259,7 @@ export default function Home() {
                 style={{ objectPosition: "center" }}
               />
               {/* Overlay for darkening */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-black/75" />
 
               {/* Header */}
               <div className="relative flex h-full flex-col items-center justify-center space-y-7">
@@ -294,7 +294,7 @@ export default function Home() {
                 loading="lazy"
               />
               {/* Overlay for darkening */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-black bg-opacity-75" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-black/75" />
 
               <div className="relative flex flex-col items-center justify-center space-y-8 p-4 text-center text-3xl font-bold text-white lg:space-y-32">
                 {/* Title and description */}

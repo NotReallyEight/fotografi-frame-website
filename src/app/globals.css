@@ -179,7 +179,7 @@ body {
   }
 
   .burger-menu-open .burger-menu {
-    @apply -translate-x-16 bg-opacity-0 duration-500;
+    @apply -translate-x-16 bg-white/0 duration-500;
   }
 
   .burger-menu-open .burger-menu::before,
