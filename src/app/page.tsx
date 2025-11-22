@@ -60,19 +60,19 @@ const OUR_SERVICES_PARAGRAPHS = [
     title: "Produzione social",
     description:
       "Offriamo servizi di gestione dei social e creazione di post, reels, spot e web serie, aiutando i nostri clienti a raggiungere il loro pubblico target e a distinguersi sulla piattaforma.",
-    image: images.socialProduction.src,
+    image: images.socialProduction,
   },
   {
     title: "Pubblicità",
     description:
       "Studiamo soluzioni personalizzate per promuovere i prodotti e i servizi dei nostri clienti, utilizzando una combinazione di creatività e strategia per massimizzare l'impatto delle loro campagne pubblicitarie.",
-    image: images.advertising.src,
+    image: images.advertising,
   },
   {
     title: "Eventi",
     description:
       "Che si tratti di un compleanno, un concerto o una cerimonia, siamo specializzati nella cattura dei momenti più belli e divertenti della festa, con servizi personalizzati e attrezzatura all'avanguardia.",
-    image: images.events.src,
+    image: images.events,
   },
 ];
 
@@ -250,7 +250,7 @@ export default function Home() {
             <section className="relative flex min-h-screen flex-col items-center justify-center">
               {/* Background Image */}
               <Image
-                src={images.header.src}
+                src={images.header}
                 data-speed="0.5"
                 alt="Background"
                 fill
@@ -286,7 +286,7 @@ export default function Home() {
             <section className="relative py-20">
               {/* Background Image */}
               <Image
-                src={images.aboutUs.src}
+                src={images.aboutUs}
                 alt="Background"
                 fill
                 className="-z-10 object-cover"
