@@ -85,31 +85,6 @@
   text-shadow: 0px 4px 15px rgba(178, 139, 74, 0.25);
 }
 
-@utility carousel-icon-disabled {
-  /* Carousel styles */
-  fill: #4d4d4d;
-
-  @media (prefers-color-scheme: dark) {
-    fill: #b3b3b3;
-  }
-}
-
-@utility carousel-icon-enabled {
-  fill: #000000;
-
-  @media (prefers-color-scheme: dark) {
-    fill: #ffffff;
-  }
-}
-
-@utility carousel-dot-selected {
-  background-color: #000000;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: #ffffff;
-  }
-}
-
 @utility fade-in {
   /* Animations */
   animation: fade-in 0.5s forwards;
