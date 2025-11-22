@@ -416,7 +416,7 @@ export default function Home() {
                 </div>
 
                 <Link
-                  href={"/works"}
+                  href={"/productions"}
                   className="font-family-regular outline-dusty-blue p-4 text-center text-base font-light text-white outline-1 duration-200 outline-solid hover:outline-white lg:text-xl"
                 >
                   Our portfolio

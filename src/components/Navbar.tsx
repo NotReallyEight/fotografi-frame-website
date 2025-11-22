@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { type ComponentProps, useState } from "react";
 import Logo from "./Logo";
 import NavbarSections from "./NavbarSections";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { slideUpFadeIn } from "@/utils/gsap";
 
-const sections: { name: string; href: string }[] = [
+const sections: {
+  name: string;
+  href: ComponentProps<typeof Link>["href"];
+}[] = [
   {
     name: "Home",
     href: "/",

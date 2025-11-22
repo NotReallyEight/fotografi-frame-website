@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { type ComponentProps, useState } from "react";
 import VerticalSeparatorLine from "./VerticalSeparatorLine";
 
 type Props = {
-  sections: { name: string; href: string }[];
+  sections: { name: string; href: ComponentProps<typeof Link>["href"] }[];
   toggleBurgerMenu: () => void;
 };
 
