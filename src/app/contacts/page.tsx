@@ -1,3 +1,5 @@
+"use cache";
+
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
   keywords: ["fotografia", "fotografi frame", "fotografi", "frame"],
 };
 
-export default function Birthdays() {
+export default async function Contacts() {
   return (
     <main className="flex h-dvh flex-col">
       <Navbar />
