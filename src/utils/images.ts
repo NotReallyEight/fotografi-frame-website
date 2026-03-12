@@ -67,9 +67,11 @@ import BirthdaysCarouselsImage20 from "../../public/assets/18-Angela-261-scaled.
 import BirthdaysServicesWeOfferImage from "../../public/assets/Tavola-da-disegno-1-1-960x245.png";
 import ProductionVideoDemoThumbnail from "../../public/assets/demo-bg-production-video.png";
 import StudioDemoPlanimetry from "../../public/assets/studio/demo-studio-planimetry.png";
+import AboutDemoGroupPhoto from "../../public/assets/about/demo-foto-gruppo-frame.png";
 
 const images = {
   aboutUs: AboutUsImage,
+  aboutGroupImage: AboutDemoGroupPhoto,
   advertising: AdvertisingImage,
   birthdays: {
     carousels: [
