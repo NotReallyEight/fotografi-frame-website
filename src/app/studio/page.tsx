@@ -9,6 +9,7 @@ import Button from "@/components/Button";
 import StudioFeature from "./_components/StudioFeature";
 import Image from "next/image";
 import images from "@/utils/images";
+import FadeToBlackImage from "@/components/FadeToBlackImage";
 
 const STUDIO_FEATURES = [
   "118mq Surface Area",
@@ -63,14 +64,14 @@ export default function Studio() {
 
           {/* Studio Planimetry */}
           <div
-            className="
-              md:h-dvh
-              grid grid-cols-1
-              md:grid-cols-[1fr_auto_2fr]
-              space-y-4 md:space-y-0
-              items-center
-              p-4 md:p-8 xl:p-12
-            "
+            className={`
+                md:h-dvh
+                grid grid-cols-1
+                md:grid-cols-[1fr_auto_2fr]
+                space-y-4 md:space-y-0
+                items-center
+                p-4 md:p-8 xl:p-12
+              `}
           >
             <div className="flex flex-col text-white space-y-4 xl:ml-4">
               <div className="font-family-secondary">
@@ -99,30 +100,10 @@ export default function Studio() {
           </div>
 
           {/* Visual Reference */}
-          <div
-            className="
-              relative
-              aspect-auto
-              md:aspect-video
-              overflow-hidden
-            "
-          >
-            <Image
-              alt="Riferimento visivo: esempio di allestimento nello studio fotografico Frame"
-              src={images.birthdays.header[1]}
-              className="
-                w-full aspect-auto
-                md:aspect-video
-                object-cover object-bottom
-              "
-            />
-            <div
-              className="
-                pointer-events-none absolute inset-0
-                bg-linear-to-b from-black/60 to-black
-              "
-            />
-          </div>
+          <FadeToBlackImage
+            src={images.birthdays.header[1]}
+            alt="Riferimento visivo: esempio di allestimento nello studio fotografico Frame"
+          />
 
           <Suspense fallback={<Footer usesDate={false} />}>
             <Footer />

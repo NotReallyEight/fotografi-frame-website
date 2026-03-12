@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { Activity, type FC } from "react";
 import Footer from "./Footer";
 import { useNav } from "@/contexts/NavContext";
+import { LinkProps } from "next/link";
 
 type Props = {
   fixed?: boolean;
@@ -17,7 +18,7 @@ type Props = {
 
 const sections: {
   name: string;
-  href: string;
+  href: LinkProps<unknown>["href"];
 }[] = [
   {
     name: "Work",
@@ -26,6 +27,10 @@ const sections: {
   {
     name: "Studio",
     href: "/studio",
+  },
+  {
+    name: "About",
+    href: "/about",
   },
   {
     name: "Contact",
@@ -73,7 +78,7 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
           {sections.map((section, index) => (
             <a
               key={`nav-${index}`}
-              href={section.href}
+              href={typeof section.href === "string" ? section.href : "/"}
               className={`
                 hover:text-white
                 duration-(--transition-duration)
@@ -129,7 +134,7 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
             >
               <div className="font-family-mono mb-1">0{index + 1}</div>
               <a
-                href={section.href}
+                href={typeof section.href === "string" ? section.href : "/"}
                 className={`
                   font-family-header
                   text-6xl
