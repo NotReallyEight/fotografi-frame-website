@@ -9,7 +9,6 @@ import { FiChevronsDown } from "react-icons/fi";
 import MemberImage from "./_components/MemberImage";
 import images from "@/utils/images";
 import { StaticImageData } from "next/image";
-import Image from "next/image";
 
 const MEMBER_IMAGES_GRID: {
   name: string;
@@ -98,7 +97,12 @@ export default function About() {
         <Navbar hasLeftPadding fixed />
 
         <Activity mode={isNavOpen ? "hidden" : "visible"}>
-          <div className="px-8 md:px-12 lg:px-[10dvw] mb-32">
+          <div
+            className={`
+                px-8 md:px-12 lg:px-[10dvw]
+                mb-32
+              `}
+          >
             <div
               className="
               h-dvh
@@ -109,22 +113,6 @@ export default function About() {
             "
             >
               {/* Hero section */}
-              <Image
-                alt="Foto di gruppo dei membri di FRAME"
-                src={images.aboutGroupImage}
-                className={`
-                  absolute
-                  h-dvh
-                  object-cover
-                `}
-              />
-              <div
-                className={`
-                    pointer-events-none absolute inset-0
-                    bg-linear-to-b from-black/60 from-10% to-90% to-black
-                    h-dvh
-                  `}
-              />
               <div className="font-family-header z-10">Meet the frame.</div>
               <div className="w-half-width font-family-regular-lg text-text-secondary z-10">
                 A collective of visionaries redefining storytelling through
@@ -158,7 +146,14 @@ export default function About() {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-4">
+            <div
+              className={`
+                  grid
+                  grid-cols-2
+                  md:grid-cols-3
+                  lg:grid-cols-4
+                `}
+            >
               {MEMBER_IMAGES_GRID.map((memberImage, index) => (
                 <MemberImage
                   imageSrc={memberImage.image}
