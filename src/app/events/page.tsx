@@ -19,7 +19,7 @@ const PHILOSOPHY_IMAGES: StaticImageData[] = [
   images.birthdays.header[1],
 ];
 
-export default function Contacts() {
+export default function Events() {
   const { isNavOpen } = useNav();
 
   return (
