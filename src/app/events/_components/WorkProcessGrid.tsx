@@ -19,7 +19,7 @@ const WORK_PROCESS_STEPS: {
   },
   {
     description:
-      "Discrete, professional, and comprehensive documentation of your event.",
+      "Discreet, professional, and comprehensive documentation of your event.",
     icon: <FiCamera size={32} className="text-accent" />,
     title: "02. Event Coverage",
   },
