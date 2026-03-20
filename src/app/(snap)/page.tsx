@@ -13,6 +13,7 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import Metadata from "@/components/Metadata";
 import { useNav } from "@/contexts/NavContext";
+import SecondaryLink from "@/components/SecondaryLink";
 
 const PRELOADER_TOTAL_DURATION = 4_000;
 const PRODUCTIONS_CATEGORIES = [
@@ -344,12 +345,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <a
-                    href="/web-dev"
-                    className="mt-auto underline font-family-mono uppercase hover:text-accent transition-(--transition-duration)"
-                  >
-                    See Case Studies
-                  </a>
+                  <SecondaryLink href={"/web-dev"} label="See Case Studies" />
                 </div>
 
                 <div className="flex flex-col p-8 border-2 border-border bg-secondary space-y-8 w-full xl:w-[85%] mx-auto">
