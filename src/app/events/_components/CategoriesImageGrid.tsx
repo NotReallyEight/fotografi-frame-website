@@ -38,14 +38,12 @@ const CategoriesImageGrid = () => (
     {EVENT_CATEGORIES.map((category, index) => (
       <div
         key={`event-category-${index}`}
-        className={
-          `
+        className={`
             relative group
             aspect-auto
             overflow-hidden
             ${index !== 0 ? "border-t border-border" : ""}
-          `
-        }
+          `}
       >
         <Image
           alt={category.title}
@@ -57,19 +55,21 @@ const CategoriesImageGrid = () => (
             duration-(--transition-duration)
           `}
         />
-        <div className={
-          `
+        <div
+          className={`
             flex flex-col
             absolute bottom-4 left-4
             text-white
-          `
-        }>
-          <div className={`
+          `}
+        >
+          <div
+            className={`
             text-white
             font-family-regular-lg
             text-lg md:text-xl lg:text-2xl
             font-bold uppercase
-          `}>
+          `}
+          >
             {category.title}
           </div>
           <div className="font-family-regular-md w-[75%]">
