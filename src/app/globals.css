@@ -26,6 +26,8 @@
 
   --transition-duration: 150ms;
   --grid-fade-in-duration: 500ms;
+
+  --media-border-radius: 0rem;
 }
 
 /*
@@ -43,6 +45,10 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+  }
+
+  .media-default-skin {
+    border-radius: var(--media-border-radius);
   }
 }
 
