@@ -12,11 +12,48 @@ import SecondaryLink from "@/components/SecondaryLink";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import images from "@/utils/images";
-import WorkProcessGrid from "./_components/WorkProcessGrid";
+import WorkProcessGrid from "@/components/WorkProcessGrid";
+import {
+  FiMessageSquare,
+  FiCamera,
+  FiEdit,
+  FiDownloadCloud,
+} from "react-icons/fi";
 
 const PHILOSOPHY_IMAGES: StaticImageData[] = [
   images.birthdays.header[0],
   images.birthdays.header[1],
+];
+
+const WORK_PROCESS_STEPS: {
+  description: string;
+  icon: React.ReactElement;
+  title: string;
+}[] = [
+  {
+    description:
+      "Defining goals, visual style, and key moments that must be captured.",
+    icon: <FiMessageSquare size={32} className="text-accent" />,
+    title: "01. Client Briefing",
+  },
+  {
+    description:
+      "Discreet, professional, and comprehensive documentation of your event.",
+    icon: <FiCamera size={32} className="text-accent" />,
+    title: "02. Event Coverage",
+  },
+  {
+    description:
+      "Color grading, editing, and cinematic retouching to our studio standard.",
+    icon: <FiEdit size={32} className="text-accent" />,
+    title: "03. Post-Production",
+  },
+  {
+    description:
+      "Full resolution digital gallery and cinematic highlight reel delivered.",
+    icon: <FiDownloadCloud size={32} className="text-accent" />,
+    title: "04. Delivery",
+  },
 ];
 
 export default function Events() {
@@ -132,7 +169,7 @@ export default function Events() {
               From concept to delivery in 14 days.
             </div>
 
-            <WorkProcessGrid />
+            <WorkProcessGrid steps={WORK_PROCESS_STEPS} />
           </section>
 
           {/* Call to Action Section */}
