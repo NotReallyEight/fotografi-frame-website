@@ -40,7 +40,13 @@ const VisualLanguageSection = () => (
             <Image
               alt={"Visual language section image"}
               src={image}
-              className={`aspect-3/4 object-cover ${index % 2 === 0 ? "mt-8" : "mb-8"}`}
+              className={
+                `
+                  aspect-3/4
+                  object-cover
+                  ${index % 2 === 0 ? "mt-8" : "mb-8"}
+                `
+              }
             />
           </div>
         ))}
