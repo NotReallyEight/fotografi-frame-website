@@ -329,7 +329,7 @@ export default function Home() {
                     <br />
                     Architecture
                   </div>
-                  <div className="font-family-regular-md xl:w-[75%]">
+                  <div className="font-family-regular-lg text-text-secondary xl:w-[75%]">
                     We build blazing fast, accessible, and visually stunning
                     websites using the latest stacks (React, Vue, WebGL). We
                     turn designs into interactive reality.
@@ -353,7 +353,7 @@ export default function Home() {
                     &#47;&#47; Rental
                   </div>
                   <div className="font-family-secondary">Gear Room</div>
-                  <div className="font-family-regular-md">
+                  <div className="font-family-regular-lg text-text-secondary">
                     Need a RED Komodo for the weekend? Or a full Aputure
                     lighting kit? Download our updated catalog or request a
                     quick quote.
