@@ -1,8 +1,8 @@
 "use client";
 
-import "@videojs/react/video/skin.css";
 import { createPlayer, videoFeatures } from "@videojs/react";
 import { VideoSkin, Video } from "@videojs/react/video";
+import { useMemo } from "react";
 
 const REEL_VIDEO: {
   poster: string;
@@ -14,11 +14,15 @@ const REEL_VIDEO: {
 };
 
 const ShowcaseReelVideoPlayer = () => {
-  const Player = createPlayer({
-    features: videoFeatures.filter(
-      (feature) => !["pip", "playbackRate"].includes(feature.name ?? "")
-    ),
-  });
+  const Player = useMemo(
+    () =>
+      createPlayer({
+        features: videoFeatures.filter(
+          (feature) => !["pip", "playbackRate"].includes(feature.name ?? "")
+        ),
+      }),
+    []
+  );
 
   return (
     <Player.Provider>

@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import Button from "@/components/Button";
 import Metadata from "@/components/Metadata";
 import Navbar from "@/components/Navbar";

@@ -2,7 +2,7 @@ import images from "@/utils/images";
 import Image, { StaticImageData } from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 
-const SELECTED_PRODUCTIOS_IMAGES: {
+const SELECTED_PRODUCTIONS_IMAGES: {
   description: string;
   src: StaticImageData;
   title: string;
@@ -30,7 +30,7 @@ const SELECTED_PRODUCTIOS_IMAGES: {
 
 const SelectedProductionsGrid = () => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    {SELECTED_PRODUCTIOS_IMAGES.map((image, index) => (
+    {SELECTED_PRODUCTIONS_IMAGES.map((image, index) => (
       <div
         key={`selected-production-work-${index}`}
         className="overflow-hidden relative group"

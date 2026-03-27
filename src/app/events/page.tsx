@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Metadata from "@/components/Metadata";

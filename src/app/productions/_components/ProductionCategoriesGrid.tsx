@@ -33,42 +33,10 @@ const PRODUCTION_CATEGORIES: {
 ];
 
 const ProductionCategoriesGrid = () => (
-  // <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
-  //   {PRODUCTION_CATEGORIES.map((category, index) => (
-  //     <div
-  //       key={`production-category-${index}`}
-  //       className={`
-  // 				relative group
-  // 				aspect-auto
-  //         overflow-hidden
-  //         ${index !== 0 ? "border-t border-border" : ""}
-  //         md:border-t-0 ${index > 1 ? "md:border-t" : ""}
-  // 				p-8
-  //         flex flex-col gap-4 bg-secondary
-  // 			`}
-  //     >
-  //       <div className="flex flex-col gap-2">
-  //         <div className="font-family-secondary">{category.title}</div>
-  //         <div className="font-family-regular-lg text-text-secondary">
-  //           {category.description}
-  //         </div>
-  //       </div>
-  //       <Image
-  //         alt={category.title}
-  //         src={category.src}
-  //         className={`
-  // 					object-cover
-  // 					opacity-50
-  // 					aspect-square
-  // 				`}
-  //       />
-  //     </div>
-  //   ))}
-  // </div>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-border">
     {PRODUCTION_CATEGORIES.map((category, index) => (
       <div
-        key={`event-category-${index}`}
+        key={`production-category-${index}`}
         className={`
               relative group
               aspect-auto
