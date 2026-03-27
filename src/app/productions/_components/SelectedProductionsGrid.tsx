@@ -38,8 +38,7 @@ const SelectedProductionsGrid = () => (
         <Image
           alt={`Lavoro selezionato per produzione - ${index + 1}`}
           src={image.src}
-          className={
-            `
+          className={`
               object-cover
               border border-border
               aspect-square
@@ -48,8 +47,7 @@ const SelectedProductionsGrid = () => (
               group-hover:scale-125
               saturate-0
               -z-10
-            `
-          }
+            `}
         />
         <div className="text-text-secondary font-family-regular-md uppercase z-10 absolute top-4 left-4">
           {image.type}
@@ -58,12 +56,12 @@ const SelectedProductionsGrid = () => (
           className="hidden group-hover:flex z-10 absolute right-4 top-4"
           size={"1.5rem"}
         />
-        <div className={
-          `
+        <div
+          className={`
             absolute bottom-4 left-4
             flex flex-col gap-2
-          `
-        }>
+          `}
+        >
           <div
             className="font-family-regular-lg
               text-lg md:text-xl lg:text-2xl
