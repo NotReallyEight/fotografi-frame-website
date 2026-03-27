@@ -1,4 +1,5 @@
 import "./globals.css";
+import "@videojs/react/video/skin.css";
 import { ibmPlexMono, inter, spaceGrotesk } from "./fonts";
 import { Metadata } from "next";
 import { NavProvider } from "@/contexts/NavContext";

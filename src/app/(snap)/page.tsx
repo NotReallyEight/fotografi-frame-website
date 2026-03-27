@@ -158,7 +158,15 @@ export default function Home() {
 
             {/* Productions Section */}
             <section className="text-white panel snap-start">
-              <div className="h-fit md:h-dvh py-8 md:py-0 flex flex-col items-center justify-center px-8 xl:px-[10dvw] space-y-12">
+              <div
+                className={`
+                    h-fit md:h-dvh
+                    py-8 md:py-0
+                    flex flex-col items-center justify-center
+                    px-8 xl:px-[10dvw]
+                    space-y-12
+                  `}
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
                   <div className="font-family-secondary">
                     Cinematic Storytelling
@@ -240,13 +248,33 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="relative group aspect-video md:aspect-auto lg:aspect-3/2 overflow-hidden order-3 md:order-2">
+                  <div
+                    className={`
+                        relative group
+                        aspect-video md:aspect-auto lg:aspect-3/2
+                        overflow-hidden
+                        order-3 md:order-2
+                      `}
+                  >
                     <Image
                       alt="18th Birthdays Image"
                       src={images.birthdays.header[1]}
-                      className="w-full aspect-square object-cover object-bottom group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                      className={`
+                          w-full
+                          aspect-square
+                          object-cover object-bottom
+                          group-hover:scale-105
+                          duration-(--grid-fade-in-duration)
+                        `}
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/60 to-black transition-opacity duration-(--grid-fade-in-duration) group-hover:opacity-80" />
+                    <div
+                      className={`
+                          pointer-events-none absolute inset-0
+                          bg-linear-to-b from-black/60 to-black
+                          transition-opacity duration-(--grid-fade-in-duration)
+                          group-hover:opacity-80
+                        `}
+                    />
                   </div>
 
                   <div className="order-2 md:order-3">
@@ -293,13 +321,33 @@ export default function Home() {
                       primary={false}
                     />
                   </div>
-                  <div className="relative group aspect-square md:aspect-auto lg:aspect-square overflow-hidden md:order-1">
+                  <div
+                    className={`
+                        relative group
+                        aspect-square md:aspect-auto lg:aspect-square
+                        overflow-hidden
+                        md:order-1
+                      `}
+                  >
                     <Image
                       alt="18th Birthdays Image"
                       src={images.birthdays.header[1]}
-                      className="w-full aspect-square md:aspect-auto lg:aspect-square object-cover object-bottom group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                      className={`
+                          w-full
+                          aspect-square md:aspect-auto lg:aspect-square
+                          object-cover object-bottom
+                          group-hover:scale-105
+                          duration-(--grid-fade-in-duration)
+                        `}
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-primary opacity-80 transition-opacity duration-(--grid-fade-in-duration) group-hover:opacity-50" />
+                    <div
+                      className={`
+                          pointer-events-none absolute inset-0
+                          bg-primary opacity-80
+                          transition-opacity duration-(--grid-fade-in-duration)
+                          group-hover:opacity-50
+                        `}
+                    />
                     <div className="absolute bottom-8 left-8 flex flex-col h-fit border-l-2 border-l-accent px-4">
                       <div className="font-family-mono uppercase">
                         Trending now
@@ -329,7 +377,7 @@ export default function Home() {
                     <br />
                     Architecture
                   </div>
-                  <div className="font-family-regular-md xl:w-[75%]">
+                  <div className="font-family-regular-lg text-text-secondary xl:w-[75%]">
                     We build blazing fast, accessible, and visually stunning
                     websites using the latest stacks (React, Vue, WebGL). We
                     turn designs into interactive reality.
@@ -353,7 +401,7 @@ export default function Home() {
                     &#47;&#47; Rental
                   </div>
                   <div className="font-family-secondary">Gear Room</div>
-                  <div className="font-family-regular-md">
+                  <div className="font-family-regular-lg text-text-secondary">
                     Need a RED Komodo for the weekend? Or a full Aputure
                     lighting kit? Download our updated catalog or request a
                     quick quote.

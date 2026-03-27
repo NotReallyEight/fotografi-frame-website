@@ -1,226 +1,175 @@
 "use client";
 
+import type React from "react";
+import Button from "@/components/Button";
+import Metadata from "@/components/Metadata";
 import Navbar from "@/components/Navbar";
-import HorizontalSeparatorLine from "@/components/HorizontalSeparatorLine";
-import Gsap from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
-import images from "@/utils/images";
-import Image from "next/image";
-import { createSmoothWrapper } from "@/utils/gsap";
+import { useNav } from "@/contexts/NavContext";
+import { Activity, Suspense } from "react";
+import ShowcaseReelVideoPlayer from "./_components/ShowcaseReelVideoPlayer";
+import Footer from "@/components/Footer";
+import SelectedProductionsGrid from "./_components/SelectedProductionsGrid";
+import ProductionCategoriesGrid from "./_components/ProductionCategoriesGrid";
+import VisualLanguageSection from "./_components/VisualLanguageSection";
+import WorkProcessGrid from "@/components/WorkProcessGrid";
+import {
+  FiMessageSquare,
+  FiEdit,
+  FiDownloadCloud,
+  FiFilm,
+} from "react-icons/fi";
 
-const productionVideos: {
+const WORK_PROCESS_STEPS: {
+  description: string;
+  icon: React.ReactElement;
   title: string;
-  id: string;
 }[] = [
   {
-    title: "Silarus - La Moda che Scorre",
-    id: "aW9yPWg4ryA",
+    description:
+      "Scripting, storyboarding, and strategic alignment to define the visual north star.",
+    icon: <FiMessageSquare size={32} className="text-accent" />,
+    title: "01. Concept & Planning",
   },
   {
-    title: "Spot Morra De Sanctis - CASA Sanremo",
-    id: "upkRLaQNOFc",
+    description:
+      "Execution with industry-standard glass and lighting by our specialized field crew.",
+    icon: <FiFilm size={32} className="text-accent" />,
+    title: "02. Shooting",
   },
   {
-    title: "10 Anni InfoIrpinia",
-    id: "FwNtA1SdZSQ",
+    description:
+      "Non-linear assembly, sound design, and color grading for a distinct aesthetic.",
+    icon: <FiEdit size={32} className="text-accent" />,
+    title: "03. Editing",
+  },
+  {
+    description:
+      "Platform-optimized assets delivered through our secure client cloud.",
+    icon: <FiDownloadCloud size={32} className="text-accent" />,
+    title: "04. Final Delivery",
   },
 ];
 
-Gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-
-export default function Works() {
-  const scrollSmootherWrapper = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      // Horizontal scrolling gallery
-      const panels = Gsap.utils.toArray(".horizontal-gallery-panel");
-      const mainEl = document.querySelector("main");
-
-      if (mainEl === null) return;
-
-      const panelsOffsetWidth = (
-        document.querySelector(
-          ".horizontal-gallery-container"
-        ) as unknown as HTMLElement
-      ).offsetWidth;
-
-      createSmoothWrapper({
-        content: "#smooth-content",
-        wrapper: "#smooth-wrapper",
-      });
-
-      Gsap.to(panels, {
-        x: -panelsOffsetWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".horizontal-gallery-container",
-          pin: true,
-          pinSpacing: true,
-          scrub: 1,
-          end: `+=${panelsOffsetWidth}`,
-        },
-      });
-
-      // Brands images marquee infinite scroll
-      const marquee = document.querySelector(
-        ".marquee"
-      ) as unknown as HTMLElement | null;
-
-      if (!marquee) return;
-
-      // Get the children elements from the marquee div
-      const marqueeChildren = Array.from(marquee.children) as HTMLElement[];
-
-      // Wait for any images inside the marquee to load so measurements are accurate
-      void (async () => {
-        const marqueeImages = Array.from(marquee.querySelectorAll("img"));
-        await Promise.all(
-          marqueeImages.map((img) =>
-            img.complete
-              ? Promise.resolve()
-              : new Promise((res) => {
-                  img.addEventListener("load", res, { once: true });
-                })
-          )
-        );
-
-        // One set of a marquee (if there are 8 images it's gonna be the width of 8 images combined)
-        const singleSetWidth = marquee.scrollWidth;
-        // The target width: usually we want pretty much more than the viewport
-        // obviously because otherwise there's gonna be empty spaces
-        const targetWidth = window.innerWidth + singleSetWidth;
-
-        while (marquee.scrollWidth < targetWidth) {
-          const fragment = document.createDocumentFragment();
-          // For every child of the marquee children, append it to the document fragment
-          for (const child of marqueeChildren)
-            fragment.appendChild(child.cloneNode(true));
-
-          // As a result, append the document fragment to the marquee
-          marquee.appendChild(fragment);
-        }
-
-        const totalWidth = singleSetWidth;
-        let x = 0;
-        const speed = 1;
-
-        // Once the thing reaches the end then we can "snap" without snapping as it's
-        // smoothly to the initial position (which is going to be 0).
-        const setX = Gsap.quickSetter(marquee, "x", "px");
-        const tick = () => {
-          x -= speed;
-          if (x <= -totalWidth) x += totalWidth;
-          setX(x);
-        };
-
-        Gsap.ticker.add(tick);
-      })();
-    },
-    {
-      scope: scrollSmootherWrapper,
-    }
-  );
+export default function Productions() {
+  const { isNavOpen } = useNav();
 
   return (
     <>
-      {/* Meta tags */}
-      <title>Lavori - Frame</title>
-      <meta
-        name="description"
-        content="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
+      <Metadata
+        title="Produzioni - Frame"
+        description="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
+        keywords="fotografia, fotografi frame, fotografi, frame"
       />
-      <meta
-        name="keywords"
-        content="fotografia, fotografi frame, fotografi, frame"
-      />
-      <div id="smooth-wrapper" ref={scrollSmootherWrapper}>
-        {/* Navbar */}
-        <Navbar />
 
-        <main className="flex flex-col bg-black" id="smooth-content">
-          <div className="m-auto flex h-dvh flex-col items-center justify-center gap-7 p-4 text-center text-white lg:w-1/2">
-            <div className="font-family-header text-3xl lg:text-6xl">
-              I Nostri Lavori
-            </div>
-            <HorizontalSeparatorLine color="gold" hideOnDesktop={false} />
-            <div className="font-family-regular text-base font-light lg:text-xl">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
-              faucibus ex sapien vitae pellentesque sem placerat. In id cursus
-              mi pretium tellus duis convallis. Tempus leo eu aenean sed diam
-              urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum
-              egestas. Iaculis massa nisl malesuada lacinia integer nunc
-              posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad
-              litora torquent per conubia nostra inceptos himenaeos.
-            </div>
-          </div>
+      <main className="flex flex-col h-dvh gap-16">
+        <Navbar fixed hasLeftPadding />
 
-          {/* Horizontal scrolling section */}
-          <div className="horizontal-gallery-container flex h-dvh w-full flex-nowrap">
-            {images.worksGrid.map((image, index) => (
-              <Image
-                key={`horizontal-gallery-image-${index}`}
-                width={600}
-                height={900}
-                src={image}
-                alt={`Production image ${index + 1}`}
-                className="image horizontal-gallery-panel flex h-full w-auto shrink-0 object-cover"
-                loading="lazy"
-              />
-            ))}
-          </div>
-
-          {/* Production video cards */}
-          {productionVideos.map((video) => (
+        <Activity mode={isNavOpen ? "hidden" : "visible"}>
+          {/* Hero Section */}
+          <section className="text-white min-h-dvh flex flex-col justify-center gap-8">
             <div
-              key={`production-video-${video.id}`}
-              className="flex h-dvh w-full bg-black"
+              className="flex flex-col
+                  px-8 md:px-12 lg:px-[10dvw]
+                  gap-8"
             >
-              <a
-                href={`https://youtu.be/${video.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative m-auto inline-block cursor-pointer"
-              >
-                <Image
-                  alt={`Production video thumbnail - ${video.title}`}
-                  src={images.demoProductionThumbnail}
-                  height={720}
-                  width={1280}
-                  sizes="(min-width: 768px) 80vh, 100vh"
-                  className="m-auto duration-200 group-hover:opacity-25 group-focus:opacity-25"
+              <h1 className="font-family-header *:block">
+                <span>Video</span>
+                <span>Prod.</span>
+              </h1>
+              <h2 className="font-family-regular-lg text-text-secondary">
+                We translate human emotion into high-fidelity visual narratives.
+                Our lens defines the intersection of architectural precision and
+                cinematic movement.
+              </h2>
+              <div className="flex flex-col md:flex-row gap-4">
+                <Button onClick={() => {}} text="View Work" primary />
+                <Button
+                  onClick={() => {}}
+                  text="Start A Project"
+                  primary={false}
                 />
+              </div>
+            </div>
+          </section>
 
-                <div className="font-family-secondary absolute bottom-8 left-8 text-3xl text-white opacity-0 duration-200 group-hover:opacity-100 group-focus:opacity-100">
-                  {video.title}
-                </div>
-              </a>
+          {/* Showcase Reel Video Section */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] w-full mx-auto flex flex-col gap-4">
+            <div className="gap-2">
+              <div className="font-family-regular-md uppercase text-text-secondary">
+                Music Video
+              </div>
+              <div className="font-family-secondary text-white">
+                Soggetti Erotici - Ah ah ah
+              </div>
             </div>
-          ))}
 
-          {/* Brands grid */}
-          <div className="mx-auto mb-16 flex flex-col gap-16">
-            <div className="font-family-secondary mx-auto text-3xl text-white">
-              BRAND CON CUI ABBIAMO COLLABORATO
+            <ShowcaseReelVideoPlayer />
+          </section>
+
+          {/* Selected Productions Grid */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-4">
+            <div className="font-family-secondary">Selected Productions</div>
+            <SelectedProductionsGrid />
+          </section>
+
+          {/* Production Categories Grid */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-4">
+            <div
+              className="text-accent
+                        font-family-mono uppercase
+                        text-xs"
+            >
+              Categories
             </div>
-            <div className="marquee flex flex-row">
-              {images.worksBrands.map((image, index) => (
-                <Image
-                  src={image}
-                  alt="Logo Brand"
-                  key={index}
-                  height={200}
-                  width={200}
-                  className="h-48 w-48"
-                />
-              ))}
+            <div className="font-family-secondary">Our Expertise</div>
+            <ProductionCategoriesGrid />
+          </section>
+
+          {/* Visual language section */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-4">
+            <VisualLanguageSection />
+          </section>
+
+          {/* The Process Section */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] flex flex-col gap-4 text-white py-8">
+            <div className="font-family-secondary">The Process</div>
+            <div className="md:w-[75%] font-family-regular-lg text-text-secondary md:mt-auto">
+              From concept to delivery in 14 days.
             </div>
-          </div>
-        </main>
-      </div>
+
+            <WorkProcessGrid steps={WORK_PROCESS_STEPS} />
+          </section>
+
+          {/* Call to Action Section */}
+          <section className="px-8 md:px-12 lg:px-[10dvw] flex flex-col gap-8 text-white py-8 relative">
+            <div className="font-family-secondary text-center">
+              Have a project in mind?
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <Button
+                onClick={() => {}}
+                text="Start a project"
+                primary
+                fullWidth
+                className="md:w-fit"
+              />
+              <Button
+                onClick={() => {}}
+                text="Contact us"
+                primary={false}
+                fullWidth
+                className="md:w-fit"
+              />
+            </div>
+          </section>
+
+          {/* Footer */}
+          <Suspense fallback={<Footer usesDate={false} />}>
+            <Footer />
+          </Suspense>
+        </Activity>
+      </main>
     </>
   );
 }
