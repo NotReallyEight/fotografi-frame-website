@@ -68,7 +68,7 @@ export default function Events() {
         keywords="fotografia, fotografi frame, fotografi, frame"
       />
 
-      <main className="flex flex-col h-dvh gap-8">
+      <main className="flex flex-col h-dvh space-y-64">
         <Navbar fixed hasLeftPadding />
 
         <Activity mode={isNavOpen ? "hidden" : "visible"}>
