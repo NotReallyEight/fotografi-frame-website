@@ -61,12 +61,12 @@ export default function Productions() {
         keywords="fotografia, fotografi frame, fotografi, frame"
       />
 
-      <main className="flex flex-col h-dvh gap-16">
+      <main className="flex flex-col h-dvh space-y-32 md:space-y-64">
         <Navbar fixed hasLeftPadding />
 
         <Activity mode={isNavOpen ? "hidden" : "visible"}>
           {/* Hero Section */}
-          <section className="text-white min-h-dvh flex flex-col justify-center gap-8">
+          <section className="text-white min-h-dvh flex flex-col justify-center gap-8 mb-0">
             <div
               className="flex flex-col
                   px-8 md:px-12 lg:px-[10dvw]
