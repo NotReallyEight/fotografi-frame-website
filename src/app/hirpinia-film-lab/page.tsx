@@ -99,18 +99,22 @@ export default function HirpiniaFilmLab() {
       />
 
       <main
-        className="flex flex-col h-dvh space-y-32 md:space-y-64"
+        className={"flex flex-col h-dvh space-y-32 md:space-y-64"}
         ref={mainScrollBarRef}
       >
         <Navbar fixed hasLeftPadding />
 
         <Activity mode={isNavOpen ? "hidden" : "visible"}>
           {/* Hero section */}
-          <section className="text-white min-h-dvh flex flex-col justify-center gap-8 mb-0 relative">
+          <section
+            className={
+              "text-white min-h-dvh flex flex-col justify-center gap-8 mb-0 relative"
+            }
+          >
             <div
-              className="flex flex-col
+              className={`flex flex-col
                   px-8 md:px-12 lg:px-[10dvw]
-                  gap-8 z-10"
+                  gap-8 z-10`}
             >
               <h1 className="font-family-header normal-case *:block md:*:inline">
                 <span>Hirpinia</span>
@@ -128,7 +132,9 @@ export default function HirpiniaFilmLab() {
               />
             </div>
             <Image
-              className="absolute top-0 left-0 h-full object-cover object-bottom-left -z-10 opacity-20"
+              className={
+                "absolute top-0 left-0 h-full object-cover object-bottom-left -z-10 opacity-20"
+              }
               alt="BTS image"
               src={images.hirpiniaFilmLab.heroBg}
             />
@@ -141,8 +147,16 @@ export default function HirpiniaFilmLab() {
           </section>
 
           {/* The Vision Section */}
-          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col items-center">
-            <div className="relative flex flex-col items-center justify-center gap-8">
+          <section
+            className={
+              "px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col items-center"
+            }
+          >
+            <div
+              className={
+                "relative flex flex-col items-center justify-center gap-8"
+              }
+            >
               <div className="font-family-secondary">The Vision</div>
               <div className="font-family-regular-lg text-text-secondary lg:w-[50%]">
                 A cinematic laboratory where theory meets production. We empower
@@ -153,7 +167,7 @@ export default function HirpiniaFilmLab() {
             </div>
 
             {/* Image grid */}
-            <div className="grid md:grid-cols-8 gap-8">
+            <div className={"grid md:grid-cols-8 gap-8"}>
               {images.hirpiniaFilmLab.theVisionGrid.map((image, index) => {
                 let order: number = index + 1;
 
@@ -162,7 +176,13 @@ export default function HirpiniaFilmLab() {
 
                 return (
                   <div
-                    className={`relative ${(index + 1) % 3 === 2 ? "aspect-4/3 col-span-4" : "aspect-3/4 col-span-2"} group order-${order} md:order-${index + 1}`}
+                    className={`
+                      relative
+                      ${(index + 1) % 3 === 2 ? "aspect-4/3 col-span-4" : "aspect-3/4 col-span-2"}
+                      group
+                      order-${order}
+                      md:order-${index + 1}
+                    `}
                     key={`the-vision-image-${index}`}
                   >
                     <Image
@@ -170,7 +190,9 @@ export default function HirpiniaFilmLab() {
                       height={(index + 1) % 3 === 2 ? 600 : 900}
                       alt="The vision image"
                       src={image}
-                      className="lg:saturate-0 group-hover:saturate-100 duration-(--grid-fade-in-duration)"
+                      className={
+                        "lg:saturate-0 group-hover:saturate-100 duration-(--grid-fade-in-duration)"
+                      }
                     />
                   </div>
                 );
@@ -179,7 +201,11 @@ export default function HirpiniaFilmLab() {
           </section>
 
           {/* Training Areas Section */}
-          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col">
+          <section
+            className={
+              "px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col"
+            }
+          >
             <div className="font-family-secondary">Training Areas</div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -187,7 +213,11 @@ export default function HirpiniaFilmLab() {
               {TRAINING_AREAS.map(
                 ([trainingAreaKey, trainingAreaLabel], index) => (
                   <div
-                    className={`relative group overflow-hidden`}
+                    className={`
+                      relative
+                      group
+                      overflow-hidden
+                    `}
                     key={`training-area-${trainingAreaKey}`}
                   >
                     <Image
@@ -197,7 +227,9 @@ export default function HirpiniaFilmLab() {
                       }
                       width={900}
                       height={900}
-                      className="aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                      className={
+                        "aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                      }
                     />
                     <div className="absolute left-4 bottom-4 flex flex-col gap-2">
                       <div
@@ -220,15 +252,30 @@ export default function HirpiniaFilmLab() {
           </section>
 
           {/* Behind The Lens Section */}
-          <section className="px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col">
+          <section
+            className={
+              "px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col"
+            }
+          >
             <div className="font-family-secondary">Behind The Lens</div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 auto-rows-[300px] gap-8">
+            <div
+              className={
+                "grid grid-cols-1 md:grid-cols-3 auto-rows-[300px] gap-8"
+              }
+            >
               {/* Image grid */}
               {images.hirpiniaFilmLab.behindTheLensSectionMedia.map(
                 (media, index) => (
                   <div
-                    className={`relative group opacity-80 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""} ${index === 2 ? "md:row-span-2" : ""} overflow-hidden`}
+                    className={`
+                      relative
+                      group
+                      opacity-80
+                      ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}
+                      ${index === 2 ? "md:row-span-2" : ""}
+                      overflow-hidden
+                    `}
                     key={`training-area-${index}`}
                   >
                     {media.endsWith("mp4") ? (
@@ -238,7 +285,9 @@ export default function HirpiniaFilmLab() {
                         muted
                         playsInline
                         src={media}
-                        className="w-full h-75 md:h-158 object-cover object-bottom-left"
+                        className={
+                          "w-full h-75 md:h-158 object-cover object-bottom-left"
+                        }
                       />
                     ) : (
                       <Image
@@ -246,7 +295,7 @@ export default function HirpiniaFilmLab() {
                         src={media}
                         width={900}
                         height={900}
-                        className="object-cover w-full h-full"
+                        className={"object-cover w-full h-full"}
                       />
                     )}
                   </div>
@@ -256,12 +305,16 @@ export default function HirpiniaFilmLab() {
           </section>
 
           {/* Together Image Section */}
-          <section className="relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col">
+          <section
+            className={
+              "relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col"
+            }
+          >
             <Image
               alt="Foto di gruppo dei membri di HirpiniaFilmLab"
               src={images.hirpiniaFilmLab.together}
               fill
-              className="w-full object-cover opacity-50"
+              className={"w-full object-cover opacity-50"}
             />
             <div className="absolute top-0 left-0 px-8 md:px-12 lg:px-[10dvw] w-full h-full grid grid-cols-3">
               {TOGETHER_PICTURES_STATS.map((stat, index) => (
@@ -274,9 +327,10 @@ export default function HirpiniaFilmLab() {
             </div>
             <div
               className={`
-          pointer-events-none absolute inset-0
-          bg-linear-to-b from-black via-black/0 to-black
-        `}
+                pointer-events-none
+                absolute inset-0
+                bg-linear-to-b from-black via-black/0 to-black
+              `}
             />
           </section>
 
