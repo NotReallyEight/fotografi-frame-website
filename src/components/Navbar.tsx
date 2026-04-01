@@ -21,6 +21,10 @@ const sections: {
   href: LinkProps<unknown>["href"];
 }[] = [
   {
+    name: "Film Lab",
+    href: "/hirpinia-film-lab",
+  },
+  {
     name: "Work",
     href: "/works",
   },
@@ -94,7 +98,7 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
           {/* Circle */}
           <div className="bg-red-600/80 w-3.5 h-3.5 rounded-full motion-safe:animate-pulse" />
           <div className="text-text-secondary justify-center font-family-mono">
-            FPS 24.00
+            FPS 25.00
           </div>
         </div>
 
@@ -124,7 +128,7 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
           className={`
             h-full flex flex-col
             items-start justify-center
-            text-white
+            text-white fixed inset-0
           `}
         >
           {sections.map((section, index) => (
@@ -146,9 +150,9 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
               </a>
             </div>
           ))}
-        </div>
-        <div className="fixed bottom-0">
-          <Footer isNavbar />
+          <div className="fixed bottom-0">
+            <Footer isNavbar />
+          </div>
         </div>
       </Activity>
     </>
