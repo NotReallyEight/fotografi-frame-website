@@ -42,9 +42,9 @@ const TRAINING_AREAS: [
 ];
 
 const TOGETHER_PICTURES_STATS: [string, string][] = [
-  ["100+", "Participants"],
-  ["09", "Departments"],
-  ["6", "Productions"],
+  ["100+", "Partecipanti"],
+  ["09", "Reparti"],
+  ["6", "Produzioni"],
 ];
 
 export default function HirpiniaFilmLab() {
@@ -59,6 +59,10 @@ export default function HirpiniaFilmLab() {
   }, []);
 
   useLayoutEffect(() => {
+    const onLoad = () => ScrollTrigger.refresh();
+
+    window.addEventListener("load", onLoad);
+
     const statEls = document.querySelectorAll<HTMLDivElement>(".stat");
     statEls.forEach((statEl, i) => {
       if (statEl === null) return;
@@ -78,7 +82,8 @@ export default function HirpiniaFilmLab() {
           ease: "power1.out",
           scrollTrigger: {
             trigger: statEl,
-            start: "top 80%",
+            start: "top 90%",
+            invalidateOnRefresh: true,
           },
           onUpdate: () => {
             numberEl.textContent =
@@ -87,6 +92,8 @@ export default function HirpiniaFilmLab() {
           },
         }
       );
+
+      return () => window.removeEventListener("load", onLoad);
     });
   }, [isClient]);
 
@@ -122,12 +129,12 @@ export default function HirpiniaFilmLab() {
                 <span>Lab</span>
               </h1>
               <h2 className="font-family-regular-lg text-text-secondary">
-                Storytelling and youth collaboration. Crafting the next
-                generation of cinematic voices.
+                Storytelling e collaborazione tra giovani talenti. Formando la
+                nuova generazione delle voci del cinema.
               </h2>
               <Button
                 href="https://www.instagram.com/hirpiniafilmlab/"
-                text="Follow the project"
+                text="Segui il progetto"
                 primary
               />
             </div>
@@ -157,12 +164,12 @@ export default function HirpiniaFilmLab() {
                 "relative flex flex-col items-center justify-center gap-8"
               }
             >
-              <div className="font-family-secondary">The Vision</div>
+              <div className="font-family-secondary">La Visione</div>
               <div className="font-family-regular-lg text-text-secondary lg:w-[50%]">
-                A cinematic laboratory where theory meets production. We empower
-                local youth through hands-on training and high-end technical
-                mentorship, bridging the gap between local stories and global
-                screens.
+                Un laboratorio di cinema dove la teoria incontra la pratica.
+                Supportiamo la gioventù locale attraverso una formazione pratica
+                e un tutoraggio tecnico professionale, colmando il divario tra
+                le storie locali e gli schermi di tutto il mondo.
               </div>
             </div>
 
@@ -206,7 +213,7 @@ export default function HirpiniaFilmLab() {
               "px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col"
             }
           >
-            <div className="font-family-secondary">Training Areas</div>
+            <div className="font-family-secondary">Aree di Formazione</div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Image grid */}
@@ -257,7 +264,7 @@ export default function HirpiniaFilmLab() {
               "px-8 md:px-12 lg:px-[10dvw] text-white space-y-8 flex flex-col"
             }
           >
-            <div className="font-family-secondary">Behind The Lens</div>
+            <div className="font-family-secondary">Dietro l&apos;obiettivo</div>
 
             <div
               className={
