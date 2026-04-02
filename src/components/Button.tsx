@@ -69,7 +69,7 @@ const Button = ({
         space-x-4
         ${className ?? ""}
       `}
-      type="submit"
+      type="button"
       onClick={onClick}
     >
       <Activity mode={icon !== undefined ? "visible" : "hidden"}>

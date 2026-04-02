@@ -5,7 +5,6 @@ type Props = {
 
 const ProjectStat = ({ stat, index }: Props) => (
   <div
-    key={`project-stat-${index}`}
     className={`
       flex flex-col items-center justify-center
       stat

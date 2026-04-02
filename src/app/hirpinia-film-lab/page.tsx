@@ -46,14 +46,12 @@ export default function HirpiniaFilmLab() {
   const [isClient, setIsClient] = useState<boolean>(false);
 
   useEffect(() => {
-    (() => {
-      const timeout = setTimeout(() => {
-        setIsClient(true);
-        ScrollTrigger.refresh();
-      }, 300);
+    const timeout = setTimeout(() => {
+      setIsClient(true);
+      ScrollTrigger.refresh();
+    }, 300);
 
-      return () => clearTimeout(timeout);
-    })();
+    return () => clearTimeout(timeout);
   }, []);
 
   useGSAP(
@@ -142,11 +140,17 @@ export default function HirpiniaFilmLab() {
               />
             </div>
             <Image
-              className={
-                "absolute top-0 left-0 h-full object-cover object-bottom-left -z-10 opacity-20"
-              }
+              className={`
+                absolute inset-0
+                w-full h-full
+                -z-10
+                object-cover object-bottom-left
+                opacity-20
+              `}
               alt="BTS image"
               src={images.hirpiniaFilmLab.heroBg}
+              fill
+              sizes="100dvw"
             />
             <div
               className={`
@@ -231,7 +235,7 @@ export default function HirpiniaFilmLab() {
                     key={`training-area-${trainingAreaKey}`}
                   >
                     <Image
-                      alt={`Training area ${index}`}
+                      alt={`Reparto ${trainingAreaLabel}`}
                       src={
                         images.hirpiniaFilmLab.trainingAreas[trainingAreaKey]
                       }
