@@ -47,9 +47,8 @@ export default function HirpiniaFilmLab() {
 
   useEffect(() => {
     (() => {
-      setIsClient(true);
-
       const timeout = setTimeout(() => {
+        setIsClient(true);
         ScrollTrigger.refresh();
       }, 300);
 
@@ -59,45 +58,44 @@ export default function HirpiniaFilmLab() {
 
   useGSAP(
     () => {
-      const onLoad = () => ScrollTrigger.refresh();
+      const ctx = gsap.context(() => {
+        const statEls = document.querySelectorAll<HTMLDivElement>(".stat");
+        statEls.forEach((statEl, i) => {
+          if (statEl === null) return;
 
-      window.addEventListener("load", onLoad);
+          const numberEl = statEl.children[0];
+          const targetText = TOGETHER_PICTURES_STATS[i][0].replace("+", "");
 
-      const statEls = document.querySelectorAll<HTMLDivElement>(".stat");
-      statEls.forEach((statEl, i) => {
-        if (statEl === null) return;
+          // Mock object
+          const obj = { value: 0 };
 
-        const numberEl = statEl.children[0];
-        const targetText = TOGETHER_PICTURES_STATS[i][0].replace("+", "");
+          gsap.fromTo(
+            obj,
+            { value: 0 },
+            {
+              value: Number(targetText),
+              duration: 2,
+              ease: "power1.out",
+              scrollTrigger: {
+                trigger: statEl,
+                start: "top 90%",
+                invalidateOnRefresh: true,
+              },
+              onUpdate: () => {
+                numberEl.textContent =
+                  Math.floor(obj.value).toString() +
+                  (TOGETHER_PICTURES_STATS[i][0].includes("+") ? "+" : "");
+              },
+            }
+          );
+        });
 
-        // Mock object
-        const obj = { value: 0 };
+        ScrollTrigger.refresh();
+      }, mainScrollBarRef);
 
-        gsap.fromTo(
-          obj,
-          { value: 0 },
-          {
-            value: Number(targetText),
-            duration: 2,
-            ease: "power1.out",
-            scrollTrigger: {
-              trigger: statEl,
-              start: "top 90%",
-              invalidateOnRefresh: true,
-            },
-            onUpdate: () => {
-              numberEl.textContent =
-                Math.floor(obj.value).toString() +
-                (TOGETHER_PICTURES_STATS[i][0].includes("+") ? "+" : "");
-            },
-          }
-        );
-
-        return () => window.removeEventListener("load", onLoad);
-      });
+      return () => ctx.revert();
     },
     {
-      scope: mainScrollBarRef,
       dependencies: [isClient],
     }
   );
