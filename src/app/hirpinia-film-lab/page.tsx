@@ -7,14 +7,7 @@ import Navbar from "@/components/Navbar";
 import { useNav } from "@/contexts/NavContext";
 import images from "@/utils/images";
 import Image from "next/image";
-import {
-  Activity,
-  Suspense,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { Activity, Suspense, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -58,44 +51,50 @@ export default function HirpiniaFilmLab() {
     })();
   }, []);
 
-  useLayoutEffect(() => {
-    const onLoad = () => ScrollTrigger.refresh();
+  useGSAP(
+    () => {
+      const onLoad = () => ScrollTrigger.refresh();
 
-    window.addEventListener("load", onLoad);
+      window.addEventListener("load", onLoad);
 
-    const statEls = document.querySelectorAll<HTMLDivElement>(".stat");
-    statEls.forEach((statEl, i) => {
-      if (statEl === null) return;
+      const statEls = document.querySelectorAll<HTMLDivElement>(".stat");
+      statEls.forEach((statEl, i) => {
+        if (statEl === null) return;
 
-      const numberEl = statEl.children[0];
-      const targetText = TOGETHER_PICTURES_STATS[i][0].replace("+", "");
+        const numberEl = statEl.children[0];
+        const targetText = TOGETHER_PICTURES_STATS[i][0].replace("+", "");
 
-      // Mock object
-      const obj = { value: 0 };
+        // Mock object
+        const obj = { value: 0 };
 
-      gsap.fromTo(
-        obj,
-        { value: 0 },
-        {
-          value: Number(targetText),
-          duration: 2,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: statEl,
-            start: "top 90%",
-            invalidateOnRefresh: true,
-          },
-          onUpdate: () => {
-            numberEl.textContent =
-              Math.floor(obj.value).toString() +
-              (TOGETHER_PICTURES_STATS[i][0].includes("+") ? "+" : "");
-          },
-        }
-      );
+        gsap.fromTo(
+          obj,
+          { value: 0 },
+          {
+            value: Number(targetText),
+            duration: 2,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: statEl,
+              start: "top 90%",
+              invalidateOnRefresh: true,
+            },
+            onUpdate: () => {
+              numberEl.textContent =
+                Math.floor(obj.value).toString() +
+                (TOGETHER_PICTURES_STATS[i][0].includes("+") ? "+" : "");
+            },
+          }
+        );
 
-      return () => window.removeEventListener("load", onLoad);
-    });
-  }, [isClient]);
+        return () => window.removeEventListener("load", onLoad);
+      });
+    },
+    {
+      scope: mainScrollBarRef,
+      dependencies: [isClient],
+    }
+  );
 
   return (
     <>
