@@ -21,6 +21,10 @@ const sections: {
   href: LinkProps<unknown>["href"];
 }[] = [
   {
+    name: "Film Lab",
+    href: "/hirpinia-film-lab",
+  },
+  {
     name: "Work",
     href: "/works",
   },
@@ -58,7 +62,8 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
           ${fixed ? "fixed" : ""}
           items-center
           grid grid-cols-[auto_1fr]
-          md:grid-cols-3 w-full
+          md:grid-cols-3
+          w-full
           ${hasLeftPadding ? "md:pl-12" : "md:pl-4"}
           z-10 backdrop-blur-md
           ${hasBorder ? "border-b-2 border-b-border" : ""}
@@ -72,7 +77,8 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
             hidden md:flex
             flex-row items-center justify-center
             gap-4 md:gap-12
-            font-family-nav-link text-text-secondary
+            font-family-nav-link
+            text-text-secondary
           `}
         >
           {sections.map((section, index) => (
@@ -90,11 +96,19 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
         </nav>
 
         {/* FPS counter */}
-        <div className="md:flex hidden flex-row items-center ml-auto mr-12 gap-4 font-family-mono">
+        <div
+          className={`
+            md:flex hidden
+            flex-row items-center
+            ml-auto mr-12
+            gap-4
+            font-family-mono
+          `}
+        >
           {/* Circle */}
           <div className="bg-red-600/80 w-3.5 h-3.5 rounded-full motion-safe:animate-pulse" />
           <div className="text-text-secondary justify-center font-family-mono">
-            FPS 24.00
+            FPS 25.00
           </div>
         </div>
 
@@ -122,33 +136,38 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
         <div
           id="nav-menu"
           className={`
-            h-full flex flex-col
-            items-start justify-center
-            text-white
-          `}
+              h-full
+              flex flex-col
+              items-start justify-center
+              text-white
+              fixed inset-0
+            `}
         >
           {sections.map((section, index) => (
             <div
               key={`nav-${index}`}
-              className="flex flex-row items-end space-x-4 ml-8"
+              className={`
+                  flex flex-row items-end
+                  space-x-4 ml-8
+                `}
             >
               <div className="font-family-mono mb-1">0{index + 1}</div>
               <a
                 href={typeof section.href === "string" ? section.href : "/"}
                 className={`
-                  font-family-header
-                  text-6xl
-                  cursor-pointer
-                  ${section.href === currentPathname ? "underline" : "hover:underline"}
-                `}
+                    font-family-header
+                    text-6xl
+                    cursor-pointer
+                    ${section.href === currentPathname ? "underline" : "hover:underline"}
+                  `}
               >
                 {section.name}
               </a>
             </div>
           ))}
-        </div>
-        <div className="fixed bottom-0">
-          <Footer isNavbar />
+          <div className="fixed bottom-0">
+            <Footer isNavbar />
+          </div>
         </div>
       </Activity>
     </>
