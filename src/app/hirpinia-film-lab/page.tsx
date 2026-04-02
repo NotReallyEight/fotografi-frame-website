@@ -48,6 +48,12 @@ export default function HirpiniaFilmLab() {
   useEffect(() => {
     (() => {
       setIsClient(true);
+
+      const timeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 300);
+
+      return () => clearTimeout(timeout);
     })();
   }, []);
 
