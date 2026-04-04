@@ -12,15 +12,15 @@ const SOCIAL_LINKS: {
 }[] = [
   {
     label: "Instagram",
-    href: "/",
+    href: "https://www.instagram.com/__.frame.__/",
   },
   {
-    label: "Vimeo",
-    href: "/",
+    label: "YouTube",
+    href: "https://www.youtube.com/@fotografiframe",
   },
   {
-    label: "LinkedIn",
-    href: "/",
+    label: "Telegram",
+    href: "https://t.me/FRAMEeventi",
   },
 ];
 
@@ -59,8 +59,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
             </span>
           </div>
           <div className="xl:w-[50%] font-family-regular-md text-text-secondary pl-4 border-l-2 border-l-accent">
-            Have a project in mind? We are currently accepting new clients for
-            Q4 2024.
+            Hai un progetto in mente? Contattaci.
           </div>
         </div>
 
@@ -77,7 +76,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
               after:origin-left after:duration-(--grid-fade-in-duration)
             `}
           >
-            antonio@framegroup.it
+            info@framegroup.it
           </a>
           <div className="flex flex-col gap-1 items-start md:items-end text-text-muted font-family-regular-md">
             <a href="tel:+390212345678">+39 02 1234 5678</a>
@@ -123,13 +122,17 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
         `}
       >
         <div>© Frame Group {usesDate ? new Date().getFullYear() : ""}</div>
-        <div>P.IVA: 1234567890</div>
+        <div>P.IVA: 03164150645</div>
         <a
           href="/privacy-policy"
           className="hover:text-white text-center duration-(--transition-duration)"
         >
           Privacy Policy
         </a>
+      </div>
+      <div className="font-family-regular-lg text-center text-xs text-text-secondary lg:col-span-2 mb-8">
+        Made with &lt;3 by{" "}
+        <a href="https://instagram.com/antonio.wang_">Antonio Wang</a>.
       </div>
     </div>
   </footer>
