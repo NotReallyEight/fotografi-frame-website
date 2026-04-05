@@ -30,7 +30,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
         flex flex-col snap-end
         text-white
         px-8 md:px-12 lg:px-[10dvw]
-        gap-8 xl:gap-12
+        space-y-8 xl:space-y-12
         mt-8 xl:mt-12
         ${fullScreen ? "h-full justify-between" : ""}
       `}
@@ -90,7 +90,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
 
     <div className="h-px w-full bg-border" />
 
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-0">
       <div className="flex flex-row gap-8 justify-between xl:justify-start w-full">
         {SOCIAL_LINKS.map((link, index) => (
           <a
@@ -130,10 +130,13 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
           Privacy Policy
         </a>
       </div>
-      <div className="font-family-regular-lg text-center text-xs text-text-secondary lg:col-span-2 mb-8">
-        Made with &lt;3 by{" "}
-        <a href="https://instagram.com/antonio.wang_">Antonio Wang</a>.
-      </div>
+    </div>
+    <div className="font-family-regular-lg text-center text-xs text-text-secondary mb-8">
+      Made with &lt;3 by{" "}
+      <a href="https://instagram.com/antonio.wang_" className="font-bold">
+        Antonio Wang
+      </a>
+      .
     </div>
   </footer>
 );
