@@ -65,7 +65,7 @@ const Navbar: FC<Props> = ({ fixed, hasBorder, hasLeftPadding }) => {
           md:grid-cols-3
           w-full
           ${hasLeftPadding ? "md:pl-12" : "md:pl-4"}
-          z-10 backdrop-blur-md
+          z-20 backdrop-blur-md
           ${hasBorder ? "border-b-2 border-b-border" : ""}
         `}
       >
