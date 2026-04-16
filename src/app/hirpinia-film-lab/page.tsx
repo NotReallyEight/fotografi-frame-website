@@ -88,8 +88,8 @@ export default function HirpiniaFilmLab() {
     <>
       <Metadata
         title="HirpiniaFilmLab - Frame"
-        description="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
-        keywords="fotografia, fotografi frame, fotografi, frame"
+        description="Laboratorio cinematografico dedicato alla formazione audiovisiva e alla crescita di giovani filmmaker. Hirpinia Film Lab unisce teoria e pratica per sviluppare nuove produzioni e voci del cinema indipendente."
+        keywords="laboratorio cinematografico, formazione audiovisiva, cinema indipendente, filmmaking, produzione video, Irpinia film lab, corsi cinema"
       />
 
       <main
@@ -116,12 +116,13 @@ export default function HirpiniaFilmLab() {
                 <span>Lab</span>
               </h1>
               <h2 className="font-family-regular-lg text-text-secondary">
-                Storytelling e collaborazione tra giovani talenti. Formando la
-                nuova generazione delle voci del cinema.
+                Formazione e storytelling nel cuore del cinema indipendente. Un
+                laboratorio audiovisivo che accompagna giovani talenti nella
+                creazione di nuove voci del cinema contemporaneo.
               </h2>
               <Button
                 href="https://www.instagram.com/hirpiniafilmlab/"
-                text="Segui il progetto"
+                text="Scopri il progetto"
                 primary
               />
             </div>
@@ -157,12 +158,15 @@ export default function HirpiniaFilmLab() {
                 "relative flex flex-col items-center justify-center gap-8"
               }
             >
-              <div className="font-family-secondary">La Visione</div>
+              <div className="font-family-secondary">La Nostra Visione</div>
               <div className="font-family-regular-lg text-text-secondary lg:w-[50%]">
-                Un laboratorio di cinema dove la teoria incontra la pratica.
-                Supportiamo la gioventù locale attraverso una formazione pratica
-                e un tutoraggio tecnico professionale, colmando il divario tra
-                le storie locali e gli schermi di tutto il mondo.
+                Hirpinia Film Lab è un laboratorio cinematografico dedicato alla
+                formazione pratica nel settore audiovisivo. Uniamo teoria e
+                produzione sul campo per sviluppare competenze concrete in
+                regia, produzione e linguaggio filmico. Il nostro obiettivo è
+                creare un ponte tra il territorio e l&apos;industria
+                cinematografica contemporanea, formando una nuova generazione di
+                filmmaker consapevoli e preparati.
               </div>
             </div>
 
