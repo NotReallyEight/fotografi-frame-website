@@ -79,7 +79,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
             info@framegroup.it
           </a>
           <div className="flex flex-col gap-1 items-start md:items-end text-text-muted font-family-regular-md">
-            <a href="tel:+390212345678">+39 02 1234 5678</a>
+            <a href="tel:+393505664114">+39 350 566 4114</a>
             <div className="md:text-right">
               Via Alfredo Bartolomei, snc, Sant&apos;Angelo dei Lombardi, IT
             </div>
@@ -132,7 +132,7 @@ const Footer: React.FC<Props> = ({ fullScreen, isNavbar, usesDate = true }) => (
       </div>
     </div>
     <div className="font-family-regular-lg text-center text-xs text-text-secondary mb-8">
-      Made with &lt;3 by{" "}
+      Made with ♥ by{" "}
       <a href="https://instagram.com/antonio.wang_" className="font-bold">
         Antonio Wang
       </a>

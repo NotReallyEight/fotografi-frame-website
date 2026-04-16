@@ -12,27 +12,13 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
+import { TRAINING_AREAS } from "./constants";
 
 const NoSSRProjectStat = dynamic(() => import("./_components/ProjectStat"), {
   ssr: false,
 });
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-const TRAINING_AREAS: [
-  keyof typeof images.hirpiniaFilmLab.trainingAreas,
-  string,
-][] = [
-  ["artDepartment", "Art Department"],
-  ["actors", "Attori"],
-  ["communicationAndMarketing", "Comunicazione e Marketing"],
-  ["photography", "Fotografia"],
-  ["music", "Musica"],
-  ["postProduction", "Post Produzione"],
-  ["production", "Produzione"],
-  ["direction", "Regia"],
-  ["setDesign", "Sceneggiatura"],
-];
 
 const TOGETHER_PICTURES_STATS: [string, string][] = [
   ["100+", "Partecipanti"],
@@ -102,8 +88,8 @@ export default function HirpiniaFilmLab() {
     <>
       <Metadata
         title="HirpiniaFilmLab - Frame"
-        description="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
-        keywords="fotografia, fotografi frame, fotografi, frame"
+        description="Laboratorio cinematografico dedicato alla formazione audiovisiva e alla crescita di giovani filmmaker. Hirpinia Film Lab unisce teoria e pratica per sviluppare nuove produzioni e voci del cinema indipendente."
+        keywords="laboratorio cinematografico, formazione audiovisiva, cinema indipendente, filmmaking, produzione video, Irpinia film lab, corsi cinema"
       />
 
       <main
@@ -130,12 +116,13 @@ export default function HirpiniaFilmLab() {
                 <span>Lab</span>
               </h1>
               <h2 className="font-family-regular-lg text-text-secondary">
-                Storytelling e collaborazione tra giovani talenti. Formando la
-                nuova generazione delle voci del cinema.
+                Formazione e storytelling nel cuore del cinema indipendente. Un
+                laboratorio audiovisivo che accompagna giovani talenti nella
+                creazione di nuove voci del cinema contemporaneo.
               </h2>
               <Button
                 href="https://www.instagram.com/hirpiniafilmlab/"
-                text="Segui il progetto"
+                text="Scopri il progetto"
                 primary
               />
             </div>
@@ -171,12 +158,15 @@ export default function HirpiniaFilmLab() {
                 "relative flex flex-col items-center justify-center gap-8"
               }
             >
-              <div className="font-family-secondary">La Visione</div>
+              <div className="font-family-secondary">La Nostra Visione</div>
               <div className="font-family-regular-lg text-text-secondary lg:w-[50%]">
-                Un laboratorio di cinema dove la teoria incontra la pratica.
-                Supportiamo la gioventù locale attraverso una formazione pratica
-                e un tutoraggio tecnico professionale, colmando il divario tra
-                le storie locali e gli schermi di tutto il mondo.
+                Hirpinia Film Lab è un laboratorio cinematografico dedicato alla
+                formazione pratica nel settore audiovisivo. Uniamo teoria e
+                produzione sul campo per sviluppare competenze concrete in
+                regia, produzione e linguaggio filmico. Il nostro obiettivo è
+                creare un ponte tra il territorio e l&apos;industria
+                cinematografica contemporanea, formando una nuova generazione di
+                filmmaker consapevoli e preparati.
               </div>
             </div>
 
@@ -224,44 +214,41 @@ export default function HirpiniaFilmLab() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Image grid */}
-              {TRAINING_AREAS.map(
-                ([trainingAreaKey, trainingAreaLabel], index) => (
-                  <div
-                    className={`
+              {TRAINING_AREAS.map(([trainingAreaKey, { fullTitle }], index) => (
+                <a
+                  className={`
                       relative
                       group
                       overflow-hidden
                     `}
-                    key={`training-area-${trainingAreaKey}`}
-                  >
-                    <Image
-                      alt={`Reparto ${trainingAreaLabel}`}
-                      src={
-                        images.hirpiniaFilmLab.trainingAreas[trainingAreaKey]
-                      }
-                      width={900}
-                      height={900}
-                      className={
-                        "aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
-                      }
-                    />
-                    <div className="absolute left-4 bottom-4 flex flex-col gap-2">
-                      <div
-                        className="text-accent
+                  key={`training-area-${trainingAreaKey}`}
+                  href={`/hirpinia-film-lab/${trainingAreaKey}`}
+                >
+                  <Image
+                    alt={`Reparto ${fullTitle}`}
+                    src={images.hirpiniaFilmLab.trainingAreas[trainingAreaKey]}
+                    width={900}
+                    height={900}
+                    className={
+                      "aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                    }
+                  />
+                  <div className="absolute left-4 bottom-4 flex flex-col gap-2">
+                    <div
+                      className="text-accent
                         font-family-mono uppercase
                         text-xs"
-                      >{`0${index + 1}`}</div>
-                      <div
-                        className="font-family-regular-lg
+                    >{`0${index + 1}`}</div>
+                    <div
+                      className="font-family-regular-lg
               text-lg md:text-xl lg:text-2xl
               font-bold uppercase text-white"
-                      >
-                        {trainingAreaLabel}
-                      </div>
+                    >
+                      {fullTitle}
                     </div>
                   </div>
-                )
-              )}
+                </a>
+              ))}
             </div>
           </section>
 
@@ -321,7 +308,7 @@ export default function HirpiniaFilmLab() {
           {/* Together Image Section */}
           <section
             className={
-              "relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col"
+              "relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col mb-0"
             }
           >
             <Image

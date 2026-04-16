@@ -8,6 +8,7 @@ type Props = {
   text: string;
   onClick?: () => void;
   primary?: boolean;
+  newTab?: boolean;
 };
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   text,
   onClick,
   primary = true,
+  newTab = true,
 }: Props) => {
   if (href)
     return (
@@ -40,8 +42,8 @@ const Button = ({
           ${className ?? ""}
         `}
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={newTab ? "_blank" : undefined}
+        rel={newTab ? "noopener noreferrer" : undefined}
       >
         <Activity mode={icon !== undefined ? "visible" : "hidden"}>
           <div>{icon}</div>

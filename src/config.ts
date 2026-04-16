@@ -23,7 +23,7 @@ const config = {
   },
   url:
     process.env.NODE_ENV === "production"
-      ? "https://www.fotografiframe.com"
+      ? "https://framegroup.it"
       : "http://localhost:3000",
 };
 
