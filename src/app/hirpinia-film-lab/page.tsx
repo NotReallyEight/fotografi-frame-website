@@ -12,27 +12,13 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/src/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
+import { TRAINING_AREAS } from "./constants";
 
 const NoSSRProjectStat = dynamic(() => import("./_components/ProjectStat"), {
   ssr: false,
 });
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-const TRAINING_AREAS: [
-  keyof typeof images.hirpiniaFilmLab.trainingAreas,
-  string,
-][] = [
-  ["artDepartment", "Art Department"],
-  ["actors", "Attori"],
-  ["communicationAndMarketing", "Comunicazione e Marketing"],
-  ["photography", "Fotografia"],
-  ["music", "Musica"],
-  ["postProduction", "Post Produzione"],
-  ["production", "Produzione"],
-  ["direction", "Regia"],
-  ["setDesign", "Sceneggiatura"],
-];
 
 const TOGETHER_PICTURES_STATS: [string, string][] = [
   ["100+", "Partecipanti"],
@@ -224,44 +210,41 @@ export default function HirpiniaFilmLab() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Image grid */}
-              {TRAINING_AREAS.map(
-                ([trainingAreaKey, trainingAreaLabel], index) => (
-                  <div
-                    className={`
+              {TRAINING_AREAS.map(([trainingAreaKey, { fullTitle }], index) => (
+                <a
+                  className={`
                       relative
                       group
                       overflow-hidden
                     `}
-                    key={`training-area-${trainingAreaKey}`}
-                  >
-                    <Image
-                      alt={`Reparto ${trainingAreaLabel}`}
-                      src={
-                        images.hirpiniaFilmLab.trainingAreas[trainingAreaKey]
-                      }
-                      width={900}
-                      height={900}
-                      className={
-                        "aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
-                      }
-                    />
-                    <div className="absolute left-4 bottom-4 flex flex-col gap-2">
-                      <div
-                        className="text-accent
+                  key={`training-area-${trainingAreaKey}`}
+                  href={`/hirpinia-film-lab/${trainingAreaKey}`}
+                >
+                  <Image
+                    alt={`Reparto ${fullTitle}`}
+                    src={images.hirpiniaFilmLab.trainingAreas[trainingAreaKey]}
+                    width={900}
+                    height={900}
+                    className={
+                      "aspect-square object-cover opacity-50 group-hover:opacity-100 group-hover:scale-105 duration-(--grid-fade-in-duration)"
+                    }
+                  />
+                  <div className="absolute left-4 bottom-4 flex flex-col gap-2">
+                    <div
+                      className="text-accent
                         font-family-mono uppercase
                         text-xs"
-                      >{`0${index + 1}`}</div>
-                      <div
-                        className="font-family-regular-lg
+                    >{`0${index + 1}`}</div>
+                    <div
+                      className="font-family-regular-lg
               text-lg md:text-xl lg:text-2xl
               font-bold uppercase text-white"
-                      >
-                        {trainingAreaLabel}
-                      </div>
+                    >
+                      {fullTitle}
                     </div>
                   </div>
-                )
-              )}
+                </a>
+              ))}
             </div>
           </section>
 
@@ -321,7 +304,7 @@ export default function HirpiniaFilmLab() {
           {/* Together Image Section */}
           <section
             className={
-              "relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col"
+              "relative w-dvw aspect-3/2 lg:aspect-[2.39/1] text-white flex flex-col mb-0"
             }
           >
             <Image
