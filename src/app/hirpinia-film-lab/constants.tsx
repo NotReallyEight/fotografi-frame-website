@@ -1,4 +1,5 @@
 import images from "@/utils/images";
+import type React from "react";
 
 export const TRAINING_AREAS: [
   keyof typeof images.hirpiniaFilmLab.trainingAreas,
@@ -122,11 +123,12 @@ export const TRAINING_AREAS: [
           visiva.
           <br />
           <br />
-          In questo reparto i ragazzi sviluppano competenze tecniche e creative
-          legate alla cinematography, lavorando su set reali e collaborando con
-          la regia per tradurre la narrazione in immagini. Il dipartimento cura
-          la coerenza visiva del film, dalla scelta delle inquadrature alla
-          costruzione dell&apos;atmosfera attraverso la luce.
+          In questo reparto i ragazzi lavorano sulla musica applicata alle
+          immagini, sperimentando il rapporto tra suono ed emozione
+          all&apos;interno del linguaggio cinematografico. Il dipartimento
+          collabora con le altre aree per costruire un&apos;esperienza
+          audiovisiva coerente, in cui la musica diventa parte integrante della
+          narrazione.
         </>
       ),
     },

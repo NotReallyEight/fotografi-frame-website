@@ -29,12 +29,24 @@ const DepartmentPageClient = ({ departmentName }: Props) => {
       </div>
     );
 
+  const departmentContent = departmentInfo[1];
+  const metadataDescription =
+    typeof departmentContent.primaryDescription === "string"
+      ? departmentContent.primaryDescription
+      : "";
+  const metadataKeywords = [
+    "hirpinia film lab",
+    "hirpiniafilmlab",
+    departmentName,
+    departmentContent.title.toLowerCase(),
+  ].join(", ");
+
   return (
     <>
       <Metadata
         title="HirpiniaFilmLab - Frame"
-        description="Con la nostra esperienza e la nostra attrezzatura all'avanguardia, siamo in grado di creare ricordi indelebili che dureranno per sempre."
-        keywords="fotografia, fotografi frame, fotografi, frame"
+        description={metadataDescription}
+        keywords={metadataKeywords}
       />
       <main className={"flex flex-col h-dvh space-y-32 md:space-y-64"}>
         <Navbar fixed hasLeftPadding />
