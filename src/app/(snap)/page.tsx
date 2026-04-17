@@ -112,8 +112,7 @@ export default function Home() {
         </div>
       </Activity>
 
-      <Activity mode={loading ? "hidden" : "visible"}>
-        <main id="container" className="h-screen">
+        <main id="container" className={`h-screen ${loading ? "hidden" : "block"}`}>
           <Navbar fixed hasLeftPadding />
           <Activity mode={isNavOpen ? "hidden" : "visible"}>
             {/* Hero Section */}
@@ -429,7 +428,6 @@ export default function Home() {
             </Suspense>
           </Activity>
         </main>
-      </Activity>
     </>
   );
 }
