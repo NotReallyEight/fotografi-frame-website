@@ -12,13 +12,13 @@ const SELECTED_PRODUCTIONS_IMAGES: {
     description: "Luxury Real Estate Campaign",
     src: images.birthdays.carousels[0][0],
     title: "Concrete Dreams",
-    type: "Commercial",
+    type: "Documentario",
   },
   {
     description: "Luxury Real Estate Campaign",
     src: images.birthdays.carousels[0][1],
     title: "Concrete Dreams",
-    type: "Commercial",
+    type: "Videoclip",
   },
   {
     description: "Luxury Real Estate Campaign",
