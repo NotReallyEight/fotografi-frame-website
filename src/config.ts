@@ -26,6 +26,7 @@ const config = {
       ? "https://framegroup.it"
       : "http://localhost:3000",
   maintenance: true,
+  maintenanceAllowedRoutes: ["/hirpinia-film-lab"],
 };
 
 export default config;
