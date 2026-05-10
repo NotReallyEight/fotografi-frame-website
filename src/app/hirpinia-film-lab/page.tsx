@@ -26,6 +26,8 @@ const TOGETHER_PICTURES_STATS: [string, string][] = [
   ["8", "Produzioni"],
 ];
 
+const BEHIND_THE_LENS_IMAGE_COUNT_PER_LAYOUT = 5;
+
 export default function HirpiniaFilmLab() {
   const { isNavOpen } = useNav();
   const mainScrollBarRef = useRef(null);
@@ -273,8 +275,8 @@ export default function HirpiniaFilmLab() {
                       relative
                       group
                       opacity-80
-                      ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}
-                      ${index % 5 === 2 ? "md:row-span-2" : ""}
+                      ${index % BEHIND_THE_LENS_IMAGE_COUNT_PER_LAYOUT === 0 ? "md:col-span-2 md:row-span-2" : ""}
+                      ${index % BEHIND_THE_LENS_IMAGE_COUNT_PER_LAYOUT === 2 ? "md:row-span-2" : ""}
                       overflow-hidden
                     `}
                     key={`training-area-${index}`}
