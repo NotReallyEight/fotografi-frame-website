@@ -125,96 +125,107 @@ const images = {
   header: HeaderImage,
   hirpiniaFilmLab: {
     behindTheLensSectionMedia: [
-      "https://github.com/NotReallyEight/frame-group-website-assets/raw/refs/heads/main/hirpinia-film-lab/7Q5A0951.mp4",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7134.webp",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7211.webp",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7161.webp",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7145.webp",
+      "https://github.com/NotReallyEight/frame-group-website-assets/raw/refs/heads/main/hirpinia-film-lab/home/7Q5A0951.mp4",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7134.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/communicationAndMarketing/7Q5A7211.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7161.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7145.webp",
+      "https://github.com/NotReallyEight/frame-group-website-assets/raw/refs/heads/main/hirpinia-film-lab/home/CAM_A_7291.mp4",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/home/7Q5A6511.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/home/7Q5A6572.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/home/7Q5A6560.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/home/7Q5A6546.webp",
     ],
     heroBg: HirpiniaFilmLabHeroBg,
     theVisionGrid: [
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7211.webp",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A1000.webp",
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7142.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/communicationAndMarketing/7Q5A7211.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A1000.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7142.webp",
     ],
     together:
-      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7448.webp",
+      "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/home/7Q5A7448.webp",
     trainingAreas: {
       artDepartment:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7613.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7613.webp",
       actors:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7341.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7341.webp",
       communicationAndMarketing:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7211.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/communicationAndMarketing/7Q5A7211.webp",
       photography:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
       music:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
       postProduction:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
       production:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
       direction:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/direction/7Q5A6561.webp",
       setDesign:
-        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
     },
     trainingAreaDedicatedPages: {
       artDepartment: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7632.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7632.webp",
         images: [
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7613.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7632.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7644.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7679.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7705.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/_DSC7706.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/20260403_175301.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/20260403_183657.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7613.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7632.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7644.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7679.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7705.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/_DSC7706.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/20260403_175301.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/artDepartment/20260403_183657.webp",
         ],
       },
       actors: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7341.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7341.webp",
         images: [
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A1000.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7134.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7145.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7261.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7341.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A1000.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7134.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7145.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7261.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A7341.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A6651.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/actors/7Q5A6656.webp",
         ],
       },
       communicationAndMarketing: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7211.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/communicationAndMarketing/7Q5A7211.webp",
         images: [
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7211.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/communicationAndMarketing/7Q5A7211.webp",
         ],
       },
       photography: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
         images: [
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7142.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7161.webp",
-          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7142.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7161.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A6549.webp",
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A6658.webp",
         ],
       },
       music: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
         images: [],
       },
       postProduction: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
         images: [],
       },
       production: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
         images: [],
       },
       direction: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
-        images: [],
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/direction/7Q5A6561.webp",
+        images: [
+          "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/direction/7Q5A6561.webp",
+        ],
       },
       setDesign: {
-        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/7Q5A7192.webp",
+        bg: "https://raw.githubusercontent.com/NotReallyEight/frame-group-website-assets/refs/heads/main/hirpinia-film-lab/photography/7Q5A7192.webp",
         images: [],
       },
     },
