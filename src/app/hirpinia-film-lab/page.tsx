@@ -23,7 +23,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const TOGETHER_PICTURES_STATS: [string, string][] = [
   ["100+", "Partecipanti"],
   ["09", "Reparti"],
-  ["6", "Produzioni"],
+  ["8", "Produzioni"],
 ];
 
 export default function HirpiniaFilmLab() {
@@ -273,8 +273,8 @@ export default function HirpiniaFilmLab() {
                       relative
                       group
                       opacity-80
-                      ${index === 0 ? "md:col-span-2 md:row-span-2" : ""}
-                      ${index === 2 ? "md:row-span-2" : ""}
+                      ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}
+                      ${index % 5 === 2 ? "md:row-span-2" : ""}
                       overflow-hidden
                     `}
                     key={`training-area-${index}`}
