@@ -23,7 +23,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const TOGETHER_PICTURES_STATS: [string, string][] = [
   ["100+", "Partecipanti"],
   ["09", "Reparti"],
-  ["8", "Produzioni"],
+  ["9", "Produzioni"],
 ];
 
 const BEHIND_THE_LENS_IMAGE_COUNT_PER_LAYOUT = 5;
