@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frame Group Website
 
-## Getting Started
+Un sito portfolio e studio dal linguaggio cinematografico per Frame Group, realizzato con Next.js, React, TypeScript e Tailwind CSS. Il progetto racconta il lavoro dello studio tra produzioni, eventi, Hirpinia Film Lab, studio principale e pagine di presentazione/contatto.
 
-First, run the development server:
+## Informazioni
+
+L'esperienza è costruita attorno a immagini d'impatto, motion design e storytelling editoriale. Il sito include sezioni dedicate a:
+
+- produzioni e lavori video
+- fotografia e copertura eventi
+- Hirpinia Film Lab, un progetto cinematografico di formazione e produzione
+- informazioni sullo studio e sul noleggio degli spazi
+- team, contatti e collegamenti social
+
+## Avvio rapido
+
+Installa le dipendenze e avvia il dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Poi apri [http://localhost:3000](http://localhost:3000) nel browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Script disponibili
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `npm run dev` — avvia il server di sviluppo con Turbopack
+- `npm run build` — crea la build di produzione
+- `npm run start` — avvia il server di produzione
+- `npm run lint` — esegue ESLint su `src`
+- `npm run typecheck` — esegue il controllo TypeScript senza generare file
+- `npm run prettier` — formatta i file sorgente
+- `npm run prettier-check` — verifica la formattazione
 
-## Learn More
+## Stack tecnologico
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- GSAP per le animazioni
+- integrazione Video.js per la riproduzione media
+- Sharp per l'elaborazione delle immagini
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Struttura del progetto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `src/app` — segmenti di route e layout delle pagine
+- `src/components` — componenti UI riutilizzabili
+- `src/contexts` — stato condiviso tramite React Context
+- `src/utils` — helper, dati immagini e utility di animazione
+- `public/assets` — asset statici locali
 
-## Deploy on Vercel
+## Note
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- La homepage e le pagine di sezione sono fortemente visuali e dipendono da asset multimediali curati.
+- Il sito include una narrazione coordinata per Frame Group e Hirpinia Film Lab.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Licenza
+
+Tutti i diritti riservati.
+
+_Made with ♥ by [Antonio Wang](https://instagram.com/antonio.wang_)._
