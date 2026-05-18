@@ -25,7 +25,7 @@ const config = {
     process.env.NODE_ENV === "production"
       ? "https://framegroup.it"
       : "http://localhost:3000",
-  maintenance: true,
+  maintenance: (process.env.MAINTENANCE ?? "true") === "true",
   maintenanceAllowedRoutes: ["/hirpinia-film-lab"],
 };
 
