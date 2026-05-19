@@ -39,7 +39,7 @@
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^6",
-    "typescript-eslint": "^8.59.3"
+    "typescript-eslint": "^8.59.4"
   },
   "overrides": {
     "@types/react": "19.2.14",
