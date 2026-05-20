@@ -6,8 +6,11 @@ import {
   getBackstageFolderId,
 } from "@/libs/google-drive";
 
+export const maxDuration = 60;
+
 const MAX_FILE_SIZE = 250 * 1024 * 1024; // 250 MB per file
 const MAX_FILES = 300;
+const SESSION_CREATION_BATCH_SIZE = 10;
 const ALLOWED_EXTENSIONS = [
   ".jpg",
   ".jpeg",
@@ -192,8 +195,12 @@ export async function POST(request: NextRequest) {
     const uploadSessions: Array<UploadFileDescriptor & { uploadUrl: string }> =
       [];
 
-    for (let index = 0; index < files.length; index += 2) {
-      const batch = files.slice(index, index + 2);
+    for (
+      let index = 0;
+      index < files.length;
+      index += SESSION_CREATION_BATCH_SIZE
+    ) {
+      const batch = files.slice(index, index + SESSION_CREATION_BATCH_SIZE);
 
       const batchResults = await Promise.all(
         batch.map(async (file) => {
