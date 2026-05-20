@@ -22,6 +22,37 @@ const FORM_TEXT_INPUTS: {
   },
 ];
 
+type UploadSession = {
+  name: string;
+  size: number;
+  type: string;
+  uploadUrl: string;
+};
+
+const RESUMABLE_CHUNK_SIZE = 4 * 1024 * 1024;
+
+const getUploadBatchSize = () => {
+  const connection = (
+    navigator as Navigator & {
+      connection?: {
+        effectiveType?: string;
+      };
+    }
+  ).connection;
+
+  const effectiveType = connection?.effectiveType;
+
+  if (effectiveType === "slow-2g" || effectiveType === "2g") {
+    return 1;
+  }
+
+  if (effectiveType === "3g") {
+    return 2;
+  }
+
+  return 3;
+};
+
 export default function Backstage() {
   const { isNavOpen } = useNav();
   const searchParams = useSearchParams();
@@ -134,6 +165,66 @@ export default function Backstage() {
     fileInputRef.current?.click();
   };
 
+  const uploadFileViaSession = async (
+    file: File,
+    uploadUrl: string
+  ): Promise<{ id: string }> => {
+    if (!code) {
+      throw new Error("Missing authorization code");
+    }
+
+    let offset = 0;
+
+    while (offset < file.size) {
+      const chunkEnd = Math.min(offset + RESUMABLE_CHUNK_SIZE, file.size);
+      const chunk = file.slice(offset, chunkEnd);
+      const rangeEnd = chunkEnd - 1;
+
+      const response = await fetch(
+        `/api/backstage-upload/chunk?code=${encodeURIComponent(code)}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": file.type || "application/octet-stream",
+            "Content-Range": `bytes ${offset}-${rangeEnd}/${file.size}`,
+            "X-Upload-Url": uploadUrl,
+          },
+          body: chunk,
+        }
+      );
+
+      if (response.status === 308) {
+        const rangeHeader = response.headers.get("range");
+
+        if (rangeHeader) {
+          const match = rangeHeader.match(/bytes=0-(\d+)/i);
+
+          if (match) {
+            offset = Number(match[1]) + 1;
+            continue;
+          }
+        }
+
+        offset = chunkEnd;
+        continue;
+      }
+
+      if (!response.ok) {
+        throw new Error(`Direct upload failed for ${file.name}`);
+      }
+
+      const data = (await response.json()) as { id?: string };
+
+      if (!data.id) {
+        throw new Error(`Missing file ID after uploading ${file.name}`);
+      }
+
+      return { id: data.id };
+    }
+
+    throw new Error(`Upload incomplete for ${file.name}`);
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -174,37 +265,97 @@ export default function Backstage() {
     setSubmissionResponse(null);
 
     try {
-      const formData = new FormData();
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-
-      selectedFiles.forEach((file) => {
-        formData.append("media", file);
-      });
-
-      const response = await fetch(
+      const initResponse = await fetch(
         `/api/backstage-upload?code=${encodeURIComponent(code)}`,
         {
           method: "POST",
-          body: formData,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            files: selectedFiles.map((file) => ({
+              name: file.name,
+              size: file.size,
+              type: file.type,
+            })),
+          }),
         }
       );
 
-      const data = await response.json();
+      const data = (await initResponse.json()) as {
+        success?: boolean;
+        message?: string;
+        error?: string;
+        folderName?: string;
+        uploadSessions?: UploadSession[];
+      };
 
-      if (response.ok) {
-        setSubmissionResponse({
-          success: true,
-          message: data.message || "File caricati con successo!",
-        });
-        setSelectedFiles([]);
-        formElement.reset();
-      } else {
+      if (!initResponse.ok) {
         setSubmissionResponse({
           success: false,
           message: data.error || "Caricamento fallito, riprova più tardi.",
         });
+        return;
       }
+
+      const uploadSessions = data.uploadSessions ?? [];
+
+      if (uploadSessions.length === 0) {
+        setSubmissionResponse({
+          success: false,
+          message: "Nessuna sessione di upload è stata creata.",
+        });
+        return;
+      }
+
+      const uploadedResults: Array<{ name: string; id: string; size: number }> =
+        [];
+
+      const uploadBatchSize = getUploadBatchSize();
+
+      for (
+        let index = 0;
+        index < uploadSessions.length;
+        index += uploadBatchSize
+      ) {
+        const batchSessions = uploadSessions.slice(
+          index,
+          index + uploadBatchSize
+        );
+        const batchFiles = selectedFiles.slice(index, index + uploadBatchSize);
+
+        const batchResults = await Promise.all(
+          batchSessions.map(async (session, batchIndex) => {
+            const file = batchFiles[batchIndex];
+
+            if (!file) {
+              throw new Error("Upload session/file mismatch.");
+            }
+
+            const uploadedFile = await uploadFileViaSession(
+              file,
+              session.uploadUrl
+            );
+
+            return {
+              name: file.name,
+              id: uploadedFile.id,
+              size: file.size,
+            };
+          })
+        );
+
+        uploadedResults.push(...batchResults);
+      }
+
+      setSubmissionResponse({
+        success: true,
+        message: `Caricati con successo ${uploadedResults.length} file su Google Drive.`,
+      });
+      setSelectedFiles([]);
+      formElement.reset();
     } catch {
       setSubmissionResponse({
         success: false,

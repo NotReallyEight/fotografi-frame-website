@@ -3,9 +3,19 @@ import { Readable } from "stream";
 
 // Lazily create Drive client to avoid throwing during module import (important for builds/tests)
 let cachedDrive: ReturnType<typeof google.drive> | null = null;
+let cachedAuthClient: InstanceType<typeof google.auth.OAuth2> | null = null;
 
 function initDriveIfNeeded() {
   if (cachedDrive) return cachedDrive;
+
+  const authClient = initAuthIfNeeded();
+
+  cachedDrive = google.drive({ version: "v3", auth: authClient });
+  return cachedDrive;
+}
+
+function initAuthIfNeeded() {
+  if (cachedAuthClient) return cachedAuthClient;
 
   const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
   const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
@@ -15,18 +25,17 @@ function initDriveIfNeeded() {
     throw new Error("Missing Google OAuth configuration in env vars");
   }
 
-  const oauth2Client = new google.auth.OAuth2(
+  cachedAuthClient = new google.auth.OAuth2(
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
     process.env.GOOGLE_OAUTH_REDIRECT_URI || "http://127.0.0.1"
   );
 
-  oauth2Client.setCredentials({
+  cachedAuthClient.setCredentials({
     refresh_token: GOOGLE_REFRESH_TOKEN,
   });
 
-  cachedDrive = google.drive({ version: "v3", auth: oauth2Client });
-  return cachedDrive;
+  return cachedAuthClient;
 }
 
 /**
@@ -101,6 +110,56 @@ export async function uploadFileToFolder(
   }
 
   return response.data.id;
+}
+
+export async function createResumableUploadSession(options: {
+  fileName: string;
+  mimeType: string;
+  folderId: string;
+  fileSize?: number;
+}): Promise<string> {
+  const authClient = initAuthIfNeeded();
+  const accessTokenResponse = await authClient.getAccessToken();
+  const accessToken = accessTokenResponse?.token;
+
+  if (!accessToken) {
+    throw new Error("Unable to obtain Google access token");
+  }
+
+  const response = await fetch(
+    "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable",
+    {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "application/json; charset=UTF-8",
+        "X-Upload-Content-Type": options.mimeType,
+        ...(options.fileSize !== undefined
+          ? { "X-Upload-Content-Length": String(options.fileSize) }
+          : {}),
+      },
+      body: JSON.stringify({
+        name: options.fileName,
+        parents: [options.folderId],
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to create resumable upload session for ${options.fileName}`
+    );
+  }
+
+  const sessionUrl = response.headers.get("location");
+
+  if (!sessionUrl) {
+    throw new Error(
+      `Google Drive did not return an upload session for ${options.fileName}`
+    );
+  }
+
+  return sessionUrl;
 }
 
 /**
