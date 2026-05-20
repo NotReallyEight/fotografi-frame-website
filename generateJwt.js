@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const crypto = require("crypto");
 
-console.log(process.env.BACKSTAGE_UPLOAD_SECRET);
-
 const SECRET =
   process.env.BACKSTAGE_UPLOAD_SECRET || "fallback-secret-change-me";
 const BASE = process.env.BACKSTAGE_BASE_URL || "http://localhost:3000";
