@@ -7,7 +7,7 @@ import {
 } from "@/libs/google-drive";
 
 const MAX_FILE_SIZE = 250 * 1024 * 1024; // 250 MB per file
-const MAX_FILES = 25;
+const MAX_FILES = 300;
 const ALLOWED_EXTENSIONS = [
   ".jpg",
   ".jpeg",

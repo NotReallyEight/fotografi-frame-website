@@ -30,6 +30,7 @@ type UploadSession = {
 };
 
 const RESUMABLE_CHUNK_SIZE = 4 * 1024 * 1024;
+const MAX_FILES = 300;
 
 const getUploadBatchSize = () => {
   const connection = (
@@ -116,16 +117,22 @@ export default function Backstage() {
 
     setSelectedFiles((currentFiles) => {
       const mergedFiles = [...currentFiles];
+      const uniqueFilesToAdd = validFiles.filter(
+        (file) =>
+          !mergedFiles.some(
+            (existingFile) => fileKey(existingFile) === fileKey(file)
+          )
+      );
+      const availableSlots = Math.max(0, MAX_FILES - mergedFiles.length);
+      const filesToAdd = uniqueFilesToAdd.slice(0, availableSlots);
 
-      validFiles.forEach((file) => {
-        const exists = mergedFiles.some(
-          (existingFile) => fileKey(existingFile) === fileKey(file)
-        );
+      mergedFiles.push(...filesToAdd);
 
-        if (!exists) {
-          mergedFiles.push(file);
-        }
-      });
+      if (uniqueFilesToAdd.length > filesToAdd.length) {
+        setFileError(`Puoi selezionare al massimo ${MAX_FILES} file.`);
+      } else if (invalidFiles === 0) {
+        setFileError("");
+      }
 
       return mergedFiles;
     });
@@ -460,6 +467,9 @@ export default function Backstage() {
                       <div className="font-family-regular-md text-white/70">
                         Trascina qui foto o video, oppure clicca per
                         selezionarli.
+                      </div>
+                      <div className="text-sm text-white/55">
+                        Puoi caricare fino a {MAX_FILES} file.
                       </div>
                     </div>
                   </div>
