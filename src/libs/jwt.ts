@@ -1,7 +1,13 @@
 import crypto from "crypto";
 
-const SECRET =
-  process.env.BACKSTAGE_UPLOAD_SECRET || "fallback-secret-change-me";
+const SECRET = (() => {
+  const secret = process.env.BACKSTAGE_UPLOAD_SECRET;
+
+  if (!secret || secret.trim() === "")
+    throw new Error("BACKSTAGE_UPLOAD_SECRET must be set to a strong secret");
+
+  return secret;
+})();
 
 export interface BackstageUploadPayload {
   aud: "hirpinia-backstage";
@@ -48,9 +54,14 @@ export function verifyBackstageToken(token: string): BackstageUploadPayload {
   const expectedSignature = crypto
     .createHmac("sha256", SECRET)
     .update(`${headerB64}.${payloadB64}`)
-    .digest("base64url");
+    .digest();
 
-  if (signatureB64 !== expectedSignature) {
+  const providedSignature = Buffer.from(signatureB64, "base64url");
+
+  if (
+    providedSignature.length !== expectedSignature.length ||
+    !crypto.timingSafeEqual(providedSignature, expectedSignature)
+  ) {
     throw new Error("Invalid token signature");
   }
 
