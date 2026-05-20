@@ -74,7 +74,7 @@ export async function findOrCreateFolder(
  */
 export async function uploadFileToFolder(
   fileName: string,
-  fileBuffer: Buffer,
+  fileStream: ReadableStream<Uint8Array>,
   mimeType: string,
   folderId: string
 ): Promise<string> {
@@ -85,7 +85,7 @@ export async function uploadFileToFolder(
 
   const media = {
     mimeType,
-    body: Readable.from(fileBuffer),
+    body: Readable.fromWeb(fileStream as never),
   };
 
   const drive = initDriveIfNeeded();
