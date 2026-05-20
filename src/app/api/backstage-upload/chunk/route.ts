@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyBackstageToken } from "@/libs/jwt";
 
-export const maxDuration = 300;
+export const maxDuration = 60;
 
 const MAX_CHUNK_SIZE = 4 * 1024 * 1024; // 4 MB
 
