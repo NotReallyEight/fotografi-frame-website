@@ -210,7 +210,7 @@ export default function Backstage() {
       }
 
       if (!response.ok) {
-        throw new Error(`Direct upload failed for ${file.name}`);
+        throw new Error(`Resumable upload failed for ${file.name}`);
       }
 
       const data = (await response.json()) as { id?: string };

@@ -25,6 +25,23 @@ const ALLOWED_EXTENSIONS = [
   ".mkv",
 ];
 
+const MIME_TYPE_BY_EXTENSION: Record<string, string> = {
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".png": "image/png",
+  ".gif": "image/gif",
+  ".webp": "image/webp",
+  ".avif": "image/avif",
+  ".heic": "image/heic",
+  ".heif": "image/heif",
+  ".mp4": "video/mp4",
+  ".mov": "video/quicktime",
+  ".webm": "video/webm",
+  ".m4v": "video/x-m4v",
+  ".avi": "video/x-msvideo",
+  ".mkv": "video/x-matroska",
+};
+
 type UploadFileDescriptor = {
   name: string;
   size: number;
@@ -37,6 +54,23 @@ const hasAllowedExtension = (fileName: string) => {
   return ALLOWED_EXTENSIONS.some((extension) =>
     lowerCaseName.endsWith(extension)
   );
+};
+
+const resolveMimeType = (fileName: string, mimeType: string) => {
+  if (mimeType.trim()) {
+    return mimeType;
+  }
+
+  const lowerCaseName = fileName.toLowerCase();
+  const extension = ALLOWED_EXTENSIONS.find((value) =>
+    lowerCaseName.endsWith(value)
+  );
+
+  if (!extension) {
+    return "application/octet-stream";
+  }
+
+  return MIME_TYPE_BY_EXTENSION[extension] || "application/octet-stream";
 };
 
 const isUploadFileDescriptor = (
@@ -163,9 +197,11 @@ export async function POST(request: NextRequest) {
 
       const batchResults = await Promise.all(
         batch.map(async (file) => {
+          const normalizedMimeType = resolveMimeType(file.name, file.type);
+
           const uploadUrl = await createResumableUploadSession({
             fileName: file.name,
-            mimeType: file.type,
+            mimeType: normalizedMimeType,
             folderId: userFolderId,
             fileSize: file.size,
           });
@@ -173,7 +209,7 @@ export async function POST(request: NextRequest) {
           return {
             name: file.name,
             size: file.size,
-            type: file.type,
+            type: normalizedMimeType,
             uploadUrl,
           };
         })

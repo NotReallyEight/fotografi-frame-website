@@ -146,8 +146,15 @@ export async function createResumableUploadSession(options: {
   );
 
   if (!response.ok) {
+    const responseText = (await response.text()).replace(/\s+/g, " ").trim();
+    const responseExcerpt =
+      responseText.length > 200
+        ? `${responseText.slice(0, 200)}…`
+        : responseText;
     throw new Error(
-      `Failed to create resumable upload session for ${options.fileName}`
+      `Failed to create resumable upload session for ${options.fileName} ` +
+        `(status ${response.status})` +
+        (responseExcerpt ? `: ${responseExcerpt}` : "")
     );
   }
 

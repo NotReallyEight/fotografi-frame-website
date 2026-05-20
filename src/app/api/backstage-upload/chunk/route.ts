@@ -83,6 +83,7 @@ export async function PUT(request: NextRequest) {
       headers: {
         "Content-Type": contentType,
         "Content-Range": contentRange,
+        "Content-Length": String(contentLength),
       },
       body: request.body,
       duplex: "half",
