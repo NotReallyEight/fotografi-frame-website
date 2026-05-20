@@ -149,7 +149,7 @@ export default function Backstage() {
     if (selectedFiles.length === 0) {
       setSubmissionResponse({
         success: false,
-        message: "Selezione almeno un file.",
+        message: "Seleziona almeno un file.",
       });
       return;
     }
