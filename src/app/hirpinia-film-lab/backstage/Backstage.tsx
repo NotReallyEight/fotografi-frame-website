@@ -5,7 +5,7 @@ import Metadata from "@/components/Metadata";
 import Navbar from "@/components/Navbar";
 import { useNav } from "@/contexts/NavContext";
 import { useSearchParams } from "next/navigation";
-import { useRef, useState, Activity, Suspense } from "react";
+import { useState, Activity, Suspense } from "react";
 import { FiInfo, FiCheck, FiX } from "react-icons/fi";
 
 const FORM_TEXT_INPUTS: {
@@ -58,7 +58,7 @@ export default function Backstage() {
   const { isNavOpen } = useNav();
   const searchParams = useSearchParams();
   const code = searchParams.get("code");
-  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [fileError, setFileError] = useState("");
@@ -145,7 +145,7 @@ export default function Backstage() {
     }
   };
 
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
     setIsDragging(false);
 
@@ -166,10 +166,6 @@ export default function Backstage() {
     }
 
     return `${(size / (1024 * 1024)).toFixed(1)} MB`;
-  };
-
-  const openFilePicker = () => {
-    fileInputRef.current?.click();
   };
 
   const uploadFileViaSession = async (
@@ -423,27 +419,7 @@ export default function Backstage() {
                 </div>
 
                 <div className="mt-8 flex flex-col gap-4">
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    name="media"
-                    id="media"
-                    accept="image/*,video/*"
-                    multiple
-                    onChange={handleFileSelection}
-                    className="sr-only"
-                  />
-
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    onClick={openFilePicker}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        openFilePicker();
-                      }
-                    }}
+                  <label
                     onDragOver={(event) => {
                       event.preventDefault();
                       setIsDragging(true);
@@ -472,7 +448,16 @@ export default function Backstage() {
                         Puoi caricare fino a {MAX_FILES} file.
                       </div>
                     </div>
-                  </div>
+
+                    <input
+                      type="file"
+                      name="media"
+                      accept="image/*,video/*"
+                      multiple
+                      onChange={handleFileSelection}
+                      className="absolute opacity-0 w-1 h-1"
+                    />
+                  </label>
 
                   {fileError ? (
                     <div className="border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
