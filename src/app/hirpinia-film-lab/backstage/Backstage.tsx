@@ -378,7 +378,7 @@ export default function Backstage() {
         <Navbar hasLeftPadding fixed />
 
         <Activity mode={isNavOpen ? "hidden" : "visible"}>
-          <div className="pt-32 mx-auto text-left w-half-width flex flex-col text-white">
+          <div className="pt-32 mx-auto text-left xl:w-half-width flex flex-col text-white">
             <div className="bg-secondary p-8 flex flex-col gap-4">
               <div className="border-l-accent border-l-2 flex flex-col px-8">
                 <div className="font-family-secondary">
