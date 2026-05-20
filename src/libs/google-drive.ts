@@ -1,32 +1,33 @@
 import { google } from "googleapis";
 import { Readable } from "stream";
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const GOOGLE_REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
-const HIRPINIA_DRIVE_FOLDER_ID = process.env.HIRPINIA_DRIVE_FOLDER_ID;
+// Lazily create Drive client to avoid throwing during module import (important for builds/tests)
+let cachedDrive: ReturnType<typeof google.drive> | null = null;
 
-if (
-  !GOOGLE_CLIENT_ID ||
-  !GOOGLE_CLIENT_SECRET ||
-  !GOOGLE_REFRESH_TOKEN ||
-  !HIRPINIA_DRIVE_FOLDER_ID
-) {
-  throw new Error("Missing Google OAuth configuration in env vars");
+function initDriveIfNeeded() {
+  if (cachedDrive) return cachedDrive;
+
+  const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+  const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+  const GOOGLE_REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+
+  if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REFRESH_TOKEN) {
+    throw new Error("Missing Google OAuth configuration in env vars");
+  }
+
+  const oauth2Client = new google.auth.OAuth2(
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
+    process.env.GOOGLE_OAUTH_REDIRECT_URI || "http://127.0.0.1"
+  );
+
+  oauth2Client.setCredentials({
+    refresh_token: GOOGLE_REFRESH_TOKEN,
+  });
+
+  cachedDrive = google.drive({ version: "v3", auth: oauth2Client });
+  return cachedDrive;
 }
-
-// Initialize OAuth2 client
-const oauth2Client = new google.auth.OAuth2(
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  process.env.GOOGLE_OAUTH_REDIRECT_URI || "http://127.0.0.1"
-);
-
-oauth2Client.setCredentials({
-  refresh_token: GOOGLE_REFRESH_TOKEN,
-});
-
-const drive = google.drive({ version: "v3", auth: oauth2Client });
 
 /**
  * Find or create a folder in Google Drive.
@@ -35,6 +36,8 @@ export async function findOrCreateFolder(
   folderName: string,
   parentFolderId: string
 ): Promise<string> {
+  const drive = initDriveIfNeeded();
+
   // Search for existing folder
   const searchResponse = await drive.files.list({
     q: `name='${folderName.replace(/'/g, "\\'")}' and mimeType='application/vnd.google-apps.folder' and '${parentFolderId}' in parents and trashed=false`,
@@ -85,6 +88,8 @@ export async function uploadFileToFolder(
     body: Readable.from(fileBuffer),
   };
 
+  const drive = initDriveIfNeeded();
+
   const response = await drive.files.create({
     requestBody: fileMetadata,
     media,
@@ -102,5 +107,7 @@ export async function uploadFileToFolder(
  * Get the parent backstage folder ID.
  */
 export function getBackstageFolderId(): string {
-  return HIRPINIA_DRIVE_FOLDER_ID!;
+  const id = process.env.HIRPINIA_DRIVE_FOLDER_ID;
+  if (!id) throw new Error("Missing HIRPINIA_DRIVE_FOLDER_ID in env vars");
+  return id;
 }
