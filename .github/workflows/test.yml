@@ -7,6 +7,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      BACKSTAGE_UPLOAD_SECRET: ${{ secrets.BACKSTAGE_UPLOAD_SECRET }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+      HIRPINIA_DRIVE_FOLDER_ID: ${{ secrets.HIRPINIA_DRIVE_FOLDER_ID }}
     strategy:
       matrix:
         node-version: [24.x]
