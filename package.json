@@ -14,7 +14,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@videojs/react": "^10.0.0-beta.24",
-    "googleapis": "^171.4.0",
+    "googleapis": "^173.0.0",
     "gsap": "^3.15.0",
     "next": "16.2.6",
     "react": "19.2.6",
